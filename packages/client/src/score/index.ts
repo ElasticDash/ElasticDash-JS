@@ -7,7 +7,7 @@ import {
   getGlobalLogger,
   safeSetTimeout,
   IngestionResponse,
-} from "@langfuse/core";
+} from "@elasticdash/core";
 import { Span, trace } from "@opentelemetry/api";
 
 const MAX_QUEUE_SIZE = 100_000; // prevent memory leaks
@@ -118,7 +118,7 @@ export class ScoreManager {
    *
    * @example
    * ```typescript
-   * import { startSpan } from '@langfuse/tracing';
+   * import { startSpan } from '@elasticdash/tracing';
    *
    * const span = startSpan({ name: "my-operation" });
    * langfuse.score.observation(
@@ -154,7 +154,7 @@ export class ScoreManager {
    *
    * @example
    * ```typescript
-   * import { startSpan } from '@langfuse/tracing';
+   * import { startSpan } from '@elasticdash/tracing';
    *
    * const span = startSpan({ name: "my-operation" });
    * langfuse.score.trace(
@@ -189,7 +189,7 @@ export class ScoreManager {
    *
    * @example
    * ```typescript
-   * import { startActiveSpan } from '@langfuse/tracing';
+   * import { startActiveSpan } from '@elasticdash/tracing';
    *
    * startActiveSpan({ name: "my-operation" }, (span) => {
    *   // Inside the active span
@@ -233,7 +233,7 @@ export class ScoreManager {
    *
    * @example
    * ```typescript
-   * import { startActiveSpan } from '@langfuse/tracing';
+   * import { startActiveSpan } from '@elasticdash/tracing';
    *
    * startActiveSpan({ name: "my-operation" }, (span) => {
    *   // Inside the active span

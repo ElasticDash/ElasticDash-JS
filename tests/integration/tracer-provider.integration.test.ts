@@ -1,9 +1,9 @@
-import { LangfuseSpanProcessor } from "@langfuse/otel";
+import { LangfuseSpanProcessor } from "@elasticdash/otel";
 import {
   setLangfuseTracerProvider,
   getLangfuseTracerProvider,
   getLangfuseTracer,
-} from "@langfuse/tracing";
+} from "@elasticdash/tracing";
 import { trace, context, SpanKind } from "@opentelemetry/api";
 import { NodeTracerProvider } from "@opentelemetry/sdk-trace-node";
 import { describe, it, expect, beforeEach, afterEach } from "vitest";

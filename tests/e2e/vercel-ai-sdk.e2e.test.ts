@@ -2,8 +2,8 @@ import { randomUUID } from "crypto";
 import fs from "fs/promises";
 
 import { openai } from "@ai-sdk/openai";
-import { LangfuseClient } from "@langfuse/client";
-import { startActiveObservation } from "@langfuse/tracing";
+import { LangfuseClient } from "@elasticdash/client";
+import { startActiveObservation } from "@elasticdash/tracing";
 import {
   embed,
   generateObject,

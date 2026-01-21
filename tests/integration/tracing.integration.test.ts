@@ -7,7 +7,7 @@ import {
   LangfuseOtelSpanAttributes,
   createTraceId,
   getActiveTraceId,
-} from "@langfuse/tracing";
+} from "@elasticdash/tracing";
 import { describe, it, expect, beforeEach, afterEach } from "vitest";
 
 import { SpanAssertions } from "./helpers/assertions.js";

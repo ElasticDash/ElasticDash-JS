@@ -10,27 +10,27 @@ export default defineWorkspace([
     },
     resolve: {
       alias: {
-        "@langfuse/client": new URL(
+        "@elasticdash/client": new URL(
           "./packages/client/dist/index.mjs",
           import.meta.url,
         ).pathname,
-        "@langfuse/tracing": new URL(
+        "@elasticdash/tracing": new URL(
           "./packages/tracing/dist/index.mjs",
           import.meta.url,
         ).pathname,
-        "@langfuse/otel": new URL(
+        "@elasticdash/otel": new URL(
           "./packages/otel/dist/index.mjs",
           import.meta.url,
         ).pathname,
-        "@langfuse/langchain": new URL(
+        "@elasticdash/langchain": new URL(
           "./packages/langchain/dist/index.mjs",
           import.meta.url,
         ).pathname,
-        "@langfuse/openai": new URL(
+        "@elasticdash/openai": new URL(
           "./packages/openai/dist/index.mjs",
           import.meta.url,
         ).pathname,
-        "@langfuse/core": new URL(
+        "@elasticdash/core": new URL(
           "./packages/core/dist/index.mjs",
           import.meta.url,
         ).pathname,
@@ -47,27 +47,27 @@ export default defineWorkspace([
     },
     resolve: {
       alias: {
-        "@langfuse/client": new URL(
+        "@elasticdash/client": new URL(
           "./packages/client/dist/index.mjs",
           import.meta.url,
         ).pathname,
-        "@langfuse/tracing": new URL(
+        "@elasticdash/tracing": new URL(
           "./packages/tracing/dist/index.mjs",
           import.meta.url,
         ).pathname,
-        "@langfuse/otel": new URL(
+        "@elasticdash/otel": new URL(
           "./packages/otel/dist/index.mjs",
           import.meta.url,
         ).pathname,
-        "@langfuse/langchain": new URL(
+        "@elasticdash/langchain": new URL(
           "./packages/langchain/dist/index.mjs",
           import.meta.url,
         ).pathname,
-        "@langfuse/openai": new URL(
+        "@elasticdash/openai": new URL(
           "./packages/openai/dist/index.mjs",
           import.meta.url,
         ).pathname,
-        "@langfuse/core": new URL(
+        "@elasticdash/core": new URL(
           "./packages/core/dist/index.mjs",
           import.meta.url,
         ).pathname,

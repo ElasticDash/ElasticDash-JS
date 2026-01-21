@@ -12,14 +12,14 @@ import {
 } from "@langchain/core/messages";
 import type { Generation, LLMResult } from "@langchain/core/outputs";
 import type { ChainValues } from "@langchain/core/utils/types";
-import { getGlobalLogger } from "@langfuse/core";
+import { getGlobalLogger } from "@elasticdash/core";
 import {
   startObservation,
   LangfuseGeneration,
   LangfuseSpan,
   LangfuseGenerationAttributes,
   LangfuseSpanAttributes,
-} from "@langfuse/tracing";
+} from "@elasticdash/tracing";
 
 const LANGSMITH_HIDDEN_TAG = "langsmith:hidden";
 

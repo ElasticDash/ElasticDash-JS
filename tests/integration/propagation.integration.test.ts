@@ -10,8 +10,8 @@ import {
   LangfuseOtelContextKeys,
   LangfuseOtelSpanAttributes,
   getPropagatedAttributesFromContext,
-} from "@langfuse/core";
-import { propagateAttributes, startObservation } from "@langfuse/tracing";
+} from "@elasticdash/core";
+import { propagateAttributes, startObservation } from "@elasticdash/tracing";
 import {
   context as otelContext,
   trace as otelTrace,

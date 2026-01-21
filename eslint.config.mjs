@@ -68,7 +68,7 @@ export default [
             {
               group: ["node:*", "fs", "path", "os", "crypto"],
               message:
-                "Node.js built-ins are not allowed in universal packages. Use @langfuse/otel for Node-specific functionality.",
+                "Node.js built-ins are not allowed in universal packages. Use @elasticdash/otel for Node-specific functionality.",
             },
           ],
         },

@@ -1,5 +1,5 @@
 {
-  "name": "@langfuse/core",
+  "name": "@elasticdash/core",
   "version": "4.5.1",
   "description": "Core functions and utilities for Langfuse packages",
   "type": "module",
@@ -22,11 +22,11 @@
     "format:check": "prettier --check \"src/**/*.ts\"",
     "clean": "rm -rf dist"
   },
-  "author": "Langfuse",
+  "author": "ElasticDash",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/langfuse/langfuse-js.git",
+    "url": "https://github.com/terryjiang2020/ElasticDash-JS.git",
     "directory": "packages/core"
   },
   "files": [

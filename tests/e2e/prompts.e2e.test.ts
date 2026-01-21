@@ -8,8 +8,8 @@ import {
   ChatPromptClient,
   TextPromptClient,
   ChatMessageType,
-} from "@langfuse/client";
-import type { ChatMessage, ChatMessageWithPlaceholders } from "@langfuse/core";
+} from "@elasticdash/client";
+import type { ChatMessage, ChatMessageWithPlaceholders } from "@elasticdash/core";
 import { nanoid } from "nanoid";
 import { describe, it, expect, beforeEach, vi } from "vitest";
 

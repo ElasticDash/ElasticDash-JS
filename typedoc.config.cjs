@@ -9,9 +9,9 @@ module.exports = {
     "./packages/tracing",
   ],
   entryPointStrategy: "packages",
-  name: "Langfuse JS/TS SDKs",
+  name: "ElasticDash JS/TS SDKs",
   navigationLinks: {
-    GitHub: "http://github.com/langfuse/langfuse-js",
+    GitHub: "https://github.com/terryjiang2020/ElasticDash-JS",
     Docs: "https://langfuse.com/docs/sdk/typescript",
   },
 };

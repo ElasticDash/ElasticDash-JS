@@ -5,7 +5,7 @@ import {
   PlaceholderMessage,
   Prompt,
   ChatMessage,
-} from "@langfuse/core";
+} from "@elasticdash/core";
 
 import { LangfusePromptCache } from "./promptCache.js";
 import {
