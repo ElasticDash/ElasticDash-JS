@@ -2,10 +2,10 @@ import { ChatPromptTemplate } from "@langchain/core/prompts";
 import { DynamicTool } from "@langchain/core/tools";
 import { StateGraph, MessagesAnnotation } from "@langchain/langgraph";
 import { ChatOpenAI } from "@langchain/openai";
-import { LangfuseClient } from "@langfuse/client";
-import { configureGlobalLogger } from "@langfuse/core";
-import { CallbackHandler } from "@langfuse/langchain";
-import { startActiveObservation } from "@langfuse/tracing";
+import { LangfuseClient } from "@elasticdash/client";
+import { configureGlobalLogger } from "@elasticdash/core";
+import { CallbackHandler } from "@elasticdash/langchain";
+import { startActiveObservation } from "@elasticdash/tracing";
 import { nanoid } from "nanoid";
 import { describe, it, beforeEach, afterEach, expect } from "vitest";
 

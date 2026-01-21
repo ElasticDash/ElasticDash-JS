@@ -1,7 +1,7 @@
 import {
   LangfuseSpanProcessor,
   type LangfuseSpanProcessorParams,
-} from "@langfuse/otel";
+} from "@elasticdash/otel";
 import { trace } from "@opentelemetry/api";
 import { NodeSDK } from "@opentelemetry/sdk-node";
 

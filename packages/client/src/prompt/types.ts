@@ -3,7 +3,7 @@ import {
   PlaceholderMessage,
   ChatMessageWithPlaceholders,
   CreatePromptRequest,
-} from "@langfuse/core";
+} from "@elasticdash/core";
 
 /**
  * Enumeration of chat message types in Langfuse prompts.

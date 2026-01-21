@@ -15,13 +15,13 @@ Modular mono repo for the Langfuse JS/TS client libraries.
 > [!IMPORTANT]
 > The SDK was rewritten in v4 and will be released soon. Refer to the [v4 migration guide](https://langfuse-docs-git-add-js-sdk-v4-docs-langfuse.vercel.app/docs/observability/sdk/typescript/upgrade-path) for instructions on updating your code.
 
-| Package                                     | NPM                                                                                                               | Description                                               | Environments |
-| ------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------- | ------------ |
-| [@langfuse/client](./packages/client)       | [![NPM](https://img.shields.io/npm/v/@langfuse/client.svg)](https://www.npmjs.com/package/@langfuse/client)       | Langfuse API client for universal JavaScript environments | Universal JS |
-| [@langfuse/tracing](./packages/tracing)     | [![NPM](https://img.shields.io/npm/v/@langfuse/tracing.svg)](https://www.npmjs.com/package/@langfuse/tracing)     | Langfuse instrumentation methods based on OpenTelemetry   | Node.js 20+  |
-| [@langfuse/otel](./packages/otel)           | [![NPM](https://img.shields.io/npm/v/@langfuse/otel.svg)](https://www.npmjs.com/package/@langfuse/otel)           | Langfuse OpenTelemetry export helpers                     | Node.js 20+  |
-| [@langfuse/openai](./packages/openai)       | [![NPM](https://img.shields.io/npm/v/@langfuse/openai.svg)](https://www.npmjs.com/package/@langfuse/openai)       | Langfuse integration for OpenAI SDK                       | Universal JS |
-| [@langfuse/langchain](./packages/langchain) | [![NPM](https://img.shields.io/npm/v/@langfuse/langchain.svg)](https://www.npmjs.com/package/@langfuse/langchain) | Langfuse integration for LangChain                        | Universal JS |
+| Package                                        | NPM                                                                                                                     | Description                                               | Environments |
+| ---------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------- | ------------ |
+| [@elasticdash/client](./packages/client)       | [![NPM](https://img.shields.io/npm/v/@elasticdash/client.svg)](https://www.npmjs.com/package/@elasticdash/client)       | Langfuse API client for universal JavaScript environments | Universal JS |
+| [@elasticdash/tracing](./packages/tracing)     | [![NPM](https://img.shields.io/npm/v/@elasticdash/tracing.svg)](https://www.npmjs.com/package/@elasticdash/tracing)     | Langfuse instrumentation methods based on OpenTelemetry   | Node.js 20+  |
+| [@elasticdash/otel](./packages/otel)           | [![NPM](https://img.shields.io/npm/v/@elasticdash/otel.svg)](https://www.npmjs.com/package/@elasticdash/otel)           | Langfuse OpenTelemetry export helpers                     | Node.js 20+  |
+| [@elasticdash/openai](./packages/openai)       | [![NPM](https://img.shields.io/npm/v/@elasticdash/openai.svg)](https://www.npmjs.com/package/@elasticdash/openai)       | Langfuse integration for OpenAI SDK                       | Universal JS |
+| [@elasticdash/langchain](./packages/langchain) | [![NPM](https://img.shields.io/npm/v/@elasticdash/langchain.svg)](https://www.npmjs.com/package/@elasticdash/langchain) | Langfuse integration for LangChain                        | Universal JS |
 
 ## Documentation
 

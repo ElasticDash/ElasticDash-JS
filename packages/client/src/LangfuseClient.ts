@@ -3,7 +3,7 @@ import {
   LANGFUSE_SDK_VERSION,
   getGlobalLogger,
   getEnv,
-} from "@langfuse/core";
+} from "@elasticdash/core";
 
 import { DatasetManager } from "./dataset/index.js";
 import { ExperimentManager } from "./experiment/ExperimentManager.js";
@@ -49,6 +49,12 @@ export interface LangfuseClientParams {
    * Additional HTTP headers to include with API requests.
    */
   additionalHeaders?: Record<string, string>;
+
+  /**
+   * Boolean flag to indicate if the environment is production.
+   * Used for environment-specific configuration and behavior.
+   */
+  is_prod?: boolean;
 }
 
 /**

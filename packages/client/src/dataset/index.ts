@@ -1,4 +1,4 @@
-import { Dataset, DatasetRunItem, DatasetItem } from "@langfuse/core";
+import { Dataset, DatasetRunItem, DatasetItem } from "@elasticdash/core";
 import { Span } from "@opentelemetry/api";
 
 import { ExperimentResult, ExperimentParams } from "../experiment/types.js";

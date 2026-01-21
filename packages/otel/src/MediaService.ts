@@ -5,7 +5,7 @@ import {
   Logger,
   base64ToBytes,
   getGlobalLogger,
-} from "@langfuse/core";
+} from "@elasticdash/core";
 import { ReadableSpan } from "@opentelemetry/sdk-trace-base";
 
 export class MediaService {

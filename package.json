@@ -1,10 +1,10 @@
 {
-  "name": "langfuse-js",
-  "version": "4.5.1",
+  "name": "elasticdash-js",
+  "version": "0.0.2",
   "description": "Langfuse JavaScript / TypeScript SDK",
   "author": "Langfuse",
   "license": "MIT",
-  "private": true,
+  "private": false,
   "type": "module",
   "scripts": {
     "build": "pnpm -r run build",

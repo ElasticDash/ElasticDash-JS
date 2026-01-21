@@ -4,12 +4,12 @@
 
 This is a monorepo containing the Langfuse TypeScript/JavaScript SDK packages:
 
-- **[@langfuse/core](./packages/core)** - Shared utilities, types and logger for Langfuse packages
-- **[@langfuse/client](./packages/client)** - Langfuse API client for universal JavaScript environments
-- **[@langfuse/tracing](./packages/tracing)** - Langfuse instrumentation methods based on OpenTelemetry
-- **[@langfuse/otel](./packages/otel)** - Langfuse OpenTelemetry export helpers
-- **[@langfuse/openai](./packages/openai)** - Langfuse integration for OpenAI SDK
-- **[@langfuse/langchain](./packages/langchain)** - Langfuse integration for LangChain
+- **[@elasticdash/core](./packages/core)** - Shared utilities, types and logger for Langfuse packages
+- **[@elasticdash/client](./packages/client)** - Langfuse API client for universal JavaScript environments
+- **[@elasticdash/tracing](./packages/tracing)** - Langfuse instrumentation methods based on OpenTelemetry
+- **[@elasticdash/otel](./packages/otel)** - Langfuse OpenTelemetry export helpers
+- **[@elasticdash/openai](./packages/openai)** - Langfuse integration for OpenAI SDK
+- **[@elasticdash/langchain](./packages/langchain)** - Langfuse integration for LangChain
 
 ## Getting Started
 
@@ -132,7 +132,7 @@ The automated workflow will:
 **Prerequisites:**
 
 - Write access to the repository
-- npm Trusted Publishing configured for `@langfuse/*` packages
+- npm Trusted Publishing configured for `@elasticdash/*` packages
 
 **Dry Run Mode:**
 
@@ -174,8 +174,8 @@ pnpm release:dry
 Pre-release versions (alpha, beta, rc):
 
 - Are published with appropriate npm dist-tags
-- Won't be installed by default with `npm install @langfuse/client`
-- Must be explicitly installed: `npm install @langfuse/client@alpha`
+- Won't be installed by default with `npm install @elasticdash/client`
+- Must be explicitly installed: `npm install @elasticdash/client@alpha`
 - Are tagged in git for full traceability
 - Generate pre-release entries in the changelog
 
@@ -184,7 +184,7 @@ Pre-release versions (alpha, beta, rc):
 All packages published via GitHub Actions include npm provenance attestations, providing cryptographic proof that packages were built from this repository. Users can verify package authenticity with:
 
 ```bash
-npm view @langfuse/client --json | jq .dist.attestations
+npm view @elasticdash/client --json | jq .dist.attestations
 ```
 
 ## Development Workflow

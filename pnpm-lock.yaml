@@ -122,11 +122,11 @@ importers:
 
   packages/client:
     dependencies:
-      '@langfuse/core':
-        specifier: workspace:^
+      '@elasticdash/core':
+        specifier: ^0.0.2
         version: link:../core
-      '@langfuse/tracing':
-        specifier: workspace:^
+      '@elasticdash/tracing':
+        specifier: ^0.0.2
         version: link:../tracing
       '@opentelemetry/api':
         specifier: ^1.9.0
@@ -151,26 +151,26 @@ importers:
 
   packages/langchain:
     dependencies:
+      '@elasticdash/core':
+        specifier: ^0.0.2
+        version: link:../core
+      '@elasticdash/tracing':
+        specifier: ^0.0.2
+        version: link:../tracing
       '@langchain/core':
         specifier: '>=0.3.8'
         version: 1.1.8(@opentelemetry/api@1.9.0)(@opentelemetry/exporter-trace-otlp-proto@0.203.0(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-trace-base@2.0.1(@opentelemetry/api@1.9.0))(openai@6.7.0(zod@3.25.76))
-      '@langfuse/core':
-        specifier: workspace:^
-        version: link:../core
-      '@langfuse/tracing':
-        specifier: workspace:^
-        version: link:../tracing
       '@opentelemetry/api':
         specifier: ^1.9.0
         version: 1.9.0
 
   packages/openai:
     dependencies:
-      '@langfuse/core':
-        specifier: workspace:^
+      '@elasticdash/core':
+        specifier: ^0.0.2
         version: link:../core
-      '@langfuse/tracing':
-        specifier: workspace:^
+      '@elasticdash/tracing':
+        specifier: ^0.0.2
         version: link:../tracing
     devDependencies:
       openai:
@@ -179,8 +179,8 @@ importers:
 
   packages/otel:
     dependencies:
-      '@langfuse/core':
-        specifier: workspace:^
+      '@elasticdash/core':
+        specifier: ^0.0.2
         version: link:../core
       '@opentelemetry/api':
         specifier: ^1.9.0
@@ -197,8 +197,8 @@ importers:
 
   packages/tracing:
     dependencies:
-      '@langfuse/core':
-        specifier: workspace:^
+      '@elasticdash/core':
+        specifier: ^0.0.2
         version: link:../core
       '@opentelemetry/api':
         specifier: ^1.9.0

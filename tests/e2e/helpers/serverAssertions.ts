@@ -5,7 +5,7 @@ import {
   getEnv,
   TraceWithFullDetails,
   TraceWithDetails,
-} from "@langfuse/core";
+} from "@elasticdash/core";
 
 export class ServerAssertions {
   private baseUrl: string;

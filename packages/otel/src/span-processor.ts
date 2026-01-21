@@ -7,7 +7,7 @@ import {
   getEnv,
   base64Encode,
   getPropagatedAttributesFromContext,
-} from "@langfuse/core";
+} from "@elasticdash/core";
 import { Context } from "@opentelemetry/api";
 import { hrTimeToMilliseconds } from "@opentelemetry/core";
 import { OTLPTraceExporter } from "@opentelemetry/exporter-trace-otlp-http";
@@ -155,7 +155,7 @@ export interface LangfuseSpanProcessorParams {
  * @example
  * ```typescript
  * import { NodeSDK } from '@opentelemetry/sdk-node';
- * import { LangfuseSpanProcessor } from '@langfuse/otel';
+ * import { LangfuseSpanProcessor } from '@elasticdash/otel';
  *
  * const sdk = new NodeSDK({
  *   spanProcessors: [

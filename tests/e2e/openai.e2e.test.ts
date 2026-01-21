@@ -1,7 +1,7 @@
 import { OpenAI } from "openai";
 import crypto from "node:crypto";
-import { observeOpenAI } from "@langfuse/openai";
-import { LangfuseClient } from "@langfuse/client";
+import { observeOpenAI } from "@elasticdash/openai";
+import { LangfuseClient } from "@elasticdash/client";
 import { describe, it, beforeEach, afterEach, expect } from "vitest";
 import {
   setupServerTestEnvironment,
@@ -10,7 +10,7 @@ import {
   type ServerTestEnvironment,
 } from "./helpers/serverSetup.js";
 import { nanoid } from "nanoid";
-import { startActiveObservation } from "@langfuse/tracing";
+import { startActiveObservation } from "@elasticdash/tracing";
 
 describe("OpenAI integration E2E tests", () => {
   let langfuseClient: LangfuseClient;
