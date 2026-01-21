@@ -1,6 +1,6 @@
 {
-  "name": "@langfuse/openai",
-  "version": "4.5.1",
+  "name": "@elasticdash/openai",
+  "version": "0.0.1",
   "description": "Langfuse integration for OpenAI SDK",
   "type": "module",
   "sideEffects": false,
@@ -33,8 +33,8 @@
     "dist"
   ],
   "dependencies": {
-    "@langfuse/core": "workspace:^",
-    "@langfuse/tracing": "workspace:^"
+    "@elasticdash/core": "^0.0.1",
+    "@elasticdash/tracing": "^0.0.1"
   },
   "devDependencies": {
     "openai": "^5.0.0"

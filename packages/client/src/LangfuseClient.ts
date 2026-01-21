@@ -3,7 +3,7 @@ import {
   LANGFUSE_SDK_VERSION,
   getGlobalLogger,
   getEnv,
-} from "@langfuse/core";
+} from "@elasticdash/core";
 
 import { DatasetManager } from "./dataset/index.js";
 import { ExperimentManager } from "./experiment/ExperimentManager.js";

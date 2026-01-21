@@ -5,12 +5,12 @@
  * item metadata) automatically propagates to all child spans within an experiment run.
  */
 
-import { LangfuseClient } from "@langfuse/client";
+import { LangfuseClient } from "@elasticdash/client";
 import {
   LangfuseOtelSpanAttributes,
   LANGFUSE_SDK_EXPERIMENT_ENVIRONMENT,
-} from "@langfuse/core";
-import { startObservation, startActiveObservation } from "@langfuse/tracing";
+} from "@elasticdash/core";
+import { startObservation, startActiveObservation } from "@elasticdash/tracing";
 import { trace as otelTrace } from "@opentelemetry/api";
 import { describe, it, expect, beforeEach, afterEach } from "vitest";
 

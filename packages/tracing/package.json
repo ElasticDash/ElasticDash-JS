@@ -1,6 +1,6 @@
 {
-  "name": "@langfuse/tracing",
-  "version": "4.5.1",
+  "name": "@elasticdash/tracing",
+  "version": "0.0.1",
   "author": "Langfuse",
   "license": "MIT",
   "repository": {
@@ -36,7 +36,7 @@
     "dist"
   ],
   "dependencies": {
-    "@langfuse/core": "workspace:^"
+    "@elasticdash/core": "^0.0.1"
   },
   "peerDependencies": {
     "@opentelemetry/api": "^1.9.0"

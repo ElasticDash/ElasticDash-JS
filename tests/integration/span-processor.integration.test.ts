@@ -1,4 +1,4 @@
-import { startObservation } from "@langfuse/tracing";
+import { startObservation } from "@elasticdash/tracing";
 import { describe, it, expect, beforeEach, afterEach } from "vitest";
 
 import { SpanAssertions } from "./helpers/assertions.js";

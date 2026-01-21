@@ -1,4 +1,4 @@
-import { LangfuseGeneration, startObservation } from "@langfuse/tracing";
+import { LangfuseGeneration, startObservation } from "@elasticdash/tracing";
 import type OpenAI from "openai";
 
 import {

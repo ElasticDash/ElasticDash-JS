@@ -2,7 +2,7 @@ import { NodeSDK } from "@opentelemetry/sdk-node";
 import {
   LangfuseSpanProcessor,
   type LangfuseSpanProcessorParams,
-} from "@langfuse/otel";
+} from "@elasticdash/otel";
 import { trace } from "@opentelemetry/api";
 
 export interface ServerTestEnvironment {

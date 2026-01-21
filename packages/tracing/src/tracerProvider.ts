@@ -2,7 +2,7 @@ import {
   getGlobalLogger,
   LANGFUSE_SDK_VERSION,
   LANGFUSE_TRACER_NAME,
-} from "@langfuse/core";
+} from "@elasticdash/core";
 import { TracerProvider, trace } from "@opentelemetry/api";
 
 const LANGFUSE_GLOBAL_SYMBOL = Symbol.for("langfuse");
@@ -82,8 +82,8 @@ function getGlobalState(): LangfuseGlobalState {
  * @example
  * ```typescript
  * import { NodeTracerProvider } from '@opentelemetry/sdk-trace-node';
- * import { LangfuseSpanProcessor } from '@langfuse/otel';
- * import { setLangfuseTracerProvider } from '@langfuse/tracing';
+ * import { LangfuseSpanProcessor } from '@elasticdash/otel';
+ * import { setLangfuseTracerProvider } from '@elasticdash/tracing';
  *
  * // Create provider with span processors in constructor
  * const provider = new NodeTracerProvider({
@@ -111,7 +111,7 @@ export function setLangfuseTracerProvider(provider: TracerProvider | null) {
  *
  * @example
  * ```typescript
- * import { getLangfuseTracerProvider } from '@langfuse/tracing';
+ * import { getLangfuseTracerProvider } from '@elasticdash/tracing';
  *
  * const provider = getLangfuseTracerProvider();
  * const tracer = provider.getTracer('my-tracer', '1.0.0');
@@ -139,7 +139,7 @@ export function getLangfuseTracerProvider(): TracerProvider {
  *
  * @example
  * ```typescript
- * import { getLangfuseTracer } from '@langfuse/tracing';
+ * import { getLangfuseTracer } from '@elasticdash/tracing';
  *
  * const tracer = getLangfuseTracer();
  * const span = tracer.startSpan('my-operation');

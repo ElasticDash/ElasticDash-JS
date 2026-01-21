@@ -1,4 +1,4 @@
-import { getGlobalLogger, LangfuseOtelSpanAttributes } from "@langfuse/core";
+import { getGlobalLogger, LangfuseOtelSpanAttributes } from "@elasticdash/core";
 import {
   trace,
   context,
@@ -66,9 +66,9 @@ export {
 export {
   propagateAttributes,
   type PropagateAttributesParams,
-} from "@langfuse/core";
+} from "@elasticdash/core";
 
-export { LangfuseOtelSpanAttributes } from "@langfuse/core";
+export { LangfuseOtelSpanAttributes } from "@elasticdash/core";
 
 /**
  * Options for starting observations (spans, generations, events).
@@ -261,7 +261,7 @@ export function startObservation(
  *
  * @example
  * ```typescript
- * import { startObservation } from '@langfuse/tracing';
+ * import { startObservation } from '@elasticdash/tracing';
  *
  * // Span for general operations (default)
  * const span = startObservation('user-workflow', {
@@ -542,7 +542,7 @@ export function startActiveObservation<
  *
  * @example
  * ```typescript
- * import { startActiveObservation } from '@langfuse/tracing';
+ * import { startActiveObservation } from '@elasticdash/tracing';
  *
  * // Span for general operations (default)
  * const result = startActiveObservation('user-checkout', (span) => {
@@ -886,7 +886,7 @@ export function startActiveObservation<
  *
  * @example
  * ```typescript
- * import { updateActiveTrace } from '@langfuse/tracing';
+ * import { updateActiveTrace } from '@elasticdash/tracing';
  *
  * // Inside an active span context
  * updateActiveTrace({
@@ -948,7 +948,7 @@ export function updateActiveTrace(attributes: LangfuseTraceAttributes) {
  *
  * @example
  * ```typescript
- * import { updateActiveObservation, startActiveObservation } from '@langfuse/tracing';
+ * import { updateActiveObservation, startActiveObservation } from '@elasticdash/tracing';
  *
  * // Update active span (default)
  * await startActiveObservation('data-processing', async (observation) => {
@@ -1157,7 +1157,7 @@ export interface ObserveOptions {
  *
  * @example
  * ```typescript
- * import { observe } from '@langfuse/tracing';
+ * import { observe } from '@elasticdash/tracing';
  *
  * // Basic function wrapping with automatic I/O capture
  * const processOrder = observe(

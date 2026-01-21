@@ -2,7 +2,7 @@ import {
   startObservation,
   startActiveObservation,
   observe,
-} from "@langfuse/tracing";
+} from "@elasticdash/tracing";
 import { nanoid } from "nanoid";
 import { describe, it, beforeEach, afterEach } from "vitest";
 

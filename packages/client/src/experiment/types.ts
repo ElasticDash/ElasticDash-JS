@@ -1,4 +1,4 @@
-import { DatasetItem, ScoreBody } from "@langfuse/core";
+import { DatasetItem, ScoreBody } from "@elasticdash/core";
 
 export type ExperimentItem<
   Input = any,

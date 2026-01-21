@@ -1,4 +1,4 @@
-import { getGlobalLogger } from "@langfuse/core";
+import { getGlobalLogger } from "@elasticdash/core";
 
 import type { LangfusePromptClient } from "./promptClients.js";
 

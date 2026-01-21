@@ -1,6 +1,6 @@
 {
-  "name": "@langfuse/langchain",
-  "version": "4.5.1",
+  "name": "@elasticdash/langchain",
+  "version": "0.0.1",
   "description": "Langfuse integration for LangChain",
   "type": "module",
   "sideEffects": false,
@@ -33,8 +33,8 @@
     "dist"
   ],
   "dependencies": {
-    "@langfuse/core": "workspace:^",
-    "@langfuse/tracing": "workspace:^"
+    "@elasticdash/core": "^0.0.1",
+    "@elasticdash/tracing": "^0.0.1"
   },
   "peerDependencies": {
     "@langchain/core": ">=0.3.8",

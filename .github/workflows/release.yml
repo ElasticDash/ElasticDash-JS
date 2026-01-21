@@ -229,7 +229,7 @@ jobs:
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": "*📦 Published Packages:*\n• `@langfuse/client`\n• `@langfuse/core`\n• `@langfuse/tracing`\n• `@langfuse/otel`\n• `@langfuse/openai`\n• `@langfuse/langchain`"
+                    "text": "*📦 Published Packages:*\n• `@elasticdash/client`\n• `@elasticdash/core`\n• `@elasticdash/tracing`\n• `@elasticdash/otel`\n• `@elasticdash/openai`\n• `@elasticdash/langchain`"
                   }
                 },
                 {
@@ -252,7 +252,7 @@ jobs:
                         "text": "📦 View on npm",
                         "emoji": true
                       },
-                      "url": "https://www.npmjs.com/package/@langfuse/client/v/${{ steps.version.outputs.version }}"
+                      "url": "https://www.npmjs.com/package/@elasticdash/client/v/${{ steps.version.outputs.version }}"
                     },
                     {
                       "type": "button",

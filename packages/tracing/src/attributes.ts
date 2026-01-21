@@ -1,4 +1,4 @@
-import { LangfuseOtelSpanAttributes } from "@langfuse/core";
+import { LangfuseOtelSpanAttributes } from "@elasticdash/core";
 import { type Attributes } from "@opentelemetry/api";
 
 import {
@@ -18,7 +18,7 @@ import {
  *
  * @example
  * ```typescript
- * import { createTraceAttributes } from '@langfuse/tracing';
+ * import { createTraceAttributes } from '@elasticdash/tracing';
  *
  * const otelAttributes = createTraceAttributes({
  *   name: 'user-checkout-flow',

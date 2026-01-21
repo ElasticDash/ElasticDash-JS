@@ -7,8 +7,8 @@ import {
   createExperimentItemId,
   LangfuseOtelSpanAttributes,
   LANGFUSE_SDK_EXPERIMENT_ENVIRONMENT,
-} from "@langfuse/core";
-import { startActiveObservation } from "@langfuse/tracing";
+} from "@elasticdash/core";
+import { startActiveObservation } from "@elasticdash/tracing";
 import { ProxyTracerProvider, trace } from "@opentelemetry/api";
 
 import { LangfuseClient } from "../LangfuseClient.js";
