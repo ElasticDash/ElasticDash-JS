@@ -26,7 +26,7 @@ export type ElasticDashConfig = {
   /** Additional metadata to attach to the generation */
   generationMetadata?: Record<string, unknown>;
   /** Information about the ElasticDash prompt used for this generation */
-  langfusePrompt?: {
+  elasticDashPrompt?: {
     /** Name of the prompt template in ElasticDash */
     name: string;
     /** Version number of the prompt template */

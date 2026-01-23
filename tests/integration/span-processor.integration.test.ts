@@ -9,7 +9,7 @@ import {
   type TestEnvironment,
 } from "./helpers/testSetup.js";
 
-describe("LangfuseSpanProcessor E2E Tests", () => {
+describe("ElasticDashSpanProcessor E2E Tests", () => {
   let testEnv: TestEnvironment;
   let assertions: SpanAssertions;
 
@@ -110,7 +110,7 @@ describe("LangfuseSpanProcessor E2E Tests", () => {
 
       // Should contain ElasticDash media tag
       expect(inputValue).toMatch(
-        /@@@langfuseMedia:type=[^|]+\|id=[^|]+\|source=[^@]+@@@/,
+        /@@@elasticDashMedia:type=[^|]+\|id=[^|]+\|source=[^@]+@@@/,
       );
     });
 
@@ -140,7 +140,7 @@ describe("LangfuseSpanProcessor E2E Tests", () => {
 
       // Should contain multiple ElasticDash media tags
       const mediaMatches = inputValue.match(
-        /@@@langfuseMedia:type=[^|]+\|id=[^|]+\|source=[^@]+@@@/g,
+        /@@@elasticDashMedia:type=[^|]+\|id=[^|]+\|source=[^@]+@@@/g,
       );
       expect(mediaMatches).toHaveLength(2);
     });

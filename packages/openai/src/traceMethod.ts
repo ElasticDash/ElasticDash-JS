@@ -1,4 +1,4 @@
-import { LangfuseGeneration, startObservation } from "@elasticdash/tracing";
+import { ElasticDashGeneration, startObservation } from "@elasticdash/tracing";
 import type OpenAI from "openai";
 
 import {
@@ -75,7 +75,7 @@ const wrapMethod = <T extends GenericMethod>(
       model,
       input,
       modelParameters: finalModelParams,
-      prompt: config?.langfusePrompt,
+      prompt: config?.elasticDashPrompt,
       metadata: finalMetadata,
     },
     {
@@ -176,7 +176,7 @@ const wrapMethod = <T extends GenericMethod>(
  */
 function wrapAsyncIterable<R>(
   iterable: AsyncIterable<unknown>,
-  generation: LangfuseGeneration,
+  generation: ElasticDashGeneration,
 ): R {
   async function* tracedOutputGenerator(): AsyncGenerator<
     unknown,

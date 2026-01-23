@@ -13,12 +13,12 @@ import { nanoid } from "nanoid";
 import { startActiveObservation } from "@elasticdash/tracing";
 
 describe("OpenAI integration E2E tests", () => {
-  let langfuseClient: ElasticDashClient;
+  let elasticdashClient: ElasticDashClient;
   let testEnv: ServerTestEnvironment;
 
   beforeEach(async () => {
     testEnv = await setupServerTestEnvironment();
-    langfuseClient = new ElasticDashClient();
+    elasticdashClient = new ElasticDashClient();
   });
 
   afterEach(async () => {
@@ -27,7 +27,7 @@ describe("OpenAI integration E2E tests", () => {
 
   it("should trace OpenAI Chat Completion Create ", async () => {
     const promptName = "test-prompt-" + nanoid();
-    await langfuseClient.prompt.create({
+    await elasticdashClient.prompt.create({
       name: promptName,
       prompt: "hello",
       labels: ["production"],
@@ -38,7 +38,7 @@ describe("OpenAI integration E2E tests", () => {
       sessionId: "my-session",
       userId: "my-user",
       tags: ["tag1", "tag2"],
-      langfusePrompt: await langfuseClient.prompt.get(promptName),
+      elasticDashPrompt: await elasticdashClient.prompt.get(promptName),
       generationMetadata: { service: "agent" },
       generationName: "OpenAI call",
     };
@@ -57,7 +57,7 @@ describe("OpenAI integration E2E tests", () => {
     await testEnv.spanProcessor.forceFlush();
     await waitForServerIngestion(2000);
 
-    const traces = await langfuseClient.api.trace.list({ name: traceName });
+    const traces = await elasticdashClient.api.trace.list({ name: traceName });
     expect(traces.data.length).toBe(1);
 
     const trace = traces.data[0];
@@ -69,7 +69,7 @@ describe("OpenAI integration E2E tests", () => {
       name: config.traceName,
     });
 
-    const observations = await langfuseClient.api.observations.getMany({
+    const observations = await elasticdashClient.api.observations.getMany({
       traceId: trace.id,
     });
 
@@ -111,7 +111,7 @@ describe("OpenAI integration E2E tests", () => {
     await testEnv.spanProcessor.forceFlush();
     await waitForServerIngestion(2000);
 
-    const trace = await langfuseClient.api.trace.get(traceId);
+    const trace = await elasticdashClient.api.trace.get(traceId);
 
     expect(trace.observations.length).toBe(2);
     const span = trace.observations.find((o) => o.name === "parent");
@@ -150,12 +150,12 @@ describe("OpenAI integration E2E tests", () => {
     await testEnv.spanProcessor.forceFlush();
     await waitForServerIngestion(4000);
 
-    const traces = await langfuseClient.api.trace.list({
+    const traces = await elasticdashClient.api.trace.list({
       name: generationName,
     });
     expect(traces.data.length).toBe(1);
 
-    const observations = await langfuseClient.api.observations.getMany({
+    const observations = await elasticdashClient.api.observations.getMany({
       traceId: traces.data[0].id,
     });
 
@@ -209,12 +209,12 @@ describe("OpenAI integration E2E tests", () => {
     await testEnv.spanProcessor.forceFlush();
     await waitForServerIngestion(2000);
 
-    const traces = await langfuseClient.api.trace.list({
+    const traces = await elasticdashClient.api.trace.list({
       name: generationName,
     });
     expect(traces.data.length).toBe(1);
 
-    const observations = await langfuseClient.api.observations.getMany({
+    const observations = await elasticdashClient.api.observations.getMany({
       traceId: traces.data[0].id,
     });
 
@@ -275,12 +275,12 @@ describe("OpenAI integration E2E tests", () => {
     await testEnv.spanProcessor.forceFlush();
     await waitForServerIngestion(2000);
 
-    const traces = await langfuseClient.api.trace.list({
+    const traces = await elasticdashClient.api.trace.list({
       name: generationName,
     });
     expect(traces.data.length).toBe(1);
 
-    const observations = await langfuseClient.api.observations.getMany({
+    const observations = await elasticdashClient.api.observations.getMany({
       traceId: traces.data[0].id,
     });
 
@@ -352,12 +352,12 @@ describe("OpenAI integration E2E tests", () => {
     await testEnv.spanProcessor.forceFlush();
     await waitForServerIngestion(2000);
 
-    const traces = await langfuseClient.api.trace.list({
+    const traces = await elasticdashClient.api.trace.list({
       name: generationName,
     });
     expect(traces.data.length).toBe(1);
 
-    const observations = await langfuseClient.api.observations.getMany({
+    const observations = await elasticdashClient.api.observations.getMany({
       traceId: traces.data[0].id,
     });
 
@@ -441,12 +441,12 @@ describe("OpenAI integration E2E tests", () => {
     await testEnv.spanProcessor.forceFlush();
     await waitForServerIngestion(2000);
 
-    const traces = await langfuseClient.api.trace.list({
+    const traces = await elasticdashClient.api.trace.list({
       name: generationName,
     });
     expect(traces.data.length).toBe(1);
 
-    const observations = await langfuseClient.api.observations.getMany({
+    const observations = await elasticdashClient.api.observations.getMany({
       traceId: traces.data[0].id,
     });
 
@@ -549,12 +549,12 @@ describe("OpenAI integration E2E tests", () => {
     await testEnv.spanProcessor.forceFlush();
     await waitForServerIngestion(2000);
 
-    const traces = await langfuseClient.api.trace.list({
+    const traces = await elasticdashClient.api.trace.list({
       name: generationName,
     });
     expect(traces.data.length).toBe(1);
 
-    const observations = await langfuseClient.api.observations.getMany({
+    const observations = await elasticdashClient.api.observations.getMany({
       traceId: traces.data[0].id,
     });
 
@@ -644,14 +644,14 @@ describe("OpenAI integration E2E tests", () => {
     await testEnv.spanProcessor.forceFlush();
     await waitForServerIngestion(2000);
 
-    const traces = await langfuseClient.api.trace.list({
+    const traces = await elasticdashClient.api.trace.list({
       name: generationName,
     });
     // Should have at least 2 traces (potentially 3, depending on timing)
     expect(traces.data.length).toBeGreaterThanOrEqual(2);
 
     const firstTrace = traces.data[0];
-    const observations = await langfuseClient.api.observations.getMany({
+    const observations = await elasticdashClient.api.observations.getMany({
       traceId: firstTrace.id,
     });
 
@@ -687,7 +687,7 @@ describe("OpenAI integration E2E tests", () => {
       },
       tags: ["hello", "World"],
       sessionId: "ElasticDash",
-      userId: "LangfuseUser",
+      userId: "ElasticDashUser",
     });
 
     const res = await wrappedOpenAI.chat.completions.create({
@@ -703,7 +703,7 @@ describe("OpenAI integration E2E tests", () => {
     await testEnv.spanProcessor.forceFlush();
     await waitForServerIngestion(2000);
 
-    const traces = await langfuseClient.api.trace.list({
+    const traces = await elasticdashClient.api.trace.list({
       name: generationName,
     });
     expect(traces.data.length).toBe(1);
@@ -714,9 +714,9 @@ describe("OpenAI integration E2E tests", () => {
     expect(trace.sessionId).toBeDefined();
     expect(trace.sessionId).toBe("ElasticDash");
     expect(trace.userId).toBeDefined();
-    expect(trace.userId).toBe("LangfuseUser");
+    expect(trace.userId).toBe("ElasticDashUser");
 
-    const observations = await langfuseClient.api.observations.getMany({
+    const observations = await elasticdashClient.api.observations.getMany({
       traceId: trace.id,
     });
 
@@ -763,7 +763,7 @@ describe("OpenAI integration E2E tests", () => {
       },
       tags: ["hello", "World"],
       sessionId: "ElasticDash",
-      userId: "LangfuseUser",
+      userId: "ElasticDashUser",
     });
 
     try {
@@ -779,7 +779,7 @@ describe("OpenAI integration E2E tests", () => {
       await testEnv.spanProcessor.forceFlush();
       await waitForServerIngestion(2000);
 
-      const traces = await langfuseClient.api.trace.list({
+      const traces = await elasticdashClient.api.trace.list({
         name: generationName,
       });
       expect(traces.data.length).toBe(1);
@@ -790,9 +790,9 @@ describe("OpenAI integration E2E tests", () => {
       expect(trace.sessionId).toBeDefined();
       expect(trace.sessionId).toBe("ElasticDash");
       expect(trace.userId).toBeDefined();
-      expect(trace.userId).toBe("LangfuseUser");
+      expect(trace.userId).toBe("ElasticDashUser");
 
-      const observations = await langfuseClient.api.observations.getMany({
+      const observations = await elasticdashClient.api.observations.getMany({
         traceId: trace.id,
       });
 
@@ -840,13 +840,13 @@ describe("OpenAI integration E2E tests", () => {
     await testEnv.spanProcessor.forceFlush();
     await waitForServerIngestion(2000);
 
-    const trace = await langfuseClient.api.trace.get(traceId);
+    const trace = await elasticdashClient.api.trace.get(traceId);
 
     // TODO: Currently AS_ROOT is not passed that would trigger trace data propagation
     // expect(trace.name).toBe(traceName);
     // expect(trace.metadata).toEqual({ parent: true });
 
-    const observations = await langfuseClient.api.observations.getMany({
+    const observations = await elasticdashClient.api.observations.getMany({
       traceId: trace.id,
     });
 

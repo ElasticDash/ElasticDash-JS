@@ -31,7 +31,7 @@ import { Score } from "./api/resources/score/client/Client.js";
 import { Sessions } from "./api/resources/sessions/client/Client.js";
 import { Trace } from "./api/resources/trace/client/Client.js";
 
-export declare namespace LangfuseAPIClient {
+export declare namespace ElasticDashAPIClient {
   export interface Options {
     environment: core.Supplier<string>;
     /** Specify a custom URL to connect the client to. */
@@ -39,11 +39,11 @@ export declare namespace LangfuseAPIClient {
     username?: core.Supplier<string | undefined>;
     password?: core.Supplier<string | undefined>;
     /** Override the X-ElasticDash-Sdk-Name header */
-    xLangfuseSdkName?: core.Supplier<string | undefined>;
+    xElasticDashSdkName?: core.Supplier<string | undefined>;
     /** Override the X-ElasticDash-Sdk-Version header */
-    xLangfuseSdkVersion?: core.Supplier<string | undefined>;
+    xElasticDashSdkVersion?: core.Supplier<string | undefined>;
     /** Override the X-ElasticDash-Public-Key header */
-    xLangfusePublicKey?: core.Supplier<string | undefined>;
+    xElasticDashPublicKey?: core.Supplier<string | undefined>;
     /** Additional headers to include in requests. */
     headers?: Record<
       string,
@@ -59,11 +59,11 @@ export declare namespace LangfuseAPIClient {
     /** A hook to abort the request. */
     abortSignal?: AbortSignal;
     /** Override the X-ElasticDash-Sdk-Name header */
-    xLangfuseSdkName?: string | undefined;
+    xElasticDashSdkName?: string | undefined;
     /** Override the X-ElasticDash-Sdk-Version header */
-    xLangfuseSdkVersion?: string | undefined;
+    xElasticDashSdkVersion?: string | undefined;
     /** Override the X-ElasticDash-Public-Key header */
-    xLangfusePublicKey?: string | undefined;
+    xElasticDashPublicKey?: string | undefined;
     /** Additional query string parameters to include in the request. */
     queryParams?: Record<string, unknown>;
     /** Additional headers to include in the request. */
@@ -74,8 +74,8 @@ export declare namespace LangfuseAPIClient {
   }
 }
 
-export class LangfuseAPIClient {
-  protected readonly _options: LangfuseAPIClient.Options;
+export class ElasticDashAPIClient {
+  protected readonly _options: ElasticDashAPIClient.Options;
   protected _annotationQueues: AnnotationQueues | undefined;
   protected _blobStorageIntegrations: BlobStorageIntegrations | undefined;
   protected _comments: Comments | undefined;
@@ -103,14 +103,14 @@ export class LangfuseAPIClient {
   protected _sessions: Sessions | undefined;
   protected _trace: Trace | undefined;
 
-  constructor(_options: LangfuseAPIClient.Options) {
+  constructor(_options: ElasticDashAPIClient.Options) {
     this._options = {
       ..._options,
       headers: mergeHeaders(
         {
-          "X-ElasticDash-Sdk-Name": _options?.xLangfuseSdkName,
-          "X-ElasticDash-Sdk-Version": _options?.xLangfuseSdkVersion,
-          "X-ElasticDash-Public-Key": _options?.xLangfusePublicKey,
+          "X-ElasticDash-Sdk-Name": _options?.xElasticDashSdkName,
+          "X-ElasticDash-Sdk-Version": _options?.xElasticDashSdkVersion,
+          "X-ElasticDash-Public-Key": _options?.xElasticDashPublicKey,
         },
         _options?.headers,
       ),

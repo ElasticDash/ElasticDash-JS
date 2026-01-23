@@ -1,5 +1,5 @@
 import {
-  LangfuseAPIClient,
+  ElasticDashAPIClient,
   ELASTICDASH_SDK_VERSION,
   ElasticDashEnvVar,
   getGlobalLogger,
@@ -92,7 +92,7 @@ export class ElasticDashClient {
    * Direct access to the underlying ElasticDash API client.
    * Use this for advanced API operations not covered by the high-level managers.
    */
-  public api: LangfuseAPIClient;
+  public api: ElasticDashAPIClient;
 
   /**
    * Manager for prompt operations including creation, retrieval, and caching.
@@ -192,47 +192,47 @@ export class ElasticDashClient {
   /**
    * @deprecated Use api.trace.get instead
    */
-  public fetchTrace: typeof LangfuseAPIClient.prototype.trace.get;
+  public fetchTrace: typeof ElasticDashAPIClient.prototype.trace.get;
   /**
    * @deprecated Use api.trace.list instead
    */
-  public fetchTraces: typeof LangfuseAPIClient.prototype.trace.list;
+  public fetchTraces: typeof ElasticDashAPIClient.prototype.trace.list;
   /**
    * @deprecated Use api.observations.get instead
    */
-  public fetchObservation: typeof LangfuseAPIClient.prototype.observations.get;
+  public fetchObservation: typeof ElasticDashAPIClient.prototype.observations.get;
   /**
    * @deprecated Use api.observations.list instead
    */
-  public fetchObservations: typeof LangfuseAPIClient.prototype.observations.getMany;
+  public fetchObservations: typeof ElasticDashAPIClient.prototype.observations.getMany;
   /**
    * @deprecated Use api.sessions.get instead
    */
-  public fetchSessions: typeof LangfuseAPIClient.prototype.sessions.get;
+  public fetchSessions: typeof ElasticDashAPIClient.prototype.sessions.get;
   /**
    * @deprecated Use api.datasets.getRun instead
    */
-  public getDatasetRun: typeof LangfuseAPIClient.prototype.datasets.getRun;
+  public getDatasetRun: typeof ElasticDashAPIClient.prototype.datasets.getRun;
   /**
    * @deprecated Use api.datasets.getRuns instead
    */
-  public getDatasetRuns: typeof LangfuseAPIClient.prototype.datasets.getRuns;
+  public getDatasetRuns: typeof ElasticDashAPIClient.prototype.datasets.getRuns;
   /**
    * @deprecated Use api.datasets.create instead
    */
-  public createDataset: typeof LangfuseAPIClient.prototype.datasets.create;
+  public createDataset: typeof ElasticDashAPIClient.prototype.datasets.create;
   /**
    * @deprecated Use api.datasetItems.get instead
    */
-  public getDatasetItem: typeof LangfuseAPIClient.prototype.datasetItems.get;
+  public getDatasetItem: typeof ElasticDashAPIClient.prototype.datasetItems.get;
   /**
    * @deprecated Use api.datasetItems.create instead
    */
-  public createDatasetItem: typeof LangfuseAPIClient.prototype.datasetItems.create;
+  public createDatasetItem: typeof ElasticDashAPIClient.prototype.datasetItems.create;
   /**
    * @deprecated Use api.media.get instead
    */
-  public fetchMedia: typeof LangfuseAPIClient.prototype.media.get;
+  public fetchMedia: typeof ElasticDashAPIClient.prototype.media.get;
   /**
    * @deprecated Use media.resolveReferences instead
    */
@@ -286,13 +286,13 @@ export class ElasticDashClient {
     const timeoutSeconds =
       params?.timeout ?? Number(getEnv("ELASTICDASH_TIMEOUT") ?? 5);
 
-    this.api = new LangfuseAPIClient({
+    this.api = new ElasticDashAPIClient({
       baseUrl: this.baseUrl,
       username: publicKey,
       password: secretKey,
-      xLangfusePublicKey: publicKey,
-      xLangfuseSdkVersion: ELASTICDASH_SDK_VERSION,
-      xLangfuseSdkName: "javascript",
+      xElasticDashPublicKey: publicKey,
+      xElasticDashSdkVersion: ELASTICDASH_SDK_VERSION,
+      xElasticDashSdkName: "javascript",
       environment: "", // noop as baseUrl is set
       headers: params?.additionalHeaders,
     });
@@ -304,10 +304,10 @@ export class ElasticDashClient {
     });
 
     this.prompt = new PromptManager({ apiClient: this.api });
-    this.dataset = new DatasetManager({ langfuseClient: this });
+    this.dataset = new DatasetManager({ elasticdashClient: this });
     this.score = new ScoreManager({ apiClient: this.api });
     this.media = new MediaManager({ apiClient: this.api });
-    this.experiment = new ExperimentManager({ langfuseClient: this });
+    this.experiment = new ExperimentManager({ elasticdashClient: this });
 
     // Keep v3 compat by exposing old interface
     this.getPrompt = this.prompt.get.bind(this.prompt); // keep correct this context for cache access

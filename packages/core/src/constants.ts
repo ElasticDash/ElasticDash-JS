@@ -16,7 +16,7 @@ export const ELASTICDASH_SDK_NAME = "javascript";
 export const ELASTICDASH_SDK_EXPERIMENT_ENVIRONMENT = "sdk-experiment";
 
 // From ElasticDash platform: web/src/features/otel/server/attributes.ts
-export enum LangfuseOtelSpanAttributes {
+export enum ElasticDashOtelSpanAttributes {
   // ElasticDash-Trace attributes
   TRACE_NAME = "elasticdash.trace.name",
   TRACE_USER_ID = "user.id",

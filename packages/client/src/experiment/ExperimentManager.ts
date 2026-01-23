@@ -5,7 +5,7 @@ import {
   serializeValue,
   createExperimentId,
   createExperimentItemId,
-  LangfuseOtelSpanAttributes,
+  ElasticDashOtelSpanAttributes,
   ELASTICDASH_SDK_EXPERIMENT_ENVIRONMENT,
 } from "@elasticdash/core";
 import { startActiveObservation } from "@elasticdash/tracing";
@@ -74,17 +74,17 @@ import {
  * @public
  */
 export class ExperimentManager {
-  private langfuseClient: ElasticDashClient;
+  private elasticdashClient: ElasticDashClient;
 
   /**
    * Creates a new ExperimentManager instance.
    *
    * @param params - Configuration object
-   * @param params.langfuseClient - The ElasticDash client instance for API communication
+   * @param params.elasticdashClient - The ElasticDash client instance for API communication
    * @internal
    */
-  constructor(params: { langfuseClient: ElasticDashClient }) {
-    this.langfuseClient = params.langfuseClient;
+  constructor(params: { elasticdashClient: ElasticDashClient }) {
+    this.elasticdashClient = params.elasticdashClient;
   }
 
   /**
@@ -249,9 +249,9 @@ export class ExperimentManager {
     let datasetRunUrl = undefined;
     if (datasetRunId && data.length > 0 && "datasetId" in data[0]) {
       const datasetId = data[0].datasetId;
-      const projectUrl = (await this.langfuseClient.getTraceUrl("mock")).split(
-        "/traces",
-      )[0];
+      const projectUrl = (
+        await this.elasticdashClient.getTraceUrl("mock")
+      ).split("/traces")[0];
 
       datasetRunUrl = `${projectUrl}/datasets/${datasetId}/runs/${datasetRunId}`;
     }
@@ -285,12 +285,12 @@ export class ExperimentManager {
 
       if (datasetRunId) {
         runEvaluations.forEach((runEval) =>
-          this.langfuseClient.score.create({ datasetRunId, ...runEval }),
+          this.elasticdashClient.score.create({ datasetRunId, ...runEval }),
         );
       }
     }
 
-    await this.langfuseClient.score.flush();
+    await this.elasticdashClient.score.flush();
 
     return {
       runName,
@@ -380,16 +380,15 @@ export class ExperimentManager {
 
         if (datasetItemId) {
           try {
-            const result = await this.langfuseClient.api.datasetRunItems.create(
-              {
+            const result =
+              await this.elasticdashClient.api.datasetRunItems.create({
                 runName: params.experimentRunName,
                 runDescription: params.experimentDescription,
                 metadata: params.experimentMetadata,
                 datasetItemId,
                 traceId,
                 observationId,
-              },
-            );
+              });
 
             datasetRunId = result.datasetRunId;
           } catch (err) {
@@ -404,12 +403,12 @@ export class ExperimentManager {
 
         // Set non-propagated experiment attributes directly on root span
         const rootSpanAttributes: Record<string, string> = {
-          [LangfuseOtelSpanAttributes.ENVIRONMENT]:
+          [ElasticDashOtelSpanAttributes.ENVIRONMENT]:
             ELASTICDASH_SDK_EXPERIMENT_ENVIRONMENT,
         };
         if (params.experimentDescription) {
           rootSpanAttributes[
-            LangfuseOtelSpanAttributes.EXPERIMENT_DESCRIPTION
+            ElasticDashOtelSpanAttributes.EXPERIMENT_DESCRIPTION
           ] = params.experimentDescription;
         }
 
@@ -417,7 +416,7 @@ export class ExperimentManager {
           const serialized = serializeValue(expectedOutput);
           if (serialized) {
             rootSpanAttributes[
-              LangfuseOtelSpanAttributes.EXPERIMENT_ITEM_EXPECTED_OUTPUT
+              ElasticDashOtelSpanAttributes.EXPERIMENT_ITEM_EXPECTED_OUTPUT
             ] = serialized;
           }
         }
@@ -501,7 +500,7 @@ export class ExperimentManager {
     );
 
     for (const ev of evals) {
-      this.langfuseClient.score.create({
+      this.elasticdashClient.score.create({
         traceId,
         observationId,
         ...ev,
@@ -650,7 +649,7 @@ export class ExperimentManager {
           "datasetId" in originalItem
         ) {
           const projectUrl = (
-            await this.langfuseClient.getTraceUrl("mock")
+            await this.elasticdashClient.getTraceUrl("mock")
           ).split("/traces")[0];
           const datasetItemUrl = `${projectUrl}/datasets/${originalItem.datasetId}/items/${originalItem.id}`;
           output += `\n   Dataset Item:\n   ${datasetItemUrl}\n`;
@@ -658,7 +657,7 @@ export class ExperimentManager {
 
         // Trace link on separate line
         if (result.traceId) {
-          const traceUrl = await this.langfuseClient.getTraceUrl(
+          const traceUrl = await this.elasticdashClient.getTraceUrl(
             result.traceId,
           );
           output += `\n   Trace:\n   ${traceUrl}\n`;

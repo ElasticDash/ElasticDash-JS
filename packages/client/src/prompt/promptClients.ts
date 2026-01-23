@@ -501,4 +501,4 @@ export class ChatPromptClient extends BasePromptClient {
  *
  * @public
  */
-export type LangfusePromptClient = TextPromptClient | ChatPromptClient;
+export type ElasticDashPromptClient = TextPromptClient | ChatPromptClient;

@@ -59,12 +59,14 @@ export function createEvaluatorFromAutoevals<E extends CallableFunction>(
   autoevalEvaluator: E,
   params?: Params<E>,
 ): Evaluator {
-  const langfuseEvaluator: Evaluator = async (langfuseEvaluatorParams) => {
+  const elasticDashEvaluator: Evaluator = async (
+    elasticDashEvaluatorParams,
+  ) => {
     const score = await autoevalEvaluator({
       ...(params ?? {}),
-      input: langfuseEvaluatorParams.input,
-      output: langfuseEvaluatorParams.output,
-      expected: langfuseEvaluatorParams.expectedOutput,
+      input: elasticDashEvaluatorParams.input,
+      output: elasticDashEvaluatorParams.output,
+      expected: elasticDashEvaluatorParams.expectedOutput,
     });
 
     return {
@@ -74,7 +76,7 @@ export function createEvaluatorFromAutoevals<E extends CallableFunction>(
     };
   };
 
-  return langfuseEvaluator;
+  return elasticDashEvaluator;
 }
 
 /**

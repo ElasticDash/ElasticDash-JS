@@ -1080,7 +1080,7 @@ Both media items were successfully processed. The image is a minimal transparent
       }
       // Should contain media reference markers or be processed
       if (
-        inputStr.includes("@@@langfuseMedia:") ||
+        inputStr.includes("@@@elasticDashMedia:") ||
         !inputStr.includes("data:image/png;base64,iVBORw0K")
       ) {
         console.log("✅ Media content appears to be processed correctly");

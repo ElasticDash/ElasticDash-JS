@@ -140,7 +140,7 @@ export type LinkDatasetItemFunction = (
  * @public
  */
 export class DatasetManager {
-  private langfuseClient: ElasticDashClient;
+  private elasticdashClient: ElasticDashClient;
 
   /**
    * Creates a new DatasetManager instance.
@@ -148,8 +148,8 @@ export class DatasetManager {
    * @param params - Configuration object containing the API client
    * @internal
    */
-  constructor(params: { langfuseClient: ElasticDashClient }) {
-    this.langfuseClient = params.langfuseClient;
+  constructor(params: { elasticdashClient: ElasticDashClient }) {
+    this.elasticdashClient = params.elasticdashClient;
   }
 
   /**
@@ -235,13 +235,13 @@ export class DatasetManager {
       fetchItemsPageSize: number;
     },
   ): Promise<FetchedDataset> {
-    const dataset = await this.langfuseClient.api.datasets.get(name);
+    const dataset = await this.elasticdashClient.api.datasets.get(name);
     const items: DatasetItem[] = [];
 
     let page = 1;
 
     while (true) {
-      const itemsResponse = await this.langfuseClient.api.datasetItems.list({
+      const itemsResponse = await this.elasticdashClient.api.datasetItems.list({
         datasetName: name,
         limit: options?.fetchItemsPageSize ?? 50,
         page,
@@ -262,7 +262,7 @@ export class DatasetManager {
     }));
 
     const runExperiment: RunExperimentOnDataset = (params) => {
-      return this.langfuseClient.experiment.run({
+      return this.elasticdashClient.experiment.run({
         data: items,
         ...params,
       });
@@ -295,7 +295,7 @@ export class DatasetManager {
         metadata?: any;
       },
     ): Promise<DatasetRunItem> => {
-      return await this.langfuseClient.api.datasetRunItems.create({
+      return await this.elasticdashClient.api.datasetRunItems.create({
         runName,
         datasetItemId: item.id,
         traceId: obj.otelSpan.spanContext().traceId,

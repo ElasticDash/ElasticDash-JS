@@ -1,17 +1,17 @@
 import {
   CreatePromptRequest,
   getGlobalLogger,
-  LangfuseAPIClient,
+  ElasticDashAPIClient,
   PlaceholderMessage,
   Prompt,
   ChatMessage,
 } from "@elasticdash/core";
 
-import { LangfusePromptCache } from "./promptCache.js";
+import { ElasticDashPromptCache } from "./promptCache.js";
 import {
   ChatPromptClient,
   TextPromptClient,
-  LangfusePromptClient,
+  ElasticDashPromptClient,
 } from "./promptClients.js";
 import {
   ChatMessageType,
@@ -28,8 +28,8 @@ import {
  * @public
  */
 export class PromptManager {
-  private cache: LangfusePromptCache;
-  private apiClient: LangfuseAPIClient;
+  private cache: ElasticDashPromptCache;
+  private apiClient: ElasticDashAPIClient;
 
   /**
    * Creates a new PromptManager instance.
@@ -37,11 +37,11 @@ export class PromptManager {
    * @param params - Configuration object containing the API client
    * @internal
    */
-  constructor(params: { apiClient: LangfuseAPIClient }) {
+  constructor(params: { apiClient: ElasticDashAPIClient }) {
     const { apiClient } = params;
 
     this.apiClient = apiClient;
-    this.cache = new LangfusePromptCache();
+    this.cache = new ElasticDashPromptCache();
   }
 
   get logger() {
@@ -110,7 +110,7 @@ export class PromptManager {
       | CreatePromptRequest.Chat
       | (Omit<CreatePromptRequest.Text, "type"> & { type?: "text" })
       | CreateChatPromptBodyWithPlaceholders,
-  ): Promise<LangfusePromptClient> {
+  ): Promise<ElasticDashPromptClient> {
     const requestBody: CreatePromptRequest =
       body.type === "chat"
         ? {
@@ -188,8 +188,8 @@ export class PromptManager {
    *
    * @returns Promise that resolves when deletion is complete
    *
-   * @throws {LangfuseAPI.NotFoundError} If the prompt does not exist
-   * @throws {LangfuseAPI.Error} If the API request fails
+   * @throws {ElasticDashAPI.NotFoundError} If the prompt does not exist
+   * @throws {ElasticDashAPI.Error} If the API request fails
    *
    * @example
    * ```typescript
@@ -326,7 +326,7 @@ export class PromptManager {
       /** Request timeout in milliseconds */
       fetchTimeoutMs?: number;
     },
-  ): Promise<LangfusePromptClient> {
+  ): Promise<ElasticDashPromptClient> {
     const cacheKey = this.cache.createKey({
       name,
       label: options?.label,
@@ -413,7 +413,7 @@ export class PromptManager {
     label?: string;
     maxRetries?: number;
     fetchTimeoutMs?: number;
-  }): Promise<LangfusePromptClient> {
+  }): Promise<ElasticDashPromptClient> {
     const cacheKey = this.cache.createKey(params);
 
     try {
@@ -438,7 +438,7 @@ export class PromptManager {
         },
       );
 
-      let prompt: LangfusePromptClient;
+      let prompt: ElasticDashPromptClient;
       if (data.type === "chat") {
         prompt = new ChatPromptClient(data);
       } else {

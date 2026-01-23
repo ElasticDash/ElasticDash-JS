@@ -9,7 +9,7 @@ import { OpenAiUsage } from "@elasticdash/core";
  *
  * @public
  */
-export type LangfuseObservationType =
+export type ElasticDashObservationType =
   | "span"
   | "generation"
   | "event"
@@ -41,7 +41,7 @@ export type ObservationLevel = "DEBUG" | "DEFAULT" | "WARNING" | "ERROR";
  *
  * @public
  */
-export type LangfuseSpanAttributes = {
+export type ElasticDashSpanAttributes = {
   /** Input data for the operation being tracked */
   input?: unknown;
   /** Output data from the operation */
@@ -66,7 +66,7 @@ export type LangfuseSpanAttributes = {
  *
  * @public
  */
-export type LangfuseGenerationAttributes = LangfuseSpanAttributes & {
+export type ElasticDashGenerationAttributes = ElasticDashSpanAttributes & {
   /** Timestamp when the model started generating completion */
   completionStartTime?: Date;
   /** Name of the language model used (e.g., 'gpt-4', 'claude-3') */
@@ -97,16 +97,16 @@ export type LangfuseGenerationAttributes = LangfuseSpanAttributes & {
 };
 
 // Span-like observation types
-export type LangfuseEventAttributes = LangfuseSpanAttributes;
-export type LangfuseAgentAttributes = LangfuseSpanAttributes;
-export type LangfuseToolAttributes = LangfuseSpanAttributes;
-export type LangfuseChainAttributes = LangfuseSpanAttributes;
-export type LangfuseRetrieverAttributes = LangfuseSpanAttributes;
-export type LangfuseEvaluatorAttributes = LangfuseSpanAttributes;
-export type LangfuseGuardrailAttributes = LangfuseSpanAttributes;
+export type ElasticDashEventAttributes = ElasticDashSpanAttributes;
+export type ElasticDashAgentAttributes = ElasticDashSpanAttributes;
+export type ElasticDashToolAttributes = ElasticDashSpanAttributes;
+export type ElasticDashChainAttributes = ElasticDashSpanAttributes;
+export type ElasticDashRetrieverAttributes = ElasticDashSpanAttributes;
+export type ElasticDashEvaluatorAttributes = ElasticDashSpanAttributes;
+export type ElasticDashGuardrailAttributes = ElasticDashSpanAttributes;
 
 // Generation-like observation types
-export type LangfuseEmbeddingAttributes = LangfuseGenerationAttributes;
+export type ElasticDashEmbeddingAttributes = ElasticDashGenerationAttributes;
 
 /**
  * Union type representing any ElasticDash observation attributes.
@@ -115,15 +115,15 @@ export type LangfuseEmbeddingAttributes = LangfuseGenerationAttributes;
  *
  * @public
  */
-export type LangfuseObservationAttributes = LangfuseSpanAttributes &
-  LangfuseGenerationAttributes &
-  LangfuseEventAttributes &
-  LangfuseAgentAttributes &
-  LangfuseToolAttributes &
-  LangfuseChainAttributes &
-  LangfuseRetrieverAttributes &
-  LangfuseEvaluatorAttributes &
-  LangfuseGuardrailAttributes;
+export type ElasticDashObservationAttributes = ElasticDashSpanAttributes &
+  ElasticDashGenerationAttributes &
+  ElasticDashEventAttributes &
+  ElasticDashAgentAttributes &
+  ElasticDashToolAttributes &
+  ElasticDashChainAttributes &
+  ElasticDashRetrieverAttributes &
+  ElasticDashEvaluatorAttributes &
+  ElasticDashGuardrailAttributes;
 
 /**
  * Attributes for ElasticDash traces.
@@ -133,7 +133,7 @@ export type LangfuseObservationAttributes = LangfuseSpanAttributes &
  *
  * @public
  */
-export type LangfuseTraceAttributes = {
+export type ElasticDashTraceAttributes = {
   /** Human-readable name for the trace */
   name?: string;
   /** Identifier for the user associated with this trace */

@@ -7,7 +7,7 @@
 
 import { ElasticDashClient } from "@elasticdash/client";
 import {
-  LangfuseOtelSpanAttributes,
+  ElasticDashOtelSpanAttributes,
   ELASTICDASH_SDK_EXPERIMENT_ENVIRONMENT,
 } from "@elasticdash/core";
 import { startObservation, startActiveObservation } from "@elasticdash/tracing";
@@ -59,26 +59,28 @@ describe("Experiment Attribute Propagation", () => {
 
       // Root span should have experiment attributes
       expect(
-        rootSpan?.attributes[LangfuseOtelSpanAttributes.EXPERIMENT_ID],
+        rootSpan?.attributes[ElasticDashOtelSpanAttributes.EXPERIMENT_ID],
       ).toBeDefined();
       expect(
-        rootSpan?.attributes[LangfuseOtelSpanAttributes.EXPERIMENT_NAME],
+        rootSpan?.attributes[ElasticDashOtelSpanAttributes.EXPERIMENT_NAME],
       ).toBeDefined();
       expect(
-        rootSpan?.attributes[LangfuseOtelSpanAttributes.EXPERIMENT_ITEM_ID],
+        rootSpan?.attributes[ElasticDashOtelSpanAttributes.EXPERIMENT_ITEM_ID],
       ).toBeDefined();
 
       // Child span should inherit experiment attributes
       expect(
-        childSpan?.attributes[LangfuseOtelSpanAttributes.EXPERIMENT_ID],
-      ).toBe(rootSpan?.attributes[LangfuseOtelSpanAttributes.EXPERIMENT_ID]);
+        childSpan?.attributes[ElasticDashOtelSpanAttributes.EXPERIMENT_ID],
+      ).toBe(rootSpan?.attributes[ElasticDashOtelSpanAttributes.EXPERIMENT_ID]);
       expect(
-        childSpan?.attributes[LangfuseOtelSpanAttributes.EXPERIMENT_NAME],
-      ).toBe(rootSpan?.attributes[LangfuseOtelSpanAttributes.EXPERIMENT_NAME]);
-      expect(
-        childSpan?.attributes[LangfuseOtelSpanAttributes.EXPERIMENT_ITEM_ID],
+        childSpan?.attributes[ElasticDashOtelSpanAttributes.EXPERIMENT_NAME],
       ).toBe(
-        rootSpan?.attributes[LangfuseOtelSpanAttributes.EXPERIMENT_ITEM_ID],
+        rootSpan?.attributes[ElasticDashOtelSpanAttributes.EXPERIMENT_NAME],
+      );
+      expect(
+        childSpan?.attributes[ElasticDashOtelSpanAttributes.EXPERIMENT_ITEM_ID],
+      ).toBe(
+        rootSpan?.attributes[ElasticDashOtelSpanAttributes.EXPERIMENT_ITEM_ID],
       );
     });
 
@@ -101,11 +103,13 @@ describe("Experiment Attribute Propagation", () => {
       const childSpan = spans.find((s) => s.name === "child");
 
       expect(
-        childSpan?.attributes[LangfuseOtelSpanAttributes.EXPERIMENT_METADATA],
+        childSpan?.attributes[
+          ElasticDashOtelSpanAttributes.EXPERIMENT_METADATA
+        ],
       ).toBeDefined();
       const metadata = JSON.parse(
         childSpan?.attributes[
-          LangfuseOtelSpanAttributes.EXPERIMENT_METADATA
+          ElasticDashOtelSpanAttributes.EXPERIMENT_METADATA
         ] as string,
       );
       expect(metadata).toEqual(experimentMetadata);
@@ -130,12 +134,12 @@ describe("Experiment Attribute Propagation", () => {
 
       expect(
         childSpan?.attributes[
-          LangfuseOtelSpanAttributes.EXPERIMENT_ITEM_METADATA
+          ElasticDashOtelSpanAttributes.EXPERIMENT_ITEM_METADATA
         ],
       ).toBeDefined();
       const metadata = JSON.parse(
         childSpan?.attributes[
-          LangfuseOtelSpanAttributes.EXPERIMENT_ITEM_METADATA
+          ElasticDashOtelSpanAttributes.EXPERIMENT_ITEM_METADATA
         ] as string,
       );
       expect(metadata).toEqual(itemMetadata);
@@ -163,22 +167,22 @@ describe("Experiment Attribute Propagation", () => {
 
       const rootSpan = spans.find((s) => s.name === "experiment-item-run");
       const experimentId =
-        rootSpan?.attributes[LangfuseOtelSpanAttributes.EXPERIMENT_ID];
+        rootSpan?.attributes[ElasticDashOtelSpanAttributes.EXPERIMENT_ID];
 
       // All nested spans should have the same experiment ID
       const level1 = spans.find((s) => s.name === "level-1");
       const level2 = spans.find((s) => s.name === "level-2");
       const level3 = spans.find((s) => s.name === "level-3");
 
-      expect(level1?.attributes[LangfuseOtelSpanAttributes.EXPERIMENT_ID]).toBe(
-        experimentId,
-      );
-      expect(level2?.attributes[LangfuseOtelSpanAttributes.EXPERIMENT_ID]).toBe(
-        experimentId,
-      );
-      expect(level3?.attributes[LangfuseOtelSpanAttributes.EXPERIMENT_ID]).toBe(
-        experimentId,
-      );
+      expect(
+        level1?.attributes[ElasticDashOtelSpanAttributes.EXPERIMENT_ID],
+      ).toBe(experimentId);
+      expect(
+        level2?.attributes[ElasticDashOtelSpanAttributes.EXPERIMENT_ID],
+      ).toBe(experimentId);
+      expect(
+        level3?.attributes[ElasticDashOtelSpanAttributes.EXPERIMENT_ID],
+      ).toBe(experimentId);
     });
   });
 
@@ -205,13 +209,15 @@ describe("Experiment Attribute Propagation", () => {
 
       // Root span should have description
       expect(
-        rootSpan?.attributes[LangfuseOtelSpanAttributes.EXPERIMENT_DESCRIPTION],
+        rootSpan?.attributes[
+          ElasticDashOtelSpanAttributes.EXPERIMENT_DESCRIPTION
+        ],
       ).toBe(description);
 
       // Child span should NOT have description
       expect(
         childSpan?.attributes[
-          LangfuseOtelSpanAttributes.EXPERIMENT_DESCRIPTION
+          ElasticDashOtelSpanAttributes.EXPERIMENT_DESCRIPTION
         ],
       ).toBeUndefined();
     });
@@ -237,14 +243,14 @@ describe("Experiment Attribute Propagation", () => {
       // serializeValue passes strings through unchanged for efficiency
       expect(
         rootSpan?.attributes[
-          LangfuseOtelSpanAttributes.EXPERIMENT_ITEM_EXPECTED_OUTPUT
+          ElasticDashOtelSpanAttributes.EXPERIMENT_ITEM_EXPECTED_OUTPUT
         ],
       ).toBe("Paris");
 
       // Child span should NOT have expected output
       expect(
         childSpan?.attributes[
-          LangfuseOtelSpanAttributes.EXPERIMENT_ITEM_EXPECTED_OUTPUT
+          ElasticDashOtelSpanAttributes.EXPERIMENT_ITEM_EXPECTED_OUTPUT
         ],
       ).toBeUndefined();
     });
@@ -267,12 +273,12 @@ describe("Experiment Attribute Propagation", () => {
           await startActiveObservation("process-item", async (span) => {
             experimentIds.push(
               span.otelSpan.attributes[
-                LangfuseOtelSpanAttributes.EXPERIMENT_ID
+                ElasticDashOtelSpanAttributes.EXPERIMENT_ID
               ] as string,
             );
             itemIds.push(
               span.otelSpan.attributes[
-                LangfuseOtelSpanAttributes.EXPERIMENT_ITEM_ID
+                ElasticDashOtelSpanAttributes.EXPERIMENT_ITEM_ID
               ] as string,
             );
           });
@@ -307,7 +313,7 @@ describe("Experiment Attribute Propagation", () => {
       const rootSpan = spans[0];
 
       const experimentItemId =
-        rootSpan.attributes[LangfuseOtelSpanAttributes.EXPERIMENT_ITEM_ID];
+        rootSpan.attributes[ElasticDashOtelSpanAttributes.EXPERIMENT_ITEM_ID];
 
       // Should be 16 hex characters (8 bytes)
       expect(experimentItemId).toMatch(/^[0-9a-f]{16}$/);
@@ -335,7 +341,7 @@ describe("Experiment Attribute Propagation", () => {
       const rootSpan = spans[0];
 
       const experimentItemId =
-        rootSpan.attributes[LangfuseOtelSpanAttributes.EXPERIMENT_ITEM_ID];
+        rootSpan.attributes[ElasticDashOtelSpanAttributes.EXPERIMENT_ITEM_ID];
 
       // Should use the dataset item ID directly
       expect(experimentItemId).toBe(datasetItemId);
@@ -352,7 +358,7 @@ describe("Experiment Attribute Propagation", () => {
         task: async () => {
           await startActiveObservation("child", async (span) => {
             rootObservationId = span.otelSpan.attributes[
-              LangfuseOtelSpanAttributes.EXPERIMENT_ITEM_ROOT_OBSERVATION_ID
+              ElasticDashOtelSpanAttributes.EXPERIMENT_ITEM_ROOT_OBSERVATION_ID
             ] as string;
           });
           return "output";
@@ -393,10 +399,10 @@ describe("Experiment Attribute Propagation", () => {
 
       // Child span should still have experiment attributes
       expect(
-        childSpan?.attributes[LangfuseOtelSpanAttributes.EXPERIMENT_ID],
+        childSpan?.attributes[ElasticDashOtelSpanAttributes.EXPERIMENT_ID],
       ).toBeDefined();
       expect(
-        childSpan?.attributes[LangfuseOtelSpanAttributes.EXPERIMENT_NAME],
+        childSpan?.attributes[ElasticDashOtelSpanAttributes.EXPERIMENT_NAME],
       ).toBeDefined();
     });
   });
@@ -434,9 +440,9 @@ describe("Experiment Attribute Propagation", () => {
       const child2 = spans.find((s) => s.name === "child-exp2");
 
       const exp1Name =
-        child1?.attributes[LangfuseOtelSpanAttributes.EXPERIMENT_NAME];
+        child1?.attributes[ElasticDashOtelSpanAttributes.EXPERIMENT_NAME];
       const exp2Name =
-        child2?.attributes[LangfuseOtelSpanAttributes.EXPERIMENT_NAME];
+        child2?.attributes[ElasticDashOtelSpanAttributes.EXPERIMENT_NAME];
 
       // Each child should have the correct experiment name
       expect(exp1Name).toContain("concurrent-exp-1");
@@ -470,7 +476,9 @@ describe("Experiment Attribute Propagation", () => {
       const childSpan = spans.find((s) => s.name === "child");
 
       const metadataAttr =
-        childSpan?.attributes[LangfuseOtelSpanAttributes.EXPERIMENT_METADATA];
+        childSpan?.attributes[
+          ElasticDashOtelSpanAttributes.EXPERIMENT_METADATA
+        ];
       expect(metadataAttr).toBeDefined();
 
       const parsed = JSON.parse(metadataAttr as string);
@@ -496,7 +504,9 @@ describe("Experiment Attribute Propagation", () => {
       const childSpan = spans.find((s) => s.name === "child");
 
       const metadataAttr =
-        childSpan?.attributes[LangfuseOtelSpanAttributes.EXPERIMENT_METADATA];
+        childSpan?.attributes[
+          ElasticDashOtelSpanAttributes.EXPERIMENT_METADATA
+        ];
 
       // Should not be double-serialized
       expect(metadataAttr).toBe(stringMetadata);
@@ -528,18 +538,18 @@ describe("Experiment Attribute Propagation", () => {
       const level3 = spans.find((s) => s.name === "level-3");
 
       // ALL spans should have the experiment environment attribute
-      expect(rootSpan?.attributes[LangfuseOtelSpanAttributes.ENVIRONMENT]).toBe(
-        ELASTICDASH_SDK_EXPERIMENT_ENVIRONMENT,
-      );
-      expect(level1?.attributes[LangfuseOtelSpanAttributes.ENVIRONMENT]).toBe(
-        ELASTICDASH_SDK_EXPERIMENT_ENVIRONMENT,
-      );
-      expect(level2?.attributes[LangfuseOtelSpanAttributes.ENVIRONMENT]).toBe(
-        ELASTICDASH_SDK_EXPERIMENT_ENVIRONMENT,
-      );
-      expect(level3?.attributes[LangfuseOtelSpanAttributes.ENVIRONMENT]).toBe(
-        ELASTICDASH_SDK_EXPERIMENT_ENVIRONMENT,
-      );
+      expect(
+        rootSpan?.attributes[ElasticDashOtelSpanAttributes.ENVIRONMENT],
+      ).toBe(ELASTICDASH_SDK_EXPERIMENT_ENVIRONMENT);
+      expect(
+        level1?.attributes[ElasticDashOtelSpanAttributes.ENVIRONMENT],
+      ).toBe(ELASTICDASH_SDK_EXPERIMENT_ENVIRONMENT);
+      expect(
+        level2?.attributes[ElasticDashOtelSpanAttributes.ENVIRONMENT],
+      ).toBe(ELASTICDASH_SDK_EXPERIMENT_ENVIRONMENT);
+      expect(
+        level3?.attributes[ElasticDashOtelSpanAttributes.ENVIRONMENT],
+      ).toBe(ELASTICDASH_SDK_EXPERIMENT_ENVIRONMENT);
     });
 
     it("should set experiment environment value to 'sdk-experiment'", async () => {
@@ -559,7 +569,7 @@ describe("Experiment Attribute Propagation", () => {
 
       // Verify the exact value
       expect(
-        childSpan?.attributes[LangfuseOtelSpanAttributes.ENVIRONMENT],
+        childSpan?.attributes[ElasticDashOtelSpanAttributes.ENVIRONMENT],
       ).toBe("sdk-experiment");
     });
   });
@@ -589,7 +599,9 @@ describe("Experiment Attribute Propagation", () => {
       const childSpan = spans.find((s) => s.name === "child");
 
       expect(
-        childSpan?.attributes[LangfuseOtelSpanAttributes.EXPERIMENT_DATASET_ID],
+        childSpan?.attributes[
+          ElasticDashOtelSpanAttributes.EXPERIMENT_DATASET_ID
+        ],
       ).toBe(datasetId);
     });
 
@@ -609,7 +621,9 @@ describe("Experiment Attribute Propagation", () => {
       const childSpan = spans.find((s) => s.name === "child");
 
       expect(
-        childSpan?.attributes[LangfuseOtelSpanAttributes.EXPERIMENT_DATASET_ID],
+        childSpan?.attributes[
+          ElasticDashOtelSpanAttributes.EXPERIMENT_DATASET_ID
+        ],
       ).toBeUndefined();
     });
   });

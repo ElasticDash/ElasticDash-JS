@@ -1,5 +1,5 @@
 import {
-  LangfuseAPIClient,
+  ElasticDashAPIClient,
   IngestionEvent,
   getEnv,
   generateUUID,
@@ -23,7 +23,7 @@ const MAX_BATCH_SIZE = 100;
  * @public
  */
 export class ScoreManager {
-  private apiClient: LangfuseAPIClient;
+  private apiClient: ElasticDashAPIClient;
   private eventQueue: IngestionEvent[] = [];
   private flushPromise: Promise<void> | null = null;
   private flushTimer: any = null;
@@ -36,7 +36,7 @@ export class ScoreManager {
    * @param params - Configuration object containing the API client
    * @internal
    */
-  constructor(params: { apiClient: LangfuseAPIClient }) {
+  constructor(params: { apiClient: ElasticDashAPIClient }) {
     this.apiClient = params.apiClient;
 
     const envFlushAtCount = getEnv("ELASTICDASH_FLUSH_AT");

@@ -1,13 +1,13 @@
 import { NodeSDK } from "@opentelemetry/sdk-node";
 import {
-  LangfuseSpanProcessor,
-  type LangfuseSpanProcessorParams,
+  ElasticDashSpanProcessor,
+  type ElasticDashSpanProcessorParams,
 } from "@elasticdash/otel";
 import { trace } from "@opentelemetry/api";
 
 export interface ServerTestEnvironment {
   sdk: NodeSDK;
-  spanProcessor: LangfuseSpanProcessor;
+  spanProcessor: ElasticDashSpanProcessor;
   shutdown: () => Promise<void>;
   serviceName: string;
 }
@@ -15,7 +15,7 @@ export interface ServerTestEnvironment {
 export interface ServerTestSetupOptions {
   serviceName?: string;
   serviceVersion?: string;
-  spanProcessorConfig?: Partial<LangfuseSpanProcessorParams>;
+  spanProcessorConfig?: Partial<ElasticDashSpanProcessorParams>;
   enableInstrumentation?: boolean;
   timeout?: number;
 }
@@ -27,7 +27,7 @@ export async function setupServerTestEnvironment(
   options: ServerTestSetupOptions = {},
 ): Promise<ServerTestEnvironment> {
   // Create span processor with real ElasticDash server configuration
-  const spanProcessor = new LangfuseSpanProcessor({
+  const spanProcessor = new ElasticDashSpanProcessor({
     ...options.spanProcessorConfig,
   });
 

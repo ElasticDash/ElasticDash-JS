@@ -75,7 +75,7 @@ import type { ElasticDashConfig } from "./types.js";
  * const openai = observeOpenAI(new OpenAI({
  *   apiKey: process.env.OPENAI_API_KEY
  * }), {
- *   langfusePrompt: {
+ *   elasticDashPrompt: {
  *     name: 'chat-assistant-v2',
  *     version: 3,
  *     isFallback: false

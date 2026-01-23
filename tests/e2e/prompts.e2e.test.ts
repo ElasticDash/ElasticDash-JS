@@ -1030,7 +1030,7 @@ describe("ElasticDash Prompts E2E", () => {
         const expected = testPrompts[i].expected;
 
         // Create a new prompt
-        const langfusePrompt = new TextPromptClient({
+        const elasticDashPrompt = new TextPromptClient({
           name: `test_${i}`,
           version: 1,
           prompt: testPrompt,
@@ -1045,7 +1045,7 @@ describe("ElasticDash Prompts E2E", () => {
 
         // Convert to Langchain prompt
         const langchainPrompt = ChatPromptTemplate.fromTemplate(
-          langfusePrompt.getLangchainPrompt(),
+          elasticDashPrompt.getLangchainPrompt(),
         );
 
         // elasticdash
@@ -1106,7 +1106,7 @@ describe("ElasticDash Prompts E2E", () => {
         const expected = testPrompts[i].expected;
 
         // Create a new prompt
-        const langfusePrompt = new ChatPromptClient({
+        const elasticDashPrompt = new ChatPromptClient({
           name: `test_${i}`,
           version: 1,
           prompt: testPrompt.map((msg) => ({
@@ -1124,7 +1124,7 @@ describe("ElasticDash Prompts E2E", () => {
 
         // Convert to Langchain prompt
         const langchainPrompt = ChatPromptTemplate.fromMessages(
-          langfusePrompt
+          elasticDashPrompt
             .getLangchainPrompt()
             .map((m: any) => [m.role, m.content]),
         );
