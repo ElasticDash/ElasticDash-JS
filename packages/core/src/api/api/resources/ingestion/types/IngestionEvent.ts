@@ -27,7 +27,7 @@ export type IngestionEvent =
    * Creates an event. */
   | LangfuseAPI.IngestionEvent.EventCreate
   /**
-   * Langfuse SDKs only, used for debugging purposes. */
+   * ElasticDash SDKs only, used for debugging purposes. */
   | LangfuseAPI.IngestionEvent.SdkLog
   /**
    * Deprecated event type */

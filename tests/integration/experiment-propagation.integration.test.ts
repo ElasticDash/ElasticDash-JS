@@ -5,7 +5,7 @@
  * item metadata) automatically propagates to all child spans within an experiment run.
  */
 
-import { LangfuseClient } from "@elasticdash/client";
+import { ElasticDashClient } from "@elasticdash/client";
 import {
   LangfuseOtelSpanAttributes,
   ELASTICDASH_SDK_EXPERIMENT_ENVIRONMENT,
@@ -23,11 +23,11 @@ import {
 
 describe("Experiment Attribute Propagation", () => {
   let testEnv: TestEnvironment;
-  let elasticdash: LangfuseClient;
+  let elasticdash: ElasticDashClient;
 
   beforeEach(async () => {
     testEnv = await setupTestEnvironment();
-    elasticdash = new LangfuseClient({
+    elasticdash = new ElasticDashClient({
       publicKey: "test-pk",
       secretKey: "test-sk",
       baseUrl: "http://localhost:3000",

@@ -68,7 +68,7 @@ export class MediaService {
 
           if (!langfuseMediaTag) {
             this.logger.warn(
-              "Failed to create Langfuse media tag. Skipping media item.",
+              "Failed to create ElasticDash media tag. Skipping media item.",
             );
 
             continue;
@@ -146,7 +146,7 @@ export class MediaService {
 
                     if (!langfuseMediaTag) {
                       this.logger.warn(
-                        "Failed to create Langfuse media tag. Skipping media item.",
+                        "Failed to create ElasticDash media tag. Skipping media item.",
                       );
 
                       continue;

@@ -108,7 +108,7 @@ describe("LangfuseSpanProcessor E2E Tests", () => {
       // Should not contain the original base64 data URI
       expect(inputValue).not.toContain(base64Image);
 
-      // Should contain Langfuse media tag
+      // Should contain ElasticDash media tag
       expect(inputValue).toMatch(
         /@@@langfuseMedia:type=[^|]+\|id=[^|]+\|source=[^@]+@@@/,
       );
@@ -138,7 +138,7 @@ describe("LangfuseSpanProcessor E2E Tests", () => {
       expect(inputValue).not.toContain(image1);
       expect(inputValue).not.toContain(image2);
 
-      // Should contain multiple Langfuse media tags
+      // Should contain multiple ElasticDash media tags
       const mediaMatches = inputValue.match(
         /@@@langfuseMedia:type=[^|]+\|id=[^|]+\|source=[^@]+@@@/g,
       );

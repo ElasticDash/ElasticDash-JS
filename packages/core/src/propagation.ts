@@ -1,5 +1,5 @@
 /**
- * Attribute propagation utilities for Langfuse OpenTelemetry integration.
+ * Attribute propagation utilities for ElasticDash OpenTelemetry integration.
  *
  * This module provides the `propagateAttributes` function for setting trace-level
  * attributes (userId, sessionId, metadata) that automatically propagate to all child spans
@@ -131,9 +131,9 @@ export interface PropagateAttributesParams {
   asBaggage?: boolean;
 
   /**
-   * **INTERNAL USE ONLY** - For Langfuse experiment framework.
+   * **INTERNAL USE ONLY** - For ElasticDash experiment framework.
    *
-   * This parameter is used internally by the Langfuse experiment system to propagate
+   * This parameter is used internally by the ElasticDash experiment system to propagate
    * experiment context to child spans. It should NOT be used by external code.
    *
    * @internal
@@ -153,7 +153,7 @@ export interface PropagateAttributesParams {
  * currently active span and spans created after entering this context will have these
  * attributes. Pre-existing spans will NOT be retroactively updated.
  *
- * **Why this matters**: Langfuse aggregation queries (e.g., total cost by userId,
+ * **Why this matters**: ElasticDash aggregation queries (e.g., total cost by userId,
  * filtering by sessionId) only include observations that have the attribute set.
  * If you call `propagateAttributes` late in your workflow, earlier spans won't be
  * included in aggregations for that attribute.

@@ -28,9 +28,9 @@ export type LangfuseMediaParams =
     };
 
 /**
- * A class for wrapping media objects for upload to Langfuse.
+ * A class for wrapping media objects for upload to ElasticDash.
  *
- * This class handles the preparation and formatting of media content for Langfuse,
+ * This class handles the preparation and formatting of media content for ElasticDash,
  * supporting both base64 data URIs and raw content bytes. It automatically:
  * - Parses base64 data URIs to extract content type and bytes
  * - Generates SHA-256 hashes for content integrity
@@ -188,7 +188,7 @@ export class LangfuseMedia {
       return bytesToBase64(new Uint8Array(hash));
     } catch (error) {
       getGlobalLogger().warn(
-        "[Langfuse] Failed to generate SHA-256 hash for media content:",
+        "[ElasticDash] Failed to generate SHA-256 hash for media content:",
         error,
       );
 
@@ -201,7 +201,7 @@ export class LangfuseMedia {
    *
    * The tag format is: `@@@langfuseMedia:type=<contentType>|id=<mediaId>|source=<source>@@@`
    * This tag can be embedded in trace attributes and will be replaced with actual
-   * media content when the trace is viewed in Langfuse.
+   * media content when the trace is viewed in ElasticDash.
    *
    * @returns The media reference tag, or null if required data is missing
    *

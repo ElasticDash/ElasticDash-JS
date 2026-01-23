@@ -1,4 +1,4 @@
-import { LangfuseClient } from "@elasticdash/client";
+import { ElasticDashClient } from "@elasticdash/client";
 import { resetGlobalLogger, LangfuseMedia } from "@elasticdash/core";
 import { startObservation } from "@elasticdash/tracing";
 import { nanoid } from "nanoid";
@@ -115,7 +115,7 @@ describe("Media E2E Tests", () => {
       // Wait for server-side ingestion processing
       await waitForServerIngestion(2000);
 
-      // Fetch the trace from Langfuse server
+      // Fetch the trace from ElasticDash server
       const trace = await assertions.fetchTrace(span.traceId);
 
       // Find the span observation
@@ -127,7 +127,7 @@ describe("Media E2E Tests", () => {
       if (observation.input) {
         const inputStr = JSON.stringify(observation.input);
 
-        // Should contain Langfuse media reference in input
+        // Should contain ElasticDash media reference in input
         expect(inputStr).toMatch(
           /@@@langfuseMedia:type=audio\/wav\|id=.+\|source=base64_data_uri@@@/,
         );
@@ -142,7 +142,7 @@ describe("Media E2E Tests", () => {
 
       const metadataStr = JSON.stringify(observation.metadata);
 
-      // Should contain Langfuse media reference in metadata
+      // Should contain ElasticDash media reference in metadata
       expect(metadataStr).toMatch(
         /@@@langfuseMedia:type=audio\/wav\|id=.+\|source=base64_data_uri@@@/,
       );
@@ -153,7 +153,7 @@ describe("Media E2E Tests", () => {
       );
 
       // Test media resolution back to base64 data URI
-      const langfuseClient = new LangfuseClient();
+      const langfuseClient = new ElasticDashClient();
 
       // Wait longer for media upload to complete
       await waitForServerIngestion(5000);
@@ -358,7 +358,7 @@ describe("Media E2E Tests", () => {
       // Wait for server-side ingestion processing
       await waitForServerIngestion(2000);
 
-      // Fetch the trace from Langfuse server
+      // Fetch the trace from ElasticDash server
       const trace = await assertions.fetchTrace(span.traceId);
 
       // Find the span observation
@@ -370,7 +370,7 @@ describe("Media E2E Tests", () => {
       if (observation.input) {
         const inputStr = JSON.stringify(observation.input);
 
-        // Should contain Langfuse media reference in input
+        // Should contain ElasticDash media reference in input
         expect(inputStr).toMatch(
           /@@@langfuseMedia:type=audio\/wav\|id=.+\|source=base64_data_uri@@@/,
         );
@@ -385,7 +385,7 @@ describe("Media E2E Tests", () => {
 
       const metadataStr = JSON.stringify(observation.metadata);
 
-      // Should contain Langfuse media reference in metadata
+      // Should contain ElasticDash media reference in metadata
       expect(metadataStr).toMatch(
         /@@@langfuseMedia:type=audio\/wav\|id=.+\|source=base64_data_uri@@@/,
       );
@@ -396,7 +396,7 @@ describe("Media E2E Tests", () => {
       );
 
       // Test media resolution back to base64 data URI
-      const langfuseClient = new LangfuseClient();
+      const langfuseClient = new ElasticDashClient();
 
       // Wait longer for media upload to complete
       await waitForServerIngestion(5000);

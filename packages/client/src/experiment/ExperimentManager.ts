@@ -11,7 +11,7 @@ import {
 import { startActiveObservation } from "@elasticdash/tracing";
 import { ProxyTracerProvider, trace } from "@opentelemetry/api";
 
-import { LangfuseClient } from "../LangfuseClient.js";
+import { ElasticDashClient } from "../ElasticDashClient.js";
 
 import {
   ExperimentParams,
@@ -32,7 +32,7 @@ import {
  *
  * @example Basic experiment usage
  * ```typescript
- * const elasticdash = new LangfuseClient();
+ * const elasticdash = new ElasticDashClient();
  *
  * const result = await elasticdash.experiment.run({
  *   name: "Capital Cities Test",
@@ -59,7 +59,7 @@ import {
  * console.log(await result.format());
  * ```
  *
- * @example Using with Langfuse datasets
+ * @example Using with ElasticDash datasets
  * ```typescript
  * const dataset = await elasticdash.dataset.get("my-dataset");
  *
@@ -74,16 +74,16 @@ import {
  * @public
  */
 export class ExperimentManager {
-  private langfuseClient: LangfuseClient;
+  private langfuseClient: ElasticDashClient;
 
   /**
    * Creates a new ExperimentManager instance.
    *
    * @param params - Configuration object
-   * @param params.langfuseClient - The Langfuse client instance for API communication
+   * @param params.langfuseClient - The ElasticDash client instance for API communication
    * @internal
    */
-  constructor(params: { langfuseClient: LangfuseClient }) {
+  constructor(params: { langfuseClient: ElasticDashClient }) {
     this.langfuseClient = params.langfuseClient;
   }
 
@@ -104,8 +104,8 @@ export class ExperimentManager {
    * 1. Executes the task function on each data item with proper tracing
    * 2. Runs item-level evaluators on each task output
    * 3. Executes run-level evaluators on the complete result set
-   * 4. Links results to dataset runs (for Langfuse datasets)
-   * 5. Stores all scores and traces in Langfuse
+   * 4. Links results to dataset runs (for ElasticDash datasets)
+   * 5. Stores all scores and traces in ElasticDash
    *
    * @param config - The experiment configuration
    * @param config.name - Human-readable name for the experiment
@@ -122,7 +122,7 @@ export class ExperimentManager {
    *   - runName: The experiment run name (either provided or generated)
    *   - itemResults: Results for each processed data item
    *   - runEvaluations: Results from run-level evaluators
-   *   - datasetRunId: ID of the dataset run (if using Langfuse datasets)
+   *   - datasetRunId: ID of the dataset run (if using ElasticDash datasets)
    *   - format: Function to format results for display
    *
    * @throws {Error} When task execution fails and cannot be handled gracefully
@@ -196,7 +196,7 @@ export class ExperimentManager {
 
     if (!this.isOtelRegistered()) {
       this.logger.warn(
-        "OpenTelemetry has not been set up. Traces will not be sent to Langfuse.See our docs on how to set up OpenTelemetry: https://elasticdash.com/docs/observability/sdk/typescript/setup#tracing-setup",
+        "OpenTelemetry has not been set up. Traces will not be sent to ElasticDash.See our docs on how to set up OpenTelemetry: https://elasticdash.com/docs/observability/sdk/typescript/setup#tracing-setup",
       );
     }
 
@@ -319,7 +319,7 @@ export class ExperimentManager {
    * 1. Executes the task within a traced observation span
    * 2. Links the result to a dataset run (if applicable)
    * 3. Runs all item-level evaluators on the output
-   * 4. Stores evaluation scores in Langfuse
+   * 4. Stores evaluation scores in ElasticDash
    * 5. Handles errors gracefully by continuing with remaining evaluators
    *
    * @param params - Parameters for item execution
@@ -526,10 +526,10 @@ export class ExperimentManager {
    * - Experiment overview with aggregate statistics
    * - Average scores across all evaluations
    * - Run-level evaluation results
-   * - Links to dataset runs in the Langfuse UI
+   * - Links to dataset runs in the ElasticDash UI
    *
    * @param params - Formatting parameters
-   * @param params.datasetRunUrl - Optional URL to the dataset run in Langfuse UI
+   * @param params.datasetRunUrl - Optional URL to the dataset run in ElasticDash UI
    * @param params.itemResults - Results from processing each data item
    * @param params.originalData - The original input data items
    * @param params.runEvaluations - Results from run-level evaluators

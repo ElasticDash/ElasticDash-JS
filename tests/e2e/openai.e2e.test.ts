@@ -1,7 +1,7 @@
 import { OpenAI } from "openai";
 import crypto from "node:crypto";
 import { observeOpenAI } from "@elasticdash/openai";
-import { LangfuseClient } from "@elasticdash/client";
+import { ElasticDashClient } from "@elasticdash/client";
 import { describe, it, beforeEach, afterEach, expect } from "vitest";
 import {
   setupServerTestEnvironment,
@@ -13,12 +13,12 @@ import { nanoid } from "nanoid";
 import { startActiveObservation } from "@elasticdash/tracing";
 
 describe("OpenAI integration E2E tests", () => {
-  let langfuseClient: LangfuseClient;
+  let langfuseClient: ElasticDashClient;
   let testEnv: ServerTestEnvironment;
 
   beforeEach(async () => {
     testEnv = await setupServerTestEnvironment();
-    langfuseClient = new LangfuseClient();
+    langfuseClient = new ElasticDashClient();
   });
 
   afterEach(async () => {
@@ -686,7 +686,7 @@ describe("OpenAI integration E2E tests", () => {
         hello: "World",
       },
       tags: ["hello", "World"],
-      sessionId: "Langfuse",
+      sessionId: "ElasticDash",
       userId: "LangfuseUser",
     });
 
@@ -712,7 +712,7 @@ describe("OpenAI integration E2E tests", () => {
     expect(trace.tags).toBeDefined();
     expect(trace.tags).toEqual(expect.arrayContaining(["hello", "World"]));
     expect(trace.sessionId).toBeDefined();
-    expect(trace.sessionId).toBe("Langfuse");
+    expect(trace.sessionId).toBe("ElasticDash");
     expect(trace.userId).toBeDefined();
     expect(trace.userId).toBe("LangfuseUser");
 
@@ -762,7 +762,7 @@ describe("OpenAI integration E2E tests", () => {
         hello: "World",
       },
       tags: ["hello", "World"],
-      sessionId: "Langfuse",
+      sessionId: "ElasticDash",
       userId: "LangfuseUser",
     });
 
@@ -788,7 +788,7 @@ describe("OpenAI integration E2E tests", () => {
       expect(trace.tags).toBeDefined();
       expect(trace.tags).toEqual(expect.arrayContaining(["hello", "World"]));
       expect(trace.sessionId).toBeDefined();
-      expect(trace.sessionId).toBe("Langfuse");
+      expect(trace.sessionId).toBe("ElasticDash");
       expect(trace.userId).toBeDefined();
       expect(trace.userId).toBe("LangfuseUser");
 

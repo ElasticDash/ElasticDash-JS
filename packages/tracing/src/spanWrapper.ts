@@ -26,9 +26,9 @@ import type {
 import { startObservation } from "./index.js";
 
 /**
- * Union type representing any Langfuse observation wrapper.
+ * Union type representing any ElasticDash observation wrapper.
  *
- * This type encompasses all observation types supported by Langfuse, providing
+ * This type encompasses all observation types supported by ElasticDash, providing
  * a unified interface for handling different kinds of traced operations. It's
  * particularly useful for generic functions that work with any observation type.
  *
@@ -80,7 +80,7 @@ export type LangfuseObservation =
   | LangfuseEmbedding;
 
 /**
- * Parameters for creating a Langfuse observation wrapper.
+ * Parameters for creating a ElasticDash observation wrapper.
  *
  * @internal
  */
@@ -94,14 +94,14 @@ type LangfuseObservationParams = {
 };
 
 /**
- * Base class for all Langfuse observation wrappers providing unified functionality.
+ * Base class for all ElasticDash observation wrappers providing unified functionality.
  *
- * This abstract class serves as the foundation for all observation types in Langfuse,
+ * This abstract class serves as the foundation for all observation types in ElasticDash,
  * encapsulating common operations and properties shared across spans, generations,
  * events, and specialized observation types like agents, tools, and chains.
  *
  * ## Core Capabilities
- * - **OpenTelemetry Integration**: Wraps OTEL spans with Langfuse-specific functionality
+ * - **OpenTelemetry Integration**: Wraps OTEL spans with ElasticDash-specific functionality
  * - **Unique Identification**: Provides span ID and trace ID for correlation
  * - **Lifecycle Management**: Handles observation creation, updates, and completion
  * - **Trace Context**: Enables updating trace-level attributes from any observation
@@ -171,7 +171,7 @@ abstract class LangfuseBaseObservation {
     }
   }
 
-  /** Gets the Langfuse OpenTelemetry tracer instance */
+  /** Gets the ElasticDash OpenTelemetry tracer instance */
   protected get tracer() {
     return getLangfuseTracer();
   }
@@ -1176,7 +1176,7 @@ export class LangfuseGuardrail extends LangfuseBaseObservation {
 }
 
 /**
- * Parameters for creating a Langfuse generation.
+ * Parameters for creating a ElasticDash generation.
  *
  * @internal
  */
@@ -1395,7 +1395,7 @@ export class LangfuseEmbedding extends LangfuseBaseObservation {
 }
 
 /**
- * Parameters for creating a Langfuse event.
+ * Parameters for creating a ElasticDash event.
  *
  * @internal
  */
@@ -1406,7 +1406,7 @@ type LangfuseEventParams = {
 };
 
 /**
- * Langfuse event wrapper for point-in-time observations.
+ * ElasticDash event wrapper for point-in-time observations.
  *
  * Events represent instantaneous occurrences or log entries within a trace.
  * Unlike spans and generations, they don't have duration and are automatically

@@ -5,7 +5,7 @@
 import * as LangfuseAPI from "../../../index.js";
 
 export interface TraceWithDetails extends LangfuseAPI.Trace {
-  /** Path of trace in Langfuse UI */
+  /** Path of trace in ElasticDash UI */
   htmlPath: string;
   /** Latency of trace in seconds */
   latency?: number | null;

@@ -38,11 +38,11 @@ export declare namespace LangfuseAPIClient {
     baseUrl?: core.Supplier<string>;
     username?: core.Supplier<string | undefined>;
     password?: core.Supplier<string | undefined>;
-    /** Override the X-Langfuse-Sdk-Name header */
+    /** Override the X-ElasticDash-Sdk-Name header */
     xLangfuseSdkName?: core.Supplier<string | undefined>;
-    /** Override the X-Langfuse-Sdk-Version header */
+    /** Override the X-ElasticDash-Sdk-Version header */
     xLangfuseSdkVersion?: core.Supplier<string | undefined>;
-    /** Override the X-Langfuse-Public-Key header */
+    /** Override the X-ElasticDash-Public-Key header */
     xLangfusePublicKey?: core.Supplier<string | undefined>;
     /** Additional headers to include in requests. */
     headers?: Record<
@@ -58,11 +58,11 @@ export declare namespace LangfuseAPIClient {
     maxRetries?: number;
     /** A hook to abort the request. */
     abortSignal?: AbortSignal;
-    /** Override the X-Langfuse-Sdk-Name header */
+    /** Override the X-ElasticDash-Sdk-Name header */
     xLangfuseSdkName?: string | undefined;
-    /** Override the X-Langfuse-Sdk-Version header */
+    /** Override the X-ElasticDash-Sdk-Version header */
     xLangfuseSdkVersion?: string | undefined;
-    /** Override the X-Langfuse-Public-Key header */
+    /** Override the X-ElasticDash-Public-Key header */
     xLangfusePublicKey?: string | undefined;
     /** Additional query string parameters to include in the request. */
     queryParams?: Record<string, unknown>;
@@ -108,9 +108,9 @@ export class LangfuseAPIClient {
       ..._options,
       headers: mergeHeaders(
         {
-          "X-Langfuse-Sdk-Name": _options?.xLangfuseSdkName,
-          "X-Langfuse-Sdk-Version": _options?.xLangfuseSdkVersion,
-          "X-Langfuse-Public-Key": _options?.xLangfusePublicKey,
+          "X-ElasticDash-Sdk-Name": _options?.xLangfuseSdkName,
+          "X-ElasticDash-Sdk-Version": _options?.xLangfuseSdkVersion,
+          "X-ElasticDash-Public-Key": _options?.xLangfusePublicKey,
         },
         _options?.headers,
       ),

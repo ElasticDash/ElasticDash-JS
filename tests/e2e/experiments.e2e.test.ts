@@ -1,7 +1,7 @@
 import {
   Evaluator,
   ExperimentTask,
-  LangfuseClient,
+  ElasticDashClient,
   RunEvaluator,
   createEvaluatorFromAutoevals,
 } from "@elasticdash/client";
@@ -18,8 +18,8 @@ import {
   type ServerTestEnvironment,
 } from "./helpers/serverSetup.js";
 
-describe("Langfuse Datasets E2E", () => {
-  let elasticdash: LangfuseClient;
+describe("ElasticDash Datasets E2E", () => {
+  let elasticdash: ElasticDashClient;
   let testEnv: ServerTestEnvironment;
 
   const dataset = [
@@ -117,7 +117,7 @@ describe("Langfuse Datasets E2E", () => {
 
   beforeEach(async () => {
     testEnv = await setupServerTestEnvironment();
-    elasticdash = new LangfuseClient();
+    elasticdash = new ElasticDashClient();
   });
 
   afterEach(async () => {

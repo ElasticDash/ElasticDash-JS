@@ -15,9 +15,9 @@ export const ELASTICDASH_SDK_NAME = "javascript";
 
 export const ELASTICDASH_SDK_EXPERIMENT_ENVIRONMENT = "sdk-experiment";
 
-// From Langfuse platform: web/src/features/otel/server/attributes.ts
+// From ElasticDash platform: web/src/features/otel/server/attributes.ts
 export enum LangfuseOtelSpanAttributes {
-  // Langfuse-Trace attributes
+  // ElasticDash-Trace attributes
   TRACE_NAME = "elasticdash.trace.name",
   TRACE_USER_ID = "user.id",
   TRACE_SESSION_ID = "session.id",
@@ -27,7 +27,7 @@ export enum LangfuseOtelSpanAttributes {
   TRACE_INPUT = "elasticdash.trace.input",
   TRACE_OUTPUT = "elasticdash.trace.output",
 
-  // Langfuse-observation attributes
+  // ElasticDash-observation attributes
   OBSERVATION_TYPE = "elasticdash.observation.type",
   OBSERVATION_METADATA = "elasticdash.observation.metadata",
   OBSERVATION_LEVEL = "elasticdash.observation.level",
@@ -35,7 +35,7 @@ export enum LangfuseOtelSpanAttributes {
   OBSERVATION_INPUT = "elasticdash.observation.input",
   OBSERVATION_OUTPUT = "elasticdash.observation.output",
 
-  // Langfuse-observation of type Generation attributes
+  // ElasticDash-observation of type Generation attributes
   OBSERVATION_COMPLETION_START_TIME = "elasticdash.observation.completion_start_time",
   OBSERVATION_MODEL = "elasticdash.observation.model.name",
   OBSERVATION_MODEL_PARAMETERS = "elasticdash.observation.model.parameters",

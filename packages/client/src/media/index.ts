@@ -22,7 +22,7 @@ export type LangfuseMediaResolveMediaReferencesParams<T> = {
 };
 
 /**
- * Manager for media operations in Langfuse.
+ * Manager for media operations in ElasticDash.
  *
  * Provides methods to resolve media references in objects by replacing
  * them with actual media content (e.g., base64 data URIs).
@@ -47,7 +47,7 @@ export class MediaManager {
    *
    * This method recursively traverses an object looking for media reference strings
    * in the format "@@@langfuseMedia:...@@@". When found, it fetches the actual media
-   * content from Langfuse and replaces the reference string with a base64 data URI.
+   * content from ElasticDash and replaces the reference string with a base64 data URI.
    *
    * If fetching media content fails for a reference string, a warning is logged
    * and the reference string is left unchanged.

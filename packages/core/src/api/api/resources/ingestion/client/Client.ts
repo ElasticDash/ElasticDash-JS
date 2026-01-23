@@ -17,11 +17,11 @@ export declare namespace Ingestion {
     baseUrl?: core.Supplier<string>;
     username?: core.Supplier<string | undefined>;
     password?: core.Supplier<string | undefined>;
-    /** Override the X-Langfuse-Sdk-Name header */
+    /** Override the X-ElasticDash-Sdk-Name header */
     xLangfuseSdkName?: core.Supplier<string | undefined>;
-    /** Override the X-Langfuse-Sdk-Version header */
+    /** Override the X-ElasticDash-Sdk-Version header */
     xLangfuseSdkVersion?: core.Supplier<string | undefined>;
-    /** Override the X-Langfuse-Public-Key header */
+    /** Override the X-ElasticDash-Public-Key header */
     xLangfusePublicKey?: core.Supplier<string | undefined>;
     /** Additional headers to include in requests. */
     headers?: Record<
@@ -37,11 +37,11 @@ export declare namespace Ingestion {
     maxRetries?: number;
     /** A hook to abort the request. */
     abortSignal?: AbortSignal;
-    /** Override the X-Langfuse-Sdk-Name header */
+    /** Override the X-ElasticDash-Sdk-Name header */
     xLangfuseSdkName?: string | undefined;
-    /** Override the X-Langfuse-Sdk-Version header */
+    /** Override the X-ElasticDash-Sdk-Version header */
     xLangfuseSdkVersion?: string | undefined;
-    /** Override the X-Langfuse-Public-Key header */
+    /** Override the X-ElasticDash-Public-Key header */
     xLangfusePublicKey?: string | undefined;
     /** Additional query string parameters to include in the request. */
     queryParams?: Record<string, unknown>;
@@ -61,7 +61,7 @@ export class Ingestion {
   }
 
   /**
-   * **Legacy endpoint for batch ingestion for Langfuse Observability.**
+   * **Legacy endpoint for batch ingestion for ElasticDash Observability.**
    *
    * -> Please use the OpenTelemetry endpoint (`/api/public/otel/v1/traces`). Learn more: https://elasticdash.com/integrations/native/opentelemetry
    *
@@ -69,7 +69,7 @@ export class Ingestion {
    * Each event has a type, an id, a timestamp, metadata and a body.
    * Internally, we refer to this as the "event envelope" as it tells us something about the event but not the trace.
    * We use the event id within this envelope to deduplicate messages to avoid processing the same event twice, i.e. the event id should be unique per request.
-   * The event.body.id is the ID of the actual trace and will be used for updates and will be visible within the Langfuse App.
+   * The event.body.id is the ID of the actual trace and will be used for updates and will be visible within the ElasticDash App.
    * I.e. if you want to update a trace, you'd use the same body id, but separate event IDs.
    *
    * Notes:
@@ -158,12 +158,12 @@ export class Ingestion {
       this._options?.headers,
       mergeOnlyDefinedHeaders({
         Authorization: await this._getAuthorizationHeader(),
-        "X-Langfuse-Sdk-Name":
+        "X-ElasticDash-Sdk-Name":
           requestOptions?.xLangfuseSdkName ?? this._options?.xLangfuseSdkName,
-        "X-Langfuse-Sdk-Version":
+        "X-ElasticDash-Sdk-Version":
           requestOptions?.xLangfuseSdkVersion ??
           this._options?.xLangfuseSdkVersion,
-        "X-Langfuse-Public-Key":
+        "X-ElasticDash-Public-Key":
           requestOptions?.xLangfusePublicKey ??
           this._options?.xLangfusePublicKey,
       }),

@@ -17,11 +17,11 @@ export declare namespace Models {
     baseUrl?: core.Supplier<string>;
     username?: core.Supplier<string | undefined>;
     password?: core.Supplier<string | undefined>;
-    /** Override the X-Langfuse-Sdk-Name header */
+    /** Override the X-ElasticDash-Sdk-Name header */
     xLangfuseSdkName?: core.Supplier<string | undefined>;
-    /** Override the X-Langfuse-Sdk-Version header */
+    /** Override the X-ElasticDash-Sdk-Version header */
     xLangfuseSdkVersion?: core.Supplier<string | undefined>;
-    /** Override the X-Langfuse-Public-Key header */
+    /** Override the X-ElasticDash-Public-Key header */
     xLangfusePublicKey?: core.Supplier<string | undefined>;
     /** Additional headers to include in requests. */
     headers?: Record<
@@ -37,11 +37,11 @@ export declare namespace Models {
     maxRetries?: number;
     /** A hook to abort the request. */
     abortSignal?: AbortSignal;
-    /** Override the X-Langfuse-Sdk-Name header */
+    /** Override the X-ElasticDash-Sdk-Name header */
     xLangfuseSdkName?: string | undefined;
-    /** Override the X-Langfuse-Sdk-Version header */
+    /** Override the X-ElasticDash-Sdk-Version header */
     xLangfuseSdkVersion?: string | undefined;
-    /** Override the X-Langfuse-Public-Key header */
+    /** Override the X-ElasticDash-Public-Key header */
     xLangfusePublicKey?: string | undefined;
     /** Additional query string parameters to include in the request. */
     queryParams?: Record<string, unknown>;
@@ -103,12 +103,12 @@ export class Models {
       this._options?.headers,
       mergeOnlyDefinedHeaders({
         Authorization: await this._getAuthorizationHeader(),
-        "X-Langfuse-Sdk-Name":
+        "X-ElasticDash-Sdk-Name":
           requestOptions?.xLangfuseSdkName ?? this._options?.xLangfuseSdkName,
-        "X-Langfuse-Sdk-Version":
+        "X-ElasticDash-Sdk-Version":
           requestOptions?.xLangfuseSdkVersion ??
           this._options?.xLangfuseSdkVersion,
-        "X-Langfuse-Public-Key":
+        "X-ElasticDash-Public-Key":
           requestOptions?.xLangfusePublicKey ??
           this._options?.xLangfusePublicKey,
       }),
@@ -240,12 +240,12 @@ export class Models {
       this._options?.headers,
       mergeOnlyDefinedHeaders({
         Authorization: await this._getAuthorizationHeader(),
-        "X-Langfuse-Sdk-Name":
+        "X-ElasticDash-Sdk-Name":
           requestOptions?.xLangfuseSdkName ?? this._options?.xLangfuseSdkName,
-        "X-Langfuse-Sdk-Version":
+        "X-ElasticDash-Sdk-Version":
           requestOptions?.xLangfuseSdkVersion ??
           this._options?.xLangfuseSdkVersion,
-        "X-Langfuse-Public-Key":
+        "X-ElasticDash-Public-Key":
           requestOptions?.xLangfusePublicKey ??
           this._options?.xLangfusePublicKey,
       }),
@@ -359,12 +359,12 @@ export class Models {
       this._options?.headers,
       mergeOnlyDefinedHeaders({
         Authorization: await this._getAuthorizationHeader(),
-        "X-Langfuse-Sdk-Name":
+        "X-ElasticDash-Sdk-Name":
           requestOptions?.xLangfuseSdkName ?? this._options?.xLangfuseSdkName,
-        "X-Langfuse-Sdk-Version":
+        "X-ElasticDash-Sdk-Version":
           requestOptions?.xLangfuseSdkVersion ??
           this._options?.xLangfuseSdkVersion,
-        "X-Langfuse-Public-Key":
+        "X-ElasticDash-Public-Key":
           requestOptions?.xLangfusePublicKey ??
           this._options?.xLangfusePublicKey,
       }),
@@ -449,7 +449,7 @@ export class Models {
   }
 
   /**
-   * Delete a model. Cannot delete models managed by Langfuse. You can create your own definition with the same modelName to override the definition though.
+   * Delete a model. Cannot delete models managed by ElasticDash. You can create your own definition with the same modelName to override the definition though.
    *
    * @param {string} id
    * @param {Models.RequestOptions} requestOptions - Request-specific configuration.
@@ -480,12 +480,12 @@ export class Models {
       this._options?.headers,
       mergeOnlyDefinedHeaders({
         Authorization: await this._getAuthorizationHeader(),
-        "X-Langfuse-Sdk-Name":
+        "X-ElasticDash-Sdk-Name":
           requestOptions?.xLangfuseSdkName ?? this._options?.xLangfuseSdkName,
-        "X-Langfuse-Sdk-Version":
+        "X-ElasticDash-Sdk-Version":
           requestOptions?.xLangfuseSdkVersion ??
           this._options?.xLangfuseSdkVersion,
-        "X-Langfuse-Public-Key":
+        "X-ElasticDash-Public-Key":
           requestOptions?.xLangfusePublicKey ??
           this._options?.xLangfusePublicKey,
       }),

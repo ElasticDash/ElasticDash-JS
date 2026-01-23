@@ -21,12 +21,12 @@ export interface ServerTestSetupOptions {
 }
 
 /**
- * Set up an E2E test environment with real Langfuse server connection
+ * Set up an E2E test environment with real ElasticDash server connection
  */
 export async function setupServerTestEnvironment(
   options: ServerTestSetupOptions = {},
 ): Promise<ServerTestEnvironment> {
-  // Create span processor with real Langfuse server configuration
+  // Create span processor with real ElasticDash server configuration
   const spanProcessor = new LangfuseSpanProcessor({
     ...options.spanProcessorConfig,
   });

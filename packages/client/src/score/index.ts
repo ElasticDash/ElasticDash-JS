@@ -14,7 +14,7 @@ const MAX_QUEUE_SIZE = 100_000; // prevent memory leaks
 const MAX_BATCH_SIZE = 100;
 
 /**
- * Manager for creating and batching score events in Langfuse.
+ * Manager for creating and batching score events in ElasticDash.
  *
  * The ScoreManager handles automatic batching and flushing of score events
  * to optimize API usage. Scores are automatically sent when the queue reaches
@@ -302,7 +302,7 @@ export class ScoreManager {
   }
 
   /**
-   * Flushes all pending score events to the Langfuse API.
+   * Flushes all pending score events to the ElasticDash API.
    *
    * This method ensures all queued scores are sent immediately rather than
    * waiting for the automatic flush interval or batch size threshold.
@@ -323,7 +323,7 @@ export class ScoreManager {
    * Gracefully shuts down the score manager by flushing all pending scores.
    *
    * This method should be called before your application exits to ensure
-   * all score data is sent to Langfuse.
+   * all score data is sent to ElasticDash.
    *
    * @returns Promise that resolves when shutdown is complete
    *

@@ -63,6 +63,6 @@ import * as LangfuseAPI from "../../../../index.js";
 export interface IngestionRequest {
   /** Batch of tracing events to be ingested. Discriminated by attribute `type`. */
   batch: LangfuseAPI.IngestionEvent[];
-  /** Optional. Metadata field used by the Langfuse SDKs for debugging. */
+  /** Optional. Metadata field used by the ElasticDash SDKs for debugging. */
   metadata?: unknown;
 }

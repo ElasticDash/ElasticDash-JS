@@ -44,7 +44,7 @@ import { MediaService } from "./MediaService.js";
 export type MaskFunction = (params: { data: any }) => any;
 
 /**
- * Function type for determining whether a span should be exported to Langfuse.
+ * Function type for determining whether a span should be exported to ElasticDash.
  *
  * @param params - Object containing the span to evaluate
  * @param params.otelSpan - The OpenTelemetry span to evaluate
@@ -74,17 +74,17 @@ export interface LangfuseSpanProcessorParams {
   exporter?: SpanExporter;
 
   /**
-   * Langfuse public API key. Can also be set via ELASTICDASH_PUBLIC_KEY environment variable.
+   * ElasticDash public API key. Can also be set via ELASTICDASH_PUBLIC_KEY environment variable.
    */
   publicKey?: string;
 
   /**
-   * Langfuse secret API key. Can also be set via ELASTICDASH_SECRET_KEY environment variable.
+   * ElasticDash secret API key. Can also be set via ELASTICDASH_SECRET_KEY environment variable.
    */
   secretKey?: string;
 
   /**
-   * Langfuse instance base URL. Can also be set via ELASTICDASH_BASE_URL environment variable.
+   * ElasticDash instance base URL. Can also be set via ELASTICDASH_BASE_URL environment variable.
    * @defaultValue "https://cloud.elasticdash.com"
    */
   baseUrl?: string;
@@ -105,7 +105,7 @@ export interface LangfuseSpanProcessorParams {
   mask?: MaskFunction;
 
   /**
-   * Function to determine whether a span should be exported to Langfuse.
+   * Function to determine whether a span should be exported to ElasticDash.
    */
   shouldExportSpan?: ShouldExportSpan;
 
@@ -143,10 +143,10 @@ export interface LangfuseSpanProcessorParams {
 }
 
 /**
- * OpenTelemetry span processor for sending spans to Langfuse.
+ * OpenTelemetry span processor for sending spans to ElasticDash.
  *
  * This processor extends the standard BatchSpanProcessor to provide:
- * - Automatic batching and flushing of spans to Langfuse
+ * - Automatic batching and flushing of spans to ElasticDash
  * - Media content extraction and upload from base64 data URIs
  * - Data masking capabilities for sensitive information
  * - Conditional span export based on custom logic
@@ -324,7 +324,7 @@ export class LangfuseSpanProcessor implements SpanProcessor {
   }
 
   /**
-   * Called when a span ends. Processes the span for export to Langfuse.
+   * Called when a span ends. Processes the span for export to ElasticDash.
    *
    * This method:
    * 1. Checks if the span should be exported using the shouldExportSpan function

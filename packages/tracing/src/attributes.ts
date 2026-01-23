@@ -8,12 +8,12 @@ import {
 } from "./types.js";
 
 /**
- * Creates OpenTelemetry attributes from Langfuse trace attributes.
+ * Creates OpenTelemetry attributes from ElasticDash trace attributes.
  *
  * Converts user-friendly trace attributes into the internal OpenTelemetry
  * attribute format required by the span processor.
  *
- * @param attributes - Langfuse trace attributes to convert
+ * @param attributes - ElasticDash trace attributes to convert
  * @returns OpenTelemetry attributes object with non-null values
  *
  * @example

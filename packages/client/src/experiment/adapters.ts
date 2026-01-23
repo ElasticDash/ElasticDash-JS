@@ -1,20 +1,20 @@
 import { Evaluator } from "./types.js";
 
 /**
- * Converts an AutoEvals evaluator to a Langfuse-compatible evaluator function.
+ * Converts an AutoEvals evaluator to a ElasticDash-compatible evaluator function.
  *
  * This adapter function bridges the gap between AutoEvals library evaluators
- * and Langfuse experiment evaluators, handling parameter mapping and result
+ * and ElasticDash experiment evaluators, handling parameter mapping and result
  * formatting automatically.
  *
  * AutoEvals evaluators expect `input`, `output`, and `expected` parameters,
- * while Langfuse evaluators use `input`, `output`, and `expectedOutput`.
+ * while ElasticDash evaluators use `input`, `output`, and `expectedOutput`.
  * This function handles the parameter name mapping.
  *
  * @template E - Type of the AutoEvals evaluator function
  * @param autoevalEvaluator - The AutoEvals evaluator function to convert
  * @param params - Optional additional parameters to pass to the AutoEvals evaluator
- * @returns A Langfuse-compatible evaluator function
+ * @returns A ElasticDash-compatible evaluator function
  *
  * @example Basic usage with AutoEvals
  * ```typescript
@@ -50,7 +50,7 @@ import { Evaluator } from "./types.js";
  * ```
  *
  * @see {@link https://github.com/braintrustdata/autoevals} AutoEvals library documentation
- * @see {@link Evaluator} for Langfuse evaluator specifications
+ * @see {@link Evaluator} for ElasticDash evaluator specifications
  *
  * @public
  * @since 4.0.0

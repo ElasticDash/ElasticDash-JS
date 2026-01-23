@@ -19,7 +19,7 @@ import {
 } from "./types.js";
 
 /**
- * Manager for prompt operations in Langfuse.
+ * Manager for prompt operations in ElasticDash.
  *
  * Provides methods to create, retrieve, and manage prompts with built-in caching
  * for optimal performance. Supports both text and chat prompts with variable
@@ -49,7 +49,7 @@ export class PromptManager {
   }
 
   /**
-   * Creates a new prompt in Langfuse.
+   * Creates a new prompt in ElasticDash.
    *
    * @param body - The prompt data to create (chat prompt)
    * @returns Promise that resolves to a ChatPromptClient
@@ -59,7 +59,7 @@ export class PromptManager {
   ): Promise<ChatPromptClient>;
 
   /**
-   * Creates a new prompt in Langfuse.
+   * Creates a new prompt in ElasticDash.
    *
    * @param body - The prompt data to create (text prompt)
    * @returns Promise that resolves to a TextPromptClient
@@ -69,7 +69,7 @@ export class PromptManager {
   ): Promise<TextPromptClient>;
 
   /**
-   * Creates a new prompt in Langfuse.
+   * Creates a new prompt in ElasticDash.
    *
    * @param body - The prompt data to create (chat prompt)
    * @returns Promise that resolves to a ChatPromptClient
@@ -77,7 +77,7 @@ export class PromptManager {
   async create(body: CreatePromptRequest.Chat): Promise<ChatPromptClient>;
 
   /**
-   * Creates a new prompt in Langfuse.
+   * Creates a new prompt in ElasticDash.
    *
    * Supports both text and chat prompts. Chat prompts can include placeholders
    * for dynamic content insertion.
@@ -179,7 +179,7 @@ export class PromptManager {
   /**
    * Delete prompt versions. If neither version nor label is specified, all versions of the prompt are deleted.
    *
-   * The Langfuse SDK prompt cache is invalidated for all cached versions with the specified name.
+   * The ElasticDash SDK prompt cache is invalidated for all cached versions with the specified name.
    *
    * @param name - Name of the prompt to delete
    * @param options - Optional deletion configuration

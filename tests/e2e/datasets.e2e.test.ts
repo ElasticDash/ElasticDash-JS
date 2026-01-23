@@ -1,18 +1,18 @@
 import { StringOutputParser } from "@langchain/core/output_parsers";
 import { PromptTemplate } from "@langchain/core/prompts";
 import { ChatOpenAI } from "@langchain/openai";
-import { LangfuseClient } from "@elasticdash/client";
+import { ElasticDashClient } from "@elasticdash/client";
 import { startObservation } from "@elasticdash/tracing";
 import { nanoid } from "nanoid";
 import { describe, it, expect, beforeEach } from "vitest";
 
 import { waitForServerIngestion } from "./helpers/serverSetup.js";
 
-describe("Langfuse Datasets E2E", () => {
-  let elasticdash: LangfuseClient;
+describe("ElasticDash Datasets E2E", () => {
+  let elasticdash: ElasticDashClient;
 
   beforeEach(async () => {
-    elasticdash = new LangfuseClient();
+    elasticdash = new ElasticDashClient();
   });
 
   describe("dataset and items", () => {

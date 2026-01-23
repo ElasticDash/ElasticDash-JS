@@ -4,7 +4,7 @@ import {
   MessagesPlaceholder,
 } from "@langchain/core/prompts";
 import {
-  LangfuseClient,
+  ElasticDashClient,
   ChatPromptClient,
   TextPromptClient,
   ChatMessageType,
@@ -16,11 +16,11 @@ import type {
 import { nanoid } from "nanoid";
 import { describe, it, expect, beforeEach, vi } from "vitest";
 
-describe("Langfuse Prompts E2E", () => {
-  let elasticdash: LangfuseClient;
+describe("ElasticDash Prompts E2E", () => {
+  let elasticdash: ElasticDashClient;
 
   beforeEach(async () => {
-    elasticdash = new LangfuseClient();
+    elasticdash = new ElasticDashClient();
   });
 
   describe("prompts", () => {

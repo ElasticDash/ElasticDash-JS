@@ -56,9 +56,9 @@ function getGlobalState(): LangfuseGlobalState {
 }
 
 /**
- * Sets an isolated TracerProvider for Langfuse tracing operations.
+ * Sets an isolated TracerProvider for ElasticDash tracing operations.
  *
- * This allows Langfuse to use its own TracerProvider instance, separate from
+ * This allows ElasticDash to use its own TracerProvider instance, separate from
  * the global OpenTelemetry TracerProvider. This is useful for avoiding conflicts
  * with other OpenTelemetry instrumentation in the application.
  *
@@ -104,7 +104,7 @@ export function setLangfuseTracerProvider(provider: TracerProvider | null) {
 }
 
 /**
- * Gets the TracerProvider for Langfuse tracing operations.
+ * Gets the TracerProvider for ElasticDash tracing operations.
  *
  * Returns the isolated TracerProvider if one has been set via setLangfuseTracerProvider(),
  * otherwise falls back to the global OpenTelemetry TracerProvider.
@@ -117,7 +117,7 @@ export function setLangfuseTracerProvider(provider: TracerProvider | null) {
  * const tracer = provider.getTracer('my-tracer', '1.0.0');
  * ```
  *
- * @returns The TracerProvider instance to use for Langfuse tracing
+ * @returns The TracerProvider instance to use for ElasticDash tracing
  * @public
  */
 export function getLangfuseTracerProvider(): TracerProvider {
@@ -129,13 +129,13 @@ export function getLangfuseTracerProvider(): TracerProvider {
 }
 
 /**
- * Gets the OpenTelemetry tracer instance for Langfuse.
+ * Gets the OpenTelemetry tracer instance for ElasticDash.
  *
- * This function returns a tracer specifically configured for Langfuse
+ * This function returns a tracer specifically configured for ElasticDash
  * with the correct tracer name and version. Used internally by all
- * Langfuse tracing functions to ensure consistent trace creation.
+ * ElasticDash tracing functions to ensure consistent trace creation.
  *
- * @returns The Langfuse OpenTelemetry tracer instance
+ * @returns The ElasticDash OpenTelemetry tracer instance
  *
  * @example
  * ```typescript

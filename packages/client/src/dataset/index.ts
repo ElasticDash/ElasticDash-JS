@@ -2,10 +2,10 @@ import { Dataset, DatasetRunItem, DatasetItem } from "@elasticdash/core";
 import { Span } from "@opentelemetry/api";
 
 import { ExperimentResult, ExperimentParams } from "../experiment/types.js";
-import { LangfuseClient } from "../LangfuseClient.js";
+import { ElasticDashClient } from "../ElasticDashClient.js";
 
 /**
- * Function type for running experiments on Langfuse datasets.
+ * Function type for running experiments on ElasticDash datasets.
  *
  * This function type is attached to fetched datasets to enable convenient
  * experiment execution directly on dataset objects.
@@ -79,7 +79,7 @@ export type FetchedDataset = Dataset & {
  * This is essential for creating dataset runs and tracking experiment lineage.
  *
  * @param obj - Object containing the OpenTelemetry span to link to
- * @param obj.otelSpan - The OpenTelemetry span from a Langfuse observation
+ * @param obj.otelSpan - The OpenTelemetry span from a ElasticDash observation
  * @param runName - Name of the experiment run for grouping related items
  * @param runArgs - Optional configuration for the dataset run
  * @param runArgs.description - Description of the experiment run
@@ -116,7 +116,7 @@ export type FetchedDataset = Dataset & {
  * );
  * ```
  *
- * @see {@link https://elasticdash.com/docs/datasets} Langfuse datasets documentation
+ * @see {@link https://elasticdash.com/docs/datasets} ElasticDash datasets documentation
  * @public
  * @since 4.0.0
  */
@@ -132,7 +132,7 @@ export type LinkDatasetItemFunction = (
 ) => Promise<DatasetRunItem>;
 
 /**
- * Manager for dataset operations in Langfuse.
+ * Manager for dataset operations in ElasticDash.
  *
  * Provides methods to retrieve datasets and their items, with automatic
  * pagination handling and convenient linking functionality for experiments.
@@ -140,7 +140,7 @@ export type LinkDatasetItemFunction = (
  * @public
  */
 export class DatasetManager {
-  private langfuseClient: LangfuseClient;
+  private langfuseClient: ElasticDashClient;
 
   /**
    * Creates a new DatasetManager instance.
@@ -148,7 +148,7 @@ export class DatasetManager {
    * @param params - Configuration object containing the API client
    * @internal
    */
-  constructor(params: { langfuseClient: LangfuseClient }) {
+  constructor(params: { langfuseClient: ElasticDashClient }) {
     this.langfuseClient = params.langfuseClient;
   }
 

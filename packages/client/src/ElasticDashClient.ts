@@ -13,25 +13,25 @@ import { PromptManager } from "./prompt/index.js";
 import { ScoreManager } from "./score/index.js";
 
 /**
- * Configuration parameters for initializing a LangfuseClient instance.
+ * Configuration parameters for initializing a ElasticDashClient instance.
  *
  * @public
  */
-export interface LangfuseClientParams {
+export interface ElasticDashClientParams {
   /**
-   * Public API key for authentication with Langfuse.
+   * Public API key for authentication with ElasticDash.
    * Can also be provided via ELASTICDASH_PUBLIC_KEY environment variable.
    */
   publicKey?: string;
 
   /**
-   * Secret API key for authentication with Langfuse.
+   * Secret API key for authentication with ElasticDash.
    * Can also be provided via ELASTICDASH_SECRET_KEY environment variable.
    */
   secretKey?: string;
 
   /**
-   * Base URL of the Langfuse instance to connect to.
+   * Base URL of the ElasticDash instance to connect to.
    * Can also be provided via ELASTICDASH_BASE_URL environment variable.
    *
    * @defaultValue "https://cloud.elasticdash.com"
@@ -59,9 +59,9 @@ export interface LangfuseClientParams {
 }
 
 /**
- * Main client for interacting with the Langfuse API.
+ * Main client for interacting with the ElasticDash API.
  *
- * The LangfuseClient provides access to all Langfuse functionality including:
+ * The ElasticDashClient provides access to all ElasticDash functionality including:
  * - Prompt management and retrieval
  * - Dataset operations
  * - Score creation and management
@@ -71,14 +71,14 @@ export interface LangfuseClientParams {
  * @example
  * ```typescript
  * // Initialize with explicit credentials
- * const elasticdash = new LangfuseClient({
+ * const elasticdash = new ElasticDashClient({
  *   publicKey: "pk_...",
  *   secretKey: "sk_...",
  *   baseUrl: "https://cloud.elasticdash.com"
  * });
  *
  * // Or use environment variables
- * const elasticdash = new LangfuseClient();
+ * const elasticdash = new ElasticDashClient();
  *
  * // Use the client
  * const prompt = await elasticdash.prompt.get("my-prompt");
@@ -87,9 +87,9 @@ export interface LangfuseClientParams {
  *
  * @public
  */
-export class LangfuseClient {
+export class ElasticDashClient {
   /**
-   * Direct access to the underlying Langfuse API client.
+   * Direct access to the underlying ElasticDash API client.
    * Use this for advanced API operations not covered by the high-level managers.
    */
   public api: LangfuseAPIClient;
@@ -126,7 +126,7 @@ export class LangfuseClient {
    *
    * @example Basic experiment execution
    * ```typescript
-   * const elasticdash = new LangfuseClient();
+   * const elasticdash = new ElasticDashClient();
    *
    * const result = await elasticdash.experiment.run({
    *   name: "Model Evaluation",
@@ -239,7 +239,7 @@ export class LangfuseClient {
   public resolveMediaReferences: typeof MediaManager.prototype.resolveReferences;
 
   /**
-   * Creates a new LangfuseClient instance.
+   * Creates a new ElasticDashClient instance.
    *
    * @param params - Configuration parameters. If not provided, will use environment variables.
    *
@@ -248,17 +248,17 @@ export class LangfuseClient {
    * @example
    * ```typescript
    * // With explicit configuration
-   * const client = new LangfuseClient({
+   * const client = new ElasticDashClient({
    *   publicKey: "pk_...",
    *   secretKey: "sk_...",
    *   baseUrl: "https://your-instance.elasticdash.com"
    * });
    *
    * // Using environment variables
-   * const client = new LangfuseClient();
+   * const client = new ElasticDashClient();
    * ```
    */
-  constructor(params?: LangfuseClientParams) {
+  constructor(params?: ElasticDashClientParams) {
     const logger = getGlobalLogger();
 
     const publicKey =
@@ -297,7 +297,7 @@ export class LangfuseClient {
       headers: params?.additionalHeaders,
     });
 
-    logger.debug("Initialized LangfuseClient with params:", {
+    logger.debug("Initialized ElasticDashClient with params:", {
       publicKey,
       baseUrl: this.baseUrl,
       timeoutSeconds,
@@ -329,7 +329,7 @@ export class LangfuseClient {
   }
 
   /**
-   * Flushes any pending score events to the Langfuse API.
+   * Flushes any pending score events to the ElasticDash API.
    *
    * This method ensures all queued scores are sent immediately rather than
    * waiting for the automatic flush interval or batch size threshold.
@@ -350,7 +350,7 @@ export class LangfuseClient {
    * Gracefully shuts down the client by flushing all pending data.
    *
    * This method should be called before your application exits to ensure
-   * all data is sent to Langfuse.
+   * all data is sent to ElasticDash.
    *
    * @returns Promise that resolves when shutdown is complete
    *
@@ -365,7 +365,7 @@ export class LangfuseClient {
   }
 
   /**
-   * Generates a URL to view a specific trace in the Langfuse UI.
+   * Generates a URL to view a specific trace in the ElasticDash UI.
    *
    * @param traceId - The ID of the trace to generate a URL for
    * @returns Promise that resolves to the trace URL

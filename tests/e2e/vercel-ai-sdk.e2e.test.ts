@@ -2,7 +2,7 @@ import { randomUUID } from "crypto";
 import fs from "fs/promises";
 
 import { openai } from "@ai-sdk/openai";
-import { LangfuseClient } from "@elasticdash/client";
+import { ElasticDashClient } from "@elasticdash/client";
 import { startActiveObservation } from "@elasticdash/tracing";
 import {
   embed,
@@ -34,12 +34,12 @@ const weatherTool = tool({
 });
 
 describe("Vercel AI SDK integration E2E tests", () => {
-  let langfuseClient: LangfuseClient;
+  let langfuseClient: ElasticDashClient;
   let testEnv: ServerTestEnvironment;
 
   beforeEach(async () => {
     testEnv = await setupServerTestEnvironment();
-    langfuseClient = new LangfuseClient();
+    langfuseClient = new ElasticDashClient();
   });
 
   afterEach(async () => {

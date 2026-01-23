@@ -2,7 +2,7 @@ import { ChatPromptTemplate } from "@langchain/core/prompts";
 import { DynamicTool } from "@langchain/core/tools";
 import { StateGraph, MessagesAnnotation } from "@langchain/langgraph";
 import { ChatOpenAI } from "@langchain/openai";
-import { LangfuseClient } from "@elasticdash/client";
+import { ElasticDashClient } from "@elasticdash/client";
 import { configureGlobalLogger } from "@elasticdash/core";
 import { CallbackHandler } from "@elasticdash/langchain";
 import { startActiveObservation } from "@elasticdash/tracing";
@@ -17,13 +17,13 @@ import {
 } from "./helpers/serverSetup.js";
 
 describe("Langchain integration E2E tests", () => {
-  let langfuseClient: LangfuseClient;
+  let langfuseClient: ElasticDashClient;
   let testEnv: ServerTestEnvironment;
 
   beforeEach(async () => {
     configureGlobalLogger({ level: 0 });
     testEnv = await setupServerTestEnvironment();
-    langfuseClient = new LangfuseClient();
+    langfuseClient = new ElasticDashClient();
   });
 
   afterEach(async () => {

@@ -1,4 +1,4 @@
-import { LangfuseClient } from "@elasticdash/client";
+import { ElasticDashClient } from "@elasticdash/client";
 import { resetGlobalLogger } from "@elasticdash/core";
 import { startObservation } from "@elasticdash/tracing";
 import { trace } from "@opentelemetry/api";
@@ -21,11 +21,11 @@ import {
   type ServerTestEnvironment,
 } from "./helpers/serverSetup.js";
 
-function createLangfuseClient(): LangfuseClient {
-  return new LangfuseClient();
+function createLangfuseClient(): ElasticDashClient {
+  return new ElasticDashClient();
 }
 
-describe("LangfuseClient Score E2E Tests", () => {
+describe("ElasticDashClient Score E2E Tests", () => {
   let testEnv: ServerTestEnvironment;
   let assertions: ServerAssertions;
 

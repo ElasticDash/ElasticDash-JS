@@ -115,7 +115,7 @@ export type StartActiveObservationOpts = StartActiveObservationContext & {
 };
 
 /**
- * Creates an OpenTelemetry span with the Langfuse tracer.
+ * Creates an OpenTelemetry span with the ElasticDash tracer.
  *
  * @param params - Parameters for span creation
  * @returns The created OpenTelemetry span
@@ -236,9 +236,9 @@ export function startObservation(
   options?: StartObservationOpts & { asType?: "span" },
 ): LangfuseSpan;
 /**
- * Creates and starts a new Langfuse observation with automatic TypeScript type inference.
+ * Creates and starts a new ElasticDash observation with automatic TypeScript type inference.
  *
- * This is the primary method for creating observations in Langfuse. It supports multiple
+ * This is the primary method for creating observations in ElasticDash. It supports multiple
  * observation types with full TypeScript type safety - the return type is automatically
  * inferred based on the `asType` parameter.
  *
@@ -918,7 +918,7 @@ export function updateActiveTrace(attributes: LangfuseTraceAttributes) {
  * Updates the currently active observation with new attributes.
  *
  * This function finds the currently active OpenTelemetry span in the execution context
- * and updates it with Langfuse-specific attributes. It supports all observation types
+ * and updates it with ElasticDash-specific attributes. It supports all observation types
  * through TypeScript overloads, providing type safety for attributes based on the
  * specified `asType` parameter. If no active span exists, the update is skipped with a warning.
  *
@@ -1130,7 +1130,7 @@ export interface ObserveOptions {
 }
 
 /**
- * Decorator function that automatically wraps any function with Langfuse observability.
+ * Decorator function that automatically wraps any function with ElasticDash observability.
  *
  * This higher-order function creates a traced version of your function that automatically
  * handles observation lifecycle, input/output capture, and error tracking. It's perfect
@@ -1521,8 +1521,8 @@ function _captureOutput(value: unknown): unknown {
  *               If empty or falsy, generates a random trace ID.
  *
  *               Using a seed is especially useful when trying to correlate external,
- *               non-W3C compliant IDs with Langfuse trace IDs. This allows you to later
- *               have a method available for scoring the Langfuse trace given only the
+ *               non-W3C compliant IDs with ElasticDash trace IDs. This allows you to later
+ *               have a method available for scoring the ElasticDash trace given only the
  *               external ID by regenerating the same trace ID from the external ID.
  *
  * @returns A Promise that resolves to a 32-character lowercase hexadecimal string suitable for use as an OpenTelemetry trace ID.
@@ -1548,7 +1548,7 @@ function _captureOutput(value: unknown): unknown {
  *   }
  * });
  *
- * // Correlating external IDs with Langfuse traces
+ * // Correlating external IDs with ElasticDash traces
  * const externalId = "ext-12345-67890";
  * const traceId = await createTraceId(externalId);
  *

@@ -1,7 +1,7 @@
 import { OpenAiUsage } from "@elasticdash/core";
 
 /**
- * Types of observations that can be created in Langfuse.
+ * Types of observations that can be created in ElasticDash.
  *
  * - `span`: General-purpose observations for tracking operations, functions, or logical units of work
  * - `generation`: Specialized observations for LLM calls with model parameters, usage, and costs
@@ -22,7 +22,7 @@ export type LangfuseObservationType =
   | "guardrail";
 
 /**
- * Severity levels for observations in Langfuse.
+ * Severity levels for observations in ElasticDash.
  *
  * Used to categorize the importance or severity of observations:
  * - `DEBUG`: Detailed diagnostic information
@@ -34,7 +34,7 @@ export type LangfuseObservationType =
  */
 export type ObservationLevel = "DEBUG" | "DEFAULT" | "WARNING" | "ERROR";
 /**
- * Attributes for Langfuse span observations.
+ * Attributes for ElasticDash span observations.
  *
  * Spans are used to track operations, functions, or logical units of work.
  * They can contain other spans, generations, or events as children.
@@ -59,7 +59,7 @@ export type LangfuseSpanAttributes = {
 };
 
 /**
- * Attributes for Langfuse generation observations.
+ * Attributes for ElasticDash generation observations.
  *
  * Generations are specialized observations for tracking LLM interactions,
  * including model parameters, usage metrics, costs, and prompt information.
@@ -85,7 +85,7 @@ export type LangfuseGenerationAttributes = LangfuseSpanAttributes & {
   costDetails?: {
     [key: string]: number;
   };
-  /** Information about the prompt used from Langfuse prompt management */
+  /** Information about the prompt used from ElasticDash prompt management */
   prompt?: {
     /** Name of the prompt template */
     name: string;
@@ -109,7 +109,7 @@ export type LangfuseGuardrailAttributes = LangfuseSpanAttributes;
 export type LangfuseEmbeddingAttributes = LangfuseGenerationAttributes;
 
 /**
- * Union type representing any Langfuse observation attributes.
+ * Union type representing any ElasticDash observation attributes.
  *
  * This type is used when you need to accept any type of observation attributes.
  *
@@ -126,7 +126,7 @@ export type LangfuseObservationAttributes = LangfuseSpanAttributes &
   LangfuseGuardrailAttributes;
 
 /**
- * Attributes for Langfuse traces.
+ * Attributes for ElasticDash traces.
  *
  * Traces are the top-level containers that group related observations together.
  * They represent a complete workflow, request, or user interaction.
