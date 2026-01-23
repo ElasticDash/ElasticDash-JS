@@ -41,6 +41,29 @@ pnpm test       # Run tests
 pnpm ci         # Run full CI suite
 ```
 
+## Manual Tracing for Any Operation
+
+You can manually record a trace for any operation (not just OpenAI) using the `traceManualOperation` function. This allows you to log input, output, and optional metadata such as session ID, feature ID, user ID, and tags.
+
+**Example:**
+
+```typescript
+import { traceManualOperation } from "@elasticdash/tracing";
+
+traceManualOperation({
+  name: "user-login",
+  input: { username: "alice" },
+  output: { success: true, userId: "123" },
+  sessionId: "session-456",
+  featureId: "login-feature",
+  userId: "123",
+  tags: ["auth", "login"],
+  metadata: { ip: "127.0.0.1" },
+});
+```
+
+This will create a generation observation in ElasticDash tracing for the operation, making it easy to track and analyze custom workflows, API calls, or any business logic.
+
 ## License
 
 [MIT](LICENSE)
