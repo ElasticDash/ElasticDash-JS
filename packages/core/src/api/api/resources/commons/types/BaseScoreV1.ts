@@ -24,6 +24,6 @@ export interface BaseScoreV1 {
   configId: string | null;
   /** The annotation queue referenced by the score. Indicates if score was initially created while processing annotation queue. */
   queueId: string | null;
-  /** The environment from which this score originated. Can be any lowercase alphanumeric string with hyphens and underscores that does not start with 'langfuse'. */
+  /** The environment from which this score originated. Can be any lowercase alphanumeric string with hyphens and underscores that does not start with 'elasticdash'. */
   environment: string;
 }

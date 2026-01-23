@@ -22,7 +22,7 @@ export interface OtelSpan {
   startTimeUnixNano?: unknown;
   /** End time in nanoseconds since Unix epoch */
   endTimeUnixNano?: unknown;
-  /** Span attributes including Langfuse-specific attributes (langfuse.observation.*) */
+  /** Span attributes including Langfuse-specific attributes (elasticdash.observation.*) */
   attributes?: LangfuseAPI.OtelAttribute[];
   /** Span status object */
   status?: unknown;

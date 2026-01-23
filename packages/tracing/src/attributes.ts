@@ -137,7 +137,7 @@ function _serialize(obj: unknown): string | undefined {
  *
  * Converts nested metadata objects into dot-notation attribute keys.
  * For example, `{ database: { host: 'localhost' } }` becomes
- * `{ 'langfuse.metadata.database.host': 'localhost' }`.
+ * `{ 'elasticdash.metadata.database.host': 'localhost' }`.
  *
  * @param metadata - Metadata object to flatten
  * @param type - Whether this is for observation or trace metadata

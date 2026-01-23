@@ -64,7 +64,7 @@ export class MediaManager {
    *   }
    * };
    *
-   * const result = await langfuse.media.resolveReferences({
+   * const result = await elasticdash.media.resolveReferences({
    *   obj,
    *   resolveWith: "base64DataUri"
    * });

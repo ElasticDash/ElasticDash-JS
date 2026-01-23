@@ -8,7 +8,7 @@ import * as LangfuseAPI from "../../../index.js";
  * Key-value attribute pair for resources, scopes, or spans
  */
 export interface OtelAttribute {
-  /** Attribute key (e.g., "service.name", "langfuse.observation.type") */
+  /** Attribute key (e.g., "service.name", "elasticdash.observation.type") */
   key?: string;
   /** Attribute value */
   value?: LangfuseAPI.OtelAttributeValue;

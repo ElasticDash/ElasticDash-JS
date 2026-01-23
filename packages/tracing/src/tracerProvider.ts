@@ -5,7 +5,7 @@ import {
 } from "@elasticdash/core";
 import { TracerProvider, trace } from "@opentelemetry/api";
 
-const ELASTICDASH_GLOBAL_SYMBOL = Symbol.for("langfuse");
+const ELASTICDASH_GLOBAL_SYMBOL = Symbol.for("elasticdash");
 
 type LangfuseGlobalState = {
   isolatedTracerProvider: TracerProvider | null;

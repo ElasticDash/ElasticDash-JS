@@ -63,7 +63,7 @@ export class ScoreManager {
    *
    * @example
    * ```typescript
-   * langfuse.score.create({
+   * elasticdash.score.create({
    *   name: "quality",
    *   value: 0.85,
    *   traceId: "trace-123",
@@ -122,7 +122,7 @@ export class ScoreManager {
    * import { startSpan } from '@elasticdash/tracing';
    *
    * const span = startSpan({ name: "my-operation" });
-   * langfuse.score.observation(
+   * elasticdash.score.observation(
    *   { otelSpan: span },
    *   { name: "accuracy", value: 0.92 }
    * );
@@ -158,7 +158,7 @@ export class ScoreManager {
    * import { startSpan } from '@elasticdash/tracing';
    *
    * const span = startSpan({ name: "my-operation" });
-   * langfuse.score.trace(
+   * elasticdash.score.trace(
    *   { otelSpan: span },
    *   { name: "overall_quality", value: 0.88 }
    * );
@@ -194,7 +194,7 @@ export class ScoreManager {
    *
    * startActiveSpan({ name: "my-operation" }, (span) => {
    *   // Inside the active span
-   *   langfuse.score.activeObservation({
+   *   elasticdash.score.activeObservation({
    *     name: "relevance",
    *     value: 0.95
    *   });
@@ -238,7 +238,7 @@ export class ScoreManager {
    *
    * startActiveSpan({ name: "my-operation" }, (span) => {
    *   // Inside the active span
-   *   langfuse.score.activeTrace({
+   *   elasticdash.score.activeTrace({
    *     name: "user_satisfaction",
    *     value: 4,
    *     comment: "User rated 4 out of 5 stars"
@@ -311,8 +311,8 @@ export class ScoreManager {
    *
    * @example
    * ```typescript
-   * langfuse.score.create({ name: "quality", value: 0.8 });
-   * await langfuse.score.flush(); // Ensures the score is sent immediately
+   * elasticdash.score.create({ name: "quality", value: 0.8 });
+   * await elasticdash.score.flush(); // Ensures the score is sent immediately
    * ```
    */
   public async flush() {
@@ -330,7 +330,7 @@ export class ScoreManager {
    * @example
    * ```typescript
    * // Before application exit
-   * await langfuse.score.shutdown();
+   * await elasticdash.score.shutdown();
    * ```
    */
   public async shutdown() {

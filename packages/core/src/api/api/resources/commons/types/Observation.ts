@@ -45,6 +45,6 @@ export interface Observation {
   usageDetails: Record<string, number>;
   /** The cost details of the observation. Key is the name of the cost metric, value is the cost in USD. The total key is the sum of all (non-total) cost metrics or the total value ingested. */
   costDetails: Record<string, number>;
-  /** The environment from which this observation originated. Can be any lowercase alphanumeric string with hyphens and underscores that does not start with 'langfuse'. */
+  /** The environment from which this observation originated. Can be any lowercase alphanumeric string with hyphens and underscores that does not start with 'elasticdash'. */
   environment: string;
 }

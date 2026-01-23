@@ -136,7 +136,7 @@ describe("OpenAI integration E2E tests", () => {
       ],
       model: "gpt-3.5-turbo",
       stream: true,
-      user: "langfuse-user@gmail.com",
+      user: "elasticdash-user@gmail.com",
       max_tokens: 300,
     });
 
@@ -165,7 +165,7 @@ describe("OpenAI integration E2E tests", () => {
     expect(generation.name).toBe(generationName);
     expect(generation.modelParameters).toBeDefined();
     expect(generation.modelParameters).toMatchObject({
-      user: "langfuse-user@gmail.com",
+      user: "elasticdash-user@gmail.com",
       max_tokens: 300,
       stream: "true",
     });
@@ -199,7 +199,7 @@ describe("OpenAI integration E2E tests", () => {
       prompt: "Say this is a test!",
       model: "gpt-3.5-turbo-instruct",
       stream: false,
-      user: "langfuse-user@gmail.com",
+      user: "elasticdash-user@gmail.com",
       max_tokens: 300,
     });
 
@@ -224,7 +224,7 @@ describe("OpenAI integration E2E tests", () => {
     expect(generation.name).toBe(generationName);
     expect(generation.modelParameters).toBeDefined();
     expect(generation.modelParameters).toMatchObject({
-      user: "langfuse-user@gmail.com",
+      user: "elasticdash-user@gmail.com",
       max_tokens: 300,
       stream: "false",
     });
@@ -260,7 +260,7 @@ describe("OpenAI integration E2E tests", () => {
       prompt: "Say this is a test",
       model: "gpt-3.5-turbo-instruct",
       stream: true,
-      user: "langfuse-user@gmail.com",
+      user: "elasticdash-user@gmail.com",
       temperature: 0,
       max_tokens: 300,
     });
@@ -290,7 +290,7 @@ describe("OpenAI integration E2E tests", () => {
     expect(generation.name).toBe(generationName);
     expect(generation.modelParameters).toBeDefined();
     expect(generation.modelParameters).toMatchObject({
-      user: "langfuse-user@gmail.com",
+      user: "elasticdash-user@gmail.com",
       max_tokens: 300,
       stream: "true",
     });
@@ -340,7 +340,7 @@ describe("OpenAI integration E2E tests", () => {
       messages: [{ role: "user", content: "Explain how to assemble a PC" }],
       functions,
       function_call: functionCall,
-      user: "langfuse-user@gmail.com",
+      user: "elasticdash-user@gmail.com",
       max_tokens: 300,
     });
 
@@ -367,7 +367,7 @@ describe("OpenAI integration E2E tests", () => {
     expect(generation.name).toBe(generationName);
     expect(generation.modelParameters).toBeDefined();
     expect(generation.modelParameters).toMatchObject({
-      user: "langfuse-user@gmail.com",
+      user: "elasticdash-user@gmail.com",
       max_tokens: 300,
     });
     expect(generation.usage).toBeDefined();
@@ -429,7 +429,7 @@ describe("OpenAI integration E2E tests", () => {
           },
         },
       ],
-      user: "langfuse-user@gmail.com",
+      user: "elasticdash-user@gmail.com",
       max_tokens: 300,
     });
 
@@ -456,7 +456,7 @@ describe("OpenAI integration E2E tests", () => {
     expect(generation.name).toBe(generationName);
     expect(generation.modelParameters).toBeDefined();
     expect(generation.modelParameters).toMatchObject({
-      user: "langfuse-user@gmail.com",
+      user: "elasticdash-user@gmail.com",
       max_tokens: 300,
     });
     expect(generation.usage).toBeDefined();
@@ -538,7 +538,7 @@ describe("OpenAI integration E2E tests", () => {
           },
         },
       ],
-      user: "langfuse-user@gmail.com",
+      user: "elasticdash-user@gmail.com",
       max_tokens: 300,
     });
 
@@ -564,7 +564,7 @@ describe("OpenAI integration E2E tests", () => {
     expect(generation.name).toBe(generationName);
     expect(generation.modelParameters).toBeDefined();
     expect(generation.modelParameters).toMatchObject({
-      user: "langfuse-user@gmail.com",
+      user: "elasticdash-user@gmail.com",
       max_tokens: 300,
     });
     expect(generation.usage).toBeDefined();
@@ -616,7 +616,7 @@ describe("OpenAI integration E2E tests", () => {
       messages: [
         { role: "user", content: "What's the weather like in Boston today?" },
       ],
-      user: "langfuse-user@gmail.com",
+      user: "elasticdash-user@gmail.com",
       max_tokens: 300,
     });
 
@@ -625,7 +625,7 @@ describe("OpenAI integration E2E tests", () => {
       messages: [
         { role: "user", content: "What's the weather like in Boston today?" },
       ],
-      user: "langfuse-user@gmail.com",
+      user: "elasticdash-user@gmail.com",
       max_tokens: 300,
     });
 
@@ -634,7 +634,7 @@ describe("OpenAI integration E2E tests", () => {
       messages: [
         { role: "user", content: "What's the weather like in Boston today?" },
       ],
-      user: "langfuse-user@gmail.com",
+      user: "elasticdash-user@gmail.com",
       max_tokens: 300,
     });
 
@@ -661,7 +661,7 @@ describe("OpenAI integration E2E tests", () => {
     expect(generation.name).toBe(generationName);
     expect(generation.modelParameters).toBeDefined();
     expect(generation.modelParameters).toMatchObject({
-      user: "langfuse-user@gmail.com",
+      user: "elasticdash-user@gmail.com",
       max_tokens: 300,
     });
     expect(generation.usage).toBeDefined();
@@ -693,7 +693,7 @@ describe("OpenAI integration E2E tests", () => {
     const res = await wrappedOpenAI.chat.completions.create({
       messages: [{ role: "system", content: "Tell me a story about a king." }],
       model: "gpt-3.5-turbo",
-      user: "langfuse-user@gmail.com",
+      user: "elasticdash-user@gmail.com",
       max_tokens: 300,
     });
 
@@ -726,7 +726,7 @@ describe("OpenAI integration E2E tests", () => {
     expect(generation.name).toBe(generationName);
     expect(generation.modelParameters).toBeDefined();
     expect(generation.modelParameters).toMatchObject({
-      user: "langfuse-user@gmail.com",
+      user: "elasticdash-user@gmail.com",
       max_tokens: 300,
     });
     expect(generation.usage).toBeDefined();
@@ -772,7 +772,7 @@ describe("OpenAI integration E2E tests", () => {
           { role: "system", content: "Tell me a story about a king." },
         ],
         model: "gpt-3.5-turbo-instruct", // Purposely wrong model for chat completions
-        user: "langfuse-user@gmail.com",
+        user: "elasticdash-user@gmail.com",
         max_tokens: 300,
       });
     } catch (error) {
@@ -802,7 +802,7 @@ describe("OpenAI integration E2E tests", () => {
       expect(generation.name).toBe(generationName);
       expect(generation.modelParameters).toBeDefined();
       expect(generation.modelParameters).toMatchObject({
-        user: "langfuse-user@gmail.com",
+        user: "elasticdash-user@gmail.com",
         max_tokens: 300,
       });
       expect(generation.model).toContain("gpt-3.5-turbo-instruct");
@@ -830,7 +830,7 @@ describe("OpenAI integration E2E tests", () => {
     const res = await wrappedOpenAI.chat.completions.create({
       messages: [{ role: "system", content: "Tell me a story about a king." }],
       model: "gpt-3.5-turbo",
-      user: "langfuse-user@gmail.com",
+      user: "elasticdash-user@gmail.com",
       max_tokens: 300,
     });
 
@@ -857,7 +857,7 @@ describe("OpenAI integration E2E tests", () => {
     expect(generation.metadata).toMatchObject({ child: true });
     expect(generation.modelParameters).toBeDefined();
     expect(generation.modelParameters).toMatchObject({
-      user: "langfuse-user@gmail.com",
+      user: "elasticdash-user@gmail.com",
       max_tokens: 300,
     });
     expect(generation.usage).toBeDefined();

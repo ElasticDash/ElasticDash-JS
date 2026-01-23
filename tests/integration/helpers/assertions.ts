@@ -218,7 +218,7 @@ export class SpanAssertions {
     expect(
       stringValue,
       `Expected attribute '${attributeKey}' to contain Langfuse media tags`,
-    ).toMatch(/@@@langfuse-media:[a-f0-9-]+@@@/);
+    ).toMatch(/@@@elasticdash-media:[a-f0-9-]+@@@/);
   }
 
   /**

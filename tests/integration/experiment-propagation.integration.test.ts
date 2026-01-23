@@ -23,11 +23,11 @@ import {
 
 describe("Experiment Attribute Propagation", () => {
   let testEnv: TestEnvironment;
-  let langfuse: LangfuseClient;
+  let elasticdash: LangfuseClient;
 
   beforeEach(async () => {
     testEnv = await setupTestEnvironment();
-    langfuse = new LangfuseClient({
+    elasticdash = new LangfuseClient({
       publicKey: "test-pk",
       secretKey: "test-sk",
       baseUrl: "http://localhost:3000",
@@ -40,7 +40,7 @@ describe("Experiment Attribute Propagation", () => {
 
   describe("Basic Experiment Propagation", () => {
     it("should propagate experiment attributes to child spans", async () => {
-      await langfuse.experiment.run({
+      await elasticdash.experiment.run({
         name: "test-experiment",
         data: [{ input: "test-input" }],
         task: async ({ input }) => {
@@ -85,7 +85,7 @@ describe("Experiment Attribute Propagation", () => {
     it("should propagate experiment metadata to child spans", async () => {
       const experimentMetadata = { model: "gpt-4", temperature: "0.7" };
 
-      await langfuse.experiment.run({
+      await elasticdash.experiment.run({
         name: "metadata-test",
         metadata: experimentMetadata,
         data: [{ input: "test" }],
@@ -114,7 +114,7 @@ describe("Experiment Attribute Propagation", () => {
     it("should propagate experiment item metadata to child spans", async () => {
       const itemMetadata = { source: "user-input", priority: "high" };
 
-      await langfuse.experiment.run({
+      await elasticdash.experiment.run({
         name: "item-metadata-test",
         data: [{ input: "test", metadata: itemMetadata }],
         task: async () => {
@@ -144,7 +144,7 @@ describe("Experiment Attribute Propagation", () => {
 
   describe("Nested Spans", () => {
     it("should propagate to multiple levels of nested child spans", async () => {
-      await langfuse.experiment.run({
+      await elasticdash.experiment.run({
         name: "nested-test",
         data: [{ input: "test" }],
         task: async () => {
@@ -186,7 +186,7 @@ describe("Experiment Attribute Propagation", () => {
     it("should set description only on root span, not child spans", async () => {
       const description = "Test experiment description";
 
-      await langfuse.experiment.run({
+      await elasticdash.experiment.run({
         name: "description-test",
         description,
         data: [{ input: "test" }],
@@ -217,7 +217,7 @@ describe("Experiment Attribute Propagation", () => {
     });
 
     it("should set expectedOutput only on root span, not child spans", async () => {
-      await langfuse.experiment.run({
+      await elasticdash.experiment.run({
         name: "expected-output-test",
         data: [{ input: "France", expectedOutput: "Paris" }],
         task: async () => {
@@ -260,7 +260,7 @@ describe("Experiment Attribute Propagation", () => {
       const experimentIds: string[] = [];
       const itemIds: string[] = [];
 
-      await langfuse.experiment.run({
+      await elasticdash.experiment.run({
         name: "no-leakage-test",
         data: items,
         task: async (item) => {
@@ -294,7 +294,7 @@ describe("Experiment Attribute Propagation", () => {
     it("should generate experiment item ID from input hash for non-dataset items", async () => {
       const input = "test-input-for-hashing";
 
-      await langfuse.experiment.run({
+      await elasticdash.experiment.run({
         name: "id-generation-test",
         data: [{ input }],
         task: async () => {
@@ -316,7 +316,7 @@ describe("Experiment Attribute Propagation", () => {
     it("should use dataset item ID when available", async () => {
       const datasetItemId = "dataset-item-123";
 
-      await langfuse.experiment.run({
+      await elasticdash.experiment.run({
         name: "dataset-id-test",
         data: [
           {
@@ -346,7 +346,7 @@ describe("Experiment Attribute Propagation", () => {
     it("should propagate the root observation ID to child spans", async () => {
       let rootObservationId: string | undefined;
 
-      await langfuse.experiment.run({
+      await elasticdash.experiment.run({
         name: "root-id-test",
         data: [{ input: "test" }],
         task: async () => {
@@ -372,7 +372,7 @@ describe("Experiment Attribute Propagation", () => {
   describe("Error Handling", () => {
     it("should propagate attributes even when task throws error", async () => {
       try {
-        await langfuse.experiment.run({
+        await elasticdash.experiment.run({
           name: "error-test",
           data: [{ input: "test" }],
           task: async () => {
@@ -403,7 +403,7 @@ describe("Experiment Attribute Propagation", () => {
 
   describe("Concurrent Experiments", () => {
     it("should not mix attributes between concurrent experiments", async () => {
-      const experiment1Promise = langfuse.experiment.run({
+      const experiment1Promise = elasticdash.experiment.run({
         name: "concurrent-exp-1",
         data: [{ input: "input1" }],
         task: async () => {
@@ -414,7 +414,7 @@ describe("Experiment Attribute Propagation", () => {
         },
       });
 
-      const experiment2Promise = langfuse.experiment.run({
+      const experiment2Promise = elasticdash.experiment.run({
         name: "concurrent-exp-2",
         data: [{ input: "input2" }],
         task: async () => {
@@ -454,7 +454,7 @@ describe("Experiment Attribute Propagation", () => {
         number: 42,
       };
 
-      await langfuse.experiment.run({
+      await elasticdash.experiment.run({
         name: "serialization-test",
         metadata: complexMetadata,
         data: [{ input: "test" }],
@@ -480,7 +480,7 @@ describe("Experiment Attribute Propagation", () => {
     it("should handle string metadata without double serialization", async () => {
       const stringMetadata = '{"already":"serialized"}';
 
-      await langfuse.experiment.run({
+      await elasticdash.experiment.run({
         name: "string-metadata-test",
         metadata: stringMetadata as any,
         data: [{ input: "test" }],
@@ -505,7 +505,7 @@ describe("Experiment Attribute Propagation", () => {
 
   describe("Environment Attribute", () => {
     it("should set experiment environment on ALL spans including root", async () => {
-      await langfuse.experiment.run({
+      await elasticdash.experiment.run({
         name: "environment-test",
         data: [{ input: "test" }],
         task: async () => {
@@ -543,7 +543,7 @@ describe("Experiment Attribute Propagation", () => {
     });
 
     it("should set experiment environment value to 'sdk-experiment'", async () => {
-      await langfuse.experiment.run({
+      await elasticdash.experiment.run({
         name: "environment-value-test",
         data: [{ input: "test" }],
         task: async () => {
@@ -568,7 +568,7 @@ describe("Experiment Attribute Propagation", () => {
     it("should propagate dataset ID when using dataset items", async () => {
       const datasetId = "dataset-abc-123";
 
-      await langfuse.experiment.run({
+      await elasticdash.experiment.run({
         name: "dataset-test",
         data: [
           {
@@ -594,7 +594,7 @@ describe("Experiment Attribute Propagation", () => {
     });
 
     it("should not have dataset ID for non-dataset experiments", async () => {
-      await langfuse.experiment.run({
+      await elasticdash.experiment.run({
         name: "non-dataset-test",
         data: [{ input: "test" }],
         task: async () => {

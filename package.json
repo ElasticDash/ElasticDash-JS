@@ -6,6 +6,9 @@
   "license": "MIT",
   "private": false,
   "type": "module",
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
     "build": "pnpm -r run build",
     "docs": "pnpm build && typedoc --options ./typedoc.config.cjs",

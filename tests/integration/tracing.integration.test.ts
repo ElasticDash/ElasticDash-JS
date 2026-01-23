@@ -172,8 +172,8 @@ describe("Tracing Methods Interoperability E2E Tests", () => {
         // Verify tags array is set correctly
         const parentAttributes =
           testEnv.mockExporter.getSpanAttributes("parent-span");
-        expect(parentAttributes).toHaveProperty("langfuse.trace.tags");
-        expect(parentAttributes["langfuse.trace.tags"]).toEqual(
+        expect(parentAttributes).toHaveProperty("elasticdash.trace.tags");
+        expect(parentAttributes["elasticdash.trace.tags"]).toEqual(
           expect.arrayContaining(["nested"]),
         );
       });
@@ -556,7 +556,7 @@ describe("Tracing Methods Interoperability E2E Tests", () => {
       );
       assertions.expectSpanAttributeContains(
         "test-event",
-        "langfuse.observation.metadata.coordinates",
+        "elasticdash.observation.metadata.coordinates",
         "100",
       );
 
@@ -570,8 +570,8 @@ describe("Tracing Methods Interoperability E2E Tests", () => {
       // Verify tags array contains expected values
       const eventParentAttrs =
         testEnv.mockExporter.getSpanAttributes("event-parent");
-      expect(eventParentAttrs).toHaveProperty("langfuse.trace.tags");
-      expect(eventParentAttrs["langfuse.trace.tags"]).toEqual(
+      expect(eventParentAttrs).toHaveProperty("elasticdash.trace.tags");
+      expect(eventParentAttrs["elasticdash.trace.tags"]).toEqual(
         expect.arrayContaining(["events"]),
       );
       assertions.expectSpanAttribute(
@@ -1032,10 +1032,10 @@ describe("Tracing Methods Interoperability E2E Tests", () => {
       const spanAttributes =
         testEnv.mockExporter.getSpanAttributes("active-span");
       expect(spanAttributes).toHaveProperty(
-        "langfuse.observation.metadata.execution_time",
+        "elasticdash.observation.metadata.execution_time",
       );
       expect(
-        typeof spanAttributes["langfuse.observation.metadata.execution_time"],
+        typeof spanAttributes["elasticdash.observation.metadata.execution_time"],
       ).toBe("string");
 
       // Verify trace attributes
@@ -1936,8 +1936,8 @@ describe("Tracing Methods Interoperability E2E Tests", () => {
         const llmGenAttrs = testEnv.mockExporter.getSpanAttributes(
           "async-llm-generation",
         );
-        expect(llmGenAttrs).toHaveProperty("langfuse.trace.tags");
-        expect(llmGenAttrs["langfuse.trace.tags"]).toEqual(
+        expect(llmGenAttrs).toHaveProperty("elasticdash.trace.tags");
+        expect(llmGenAttrs["elasticdash.trace.tags"]).toEqual(
           expect.arrayContaining(["async"]),
         );
         assertions.expectSpanAttribute(
@@ -2968,8 +2968,8 @@ describe("Tracing Methods Interoperability E2E Tests", () => {
       // Verify tags array is set correctly
       const workflowAttributes =
         testEnv.mockExporter.getSpanAttributes("ai-workflow");
-      expect(workflowAttributes).toHaveProperty("langfuse.trace.tags");
-      expect(workflowAttributes["langfuse.trace.tags"]).toEqual(
+      expect(workflowAttributes).toHaveProperty("elasticdash.trace.tags");
+      expect(workflowAttributes["elasticdash.trace.tags"]).toEqual(
         expect.arrayContaining(["complex"]),
       );
       assertions.expectSpanAttribute(

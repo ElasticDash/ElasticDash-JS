@@ -63,7 +63,7 @@ export class Media {
   /**
    * Get a media record
    *
-   * @param {string} mediaId - The unique langfuse identifier of a media record
+   * @param {string} mediaId - The unique elasticdash identifier of a media record
    * @param {Media.RequestOptions} requestOptions - Request-specific configuration.
    *
    * @throws {@link LangfuseAPI.Error}
@@ -184,7 +184,7 @@ export class Media {
   /**
    * Patch a media record
    *
-   * @param {string} mediaId - The unique langfuse identifier of a media record
+   * @param {string} mediaId - The unique elasticdash identifier of a media record
    * @param {LangfuseAPI.PatchMediaBody} request
    * @param {Media.RequestOptions} requestOptions - Request-specific configuration.
    *

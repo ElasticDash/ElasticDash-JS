@@ -97,7 +97,7 @@ describe("Langchain integration E2E tests", () => {
     expect(generation!.output.content).toContain(result.content);
   });
 
-  it("should link a langfuse prompt", async () => {
+  it("should link a elasticdash prompt", async () => {
     const testConfig = {
       runName: "Test simple chain:" + nanoid(),
       sessionId: "my-session",

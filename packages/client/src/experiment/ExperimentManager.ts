@@ -32,9 +32,9 @@ import {
  *
  * @example Basic experiment usage
  * ```typescript
- * const langfuse = new LangfuseClient();
+ * const elasticdash = new LangfuseClient();
  *
- * const result = await langfuse.experiment.run({
+ * const result = await elasticdash.experiment.run({
  *   name: "Capital Cities Test",
  *   description: "Testing model knowledge of world capitals",
  *   data: [
@@ -61,7 +61,7 @@ import {
  *
  * @example Using with Langfuse datasets
  * ```typescript
- * const dataset = await langfuse.dataset.get("my-dataset");
+ * const dataset = await elasticdash.dataset.get("my-dataset");
  *
  * const result = await dataset.runExperiment({
  *   name: "Model Comparison",
@@ -130,7 +130,7 @@ export class ExperimentManager {
    *
    * @example Simple experiment
    * ```typescript
-   * const result = await langfuse.experiment.run({
+   * const result = await elasticdash.experiment.run({
    *   name: "Translation Quality Test",
    *   data: [
    *     { input: "Hello world", expectedOutput: "Hola mundo" },
@@ -148,7 +148,7 @@ export class ExperimentManager {
    *
    * @example Experiment with concurrency control
    * ```typescript
-   * const result = await langfuse.experiment.run({
+   * const result = await elasticdash.experiment.run({
    *   name: "Large Scale Evaluation",
    *   data: largeBatchOfItems,
    *   task: expensiveModelCall,
@@ -196,7 +196,7 @@ export class ExperimentManager {
 
     if (!this.isOtelRegistered()) {
       this.logger.warn(
-        "OpenTelemetry has not been set up. Traces will not be sent to Langfuse.See our docs on how to set up OpenTelemetry: https://langfuse.com/docs/observability/sdk/typescript/setup#tracing-setup",
+        "OpenTelemetry has not been set up. Traces will not be sent to Langfuse.See our docs on how to set up OpenTelemetry: https://elasticdash.com/docs/observability/sdk/typescript/setup#tracing-setup",
       );
     }
 
@@ -551,10 +551,10 @@ export class ExperimentManager {
    *        💭 Very close match with expected output
    *
    *    Dataset Item:
-   *    https://cloud.langfuse.com/project/123/datasets/456/items/789
+   *    https://cloud.elasticdash.com/project/123/datasets/456/items/789
    *
    *    Trace:
-   *    https://cloud.langfuse.com/project/123/traces/abc123
+   *    https://cloud.elasticdash.com/project/123/traces/abc123
    *
    * ──────────────────────────────────────────────────
    * 📊 Translation Quality Test - Testing model accuracy
@@ -572,7 +572,7 @@ export class ExperimentManager {
    *     💭 Good performance with room for improvement
    *
    * 🔗 Dataset Run:
-   *    https://cloud.langfuse.com/project/123/datasets/456/runs/def456
+   *    https://cloud.elasticdash.com/project/123/datasets/456/runs/def456
    * ```
    *
    * @internal

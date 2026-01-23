@@ -15,7 +15,7 @@ import { LangfuseClient } from "../LangfuseClient.js";
  *
  * @example
  * ```typescript
- * const dataset = await langfuse.dataset.get("my-dataset");
+ * const dataset = await elasticdash.dataset.get("my-dataset");
  * const result = await dataset.runExperiment({
  *   name: "Model Evaluation",
  *   runName: "Model Evaluation Run 1", // optional
@@ -40,7 +40,7 @@ export type RunExperimentOnDataset = (
  *
  * @example Working with a fetched dataset
  * ```typescript
- * const dataset = await langfuse.dataset.get("my-evaluation-dataset");
+ * const dataset = await elasticdash.dataset.get("my-evaluation-dataset");
  *
  * // Access dataset metadata
  * console.log(dataset.name, dataset.description);
@@ -88,7 +88,7 @@ export type FetchedDataset = Dataset & {
  *
  * @example Basic linking
  * ```typescript
- * const dataset = await langfuse.dataset.get("my-dataset");
+ * const dataset = await elasticdash.dataset.get("my-dataset");
  * const span = startObservation("my-task", { input: "test" });
  * span.update({ output: "result" });
  * span.end();
@@ -116,7 +116,7 @@ export type FetchedDataset = Dataset & {
  * );
  * ```
  *
- * @see {@link https://langfuse.com/docs/datasets} Langfuse datasets documentation
+ * @see {@link https://elasticdash.com/docs/datasets} Langfuse datasets documentation
  * @public
  * @since 4.0.0
  */
@@ -167,7 +167,7 @@ export class DatasetManager {
    *
    * @example Basic dataset retrieval
    * ```typescript
-   * const dataset = await langfuse.dataset.get("my-evaluation-dataset");
+   * const dataset = await elasticdash.dataset.get("my-evaluation-dataset");
    * console.log(`Dataset ${dataset.name} has ${dataset.items.length} items`);
    *
    * // Access dataset properties
@@ -177,7 +177,7 @@ export class DatasetManager {
    *
    * @example Working with dataset items
    * ```typescript
-   * const dataset = await langfuse.dataset.get("qa-dataset");
+   * const dataset = await elasticdash.dataset.get("qa-dataset");
    *
    * for (const item of dataset.items) {
    *   console.log("Question:", item.input);
@@ -190,7 +190,7 @@ export class DatasetManager {
    *
    * @example Running experiments on datasets
    * ```typescript
-   * const dataset = await langfuse.dataset.get("benchmark-dataset");
+   * const dataset = await elasticdash.dataset.get("benchmark-dataset");
    *
    * const result = await dataset.runExperiment({
    *   name: "GPT-4 Benchmark",
@@ -217,7 +217,7 @@ export class DatasetManager {
    * @example Handling large datasets
    * ```typescript
    * // For very large datasets, use smaller page sizes
-   * const largeDataset = await langfuse.dataset.get(
+   * const largeDataset = await elasticdash.dataset.get(
    *   "large-dataset",
    *   { fetchItemsPageSize: 100 }
    * );

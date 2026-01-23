@@ -85,7 +85,7 @@ export interface LangfuseSpanProcessorParams {
 
   /**
    * Langfuse instance base URL. Can also be set via ELASTICDASH_BASE_URL environment variable.
-   * @defaultValue "https://cloud.langfuse.com"
+   * @defaultValue "https://cloud.elasticdash.com"
    */
   baseUrl?: string;
 
@@ -162,7 +162,7 @@ export interface LangfuseSpanProcessorParams {
  *     new LangfuseSpanProcessor({
  *       publicKey: 'pk_...',
  *       secretKey: 'sk_...',
- *       baseUrl: 'https://cloud.langfuse.com',
+ *       baseUrl: 'https://cloud.elasticdash.com',
  *       environment: 'production',
  *       mask: ({ data }) => {
  *         // Mask sensitive data
@@ -225,7 +225,7 @@ export class LangfuseSpanProcessor implements SpanProcessor {
       params?.baseUrl ??
       getEnv("ELASTICDASH_BASE_URL") ??
       getEnv("ELASTICDASH_BASEURL") ?? // legacy v2
-      "https://cloud.langfuse.com";
+      "https://cloud.elasticdash.com";
 
     if (!params?.exporter && !publicKey) {
       logger.warn(

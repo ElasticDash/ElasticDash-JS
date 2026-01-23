@@ -75,12 +75,12 @@ export interface CreateScoreRequest {
   value: LangfuseAPI.CreateScoreValue;
   comment?: string;
   metadata?: Record<string, unknown>;
-  /** The environment of the score. Can be any lowercase alphanumeric string with hyphens and underscores that does not start with 'langfuse'. */
+  /** The environment of the score. Can be any lowercase alphanumeric string with hyphens and underscores that does not start with 'elasticdash'. */
   environment?: string;
   /** The annotation queue referenced by the score. Indicates if score was initially created while processing annotation queue. */
   queueId?: string;
   /** The data type of the score. When passing a configId this field is inferred. Otherwise, this field must be passed or will default to numeric. */
   dataType?: LangfuseAPI.ScoreDataType;
-  /** Reference a score config on a score. The unique langfuse identifier of a score config. When passing this field, the dataType and stringValue fields are automatically populated. */
+  /** Reference a score config on a score. The unique elasticdash identifier of a score config. When passing this field, the dataType and stringValue fields are automatically populated. */
   configId?: string;
 }

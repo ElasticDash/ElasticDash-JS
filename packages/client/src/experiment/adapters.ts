@@ -24,7 +24,7 @@ import { Evaluator } from "./types.js";
  * const factualityEvaluator = createEvaluatorFromAutoevals(Factuality);
  * const levenshteinEvaluator = createEvaluatorFromAutoevals(Levenshtein);
  *
- * await langfuse.experiment.run({
+ * await elasticdash.experiment.run({
  *   name: "AutoEvals Integration Test",
  *   data: myDataset,
  *   task: myTask,
@@ -41,7 +41,7 @@ import { Evaluator } from "./types.js";
  *   { model: 'gpt-4o' } // Additional params for AutoEvals
  * );
  *
- * await langfuse.experiment.run({
+ * await elasticdash.experiment.run({
  *   name: "Factuality Test",
  *   data: myDataset,
  *   task: myTask,

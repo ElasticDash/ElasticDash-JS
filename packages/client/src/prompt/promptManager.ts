@@ -88,14 +88,14 @@ export class PromptManager {
    * @example
    * ```typescript
    * // Create a text prompt
-   * const textPrompt = await langfuse.prompt.create({
+   * const textPrompt = await elasticdash.prompt.create({
    *   name: "greeting",
    *   prompt: "Hello {{name}}!",
    *   type: "text"
    * });
    *
    * // Create a chat prompt
-   * const chatPrompt = await langfuse.prompt.create({
+   * const chatPrompt = await elasticdash.prompt.create({
    *   name: "conversation",
    *   type: "chat",
    *   prompt: [
@@ -153,7 +153,7 @@ export class PromptManager {
    *
    * @example
    * ```typescript
-   * const updatedPrompt = await langfuse.prompt.update({
+   * const updatedPrompt = await elasticdash.prompt.update({
    *   name: "my-prompt",
    *   version: 1,
    *   newLabels: ["production", "v2"]
@@ -194,13 +194,13 @@ export class PromptManager {
    * @example
    * ```typescript
    * // Delete all versions of a prompt
-   * await langfuse.prompt.delete("my-prompt");
+   * await elasticdash.prompt.delete("my-prompt");
    *
    * // Delete specific version
-   * await langfuse.prompt.delete("my-prompt", { version: 2 });
+   * await elasticdash.prompt.delete("my-prompt", { version: 2 });
    *
    * // Delete all versions with a specific label
-   * await langfuse.prompt.delete("my-prompt", { label: "staging" });
+   * await elasticdash.prompt.delete("my-prompt", { label: "staging" });
    * ```
    */
   async delete(
@@ -289,20 +289,20 @@ export class PromptManager {
    * @example
    * ```typescript
    * // Get latest version with caching
-   * const prompt = await langfuse.prompt.get("my-prompt");
+   * const prompt = await elasticdash.prompt.get("my-prompt");
    *
    * // Get specific version
-   * const v2Prompt = await langfuse.prompt.get("my-prompt", {
+   * const v2Prompt = await elasticdash.prompt.get("my-prompt", {
    *   version: 2
    * });
    *
    * // Get with label filter
-   * const prodPrompt = await langfuse.prompt.get("my-prompt", {
+   * const prodPrompt = await elasticdash.prompt.get("my-prompt", {
    *   label: "production"
    * });
    *
    * // Get with fallback
-   * const promptWithFallback = await langfuse.prompt.get("my-prompt", {
+   * const promptWithFallback = await elasticdash.prompt.get("my-prompt", {
    *   type: "text",
    *   fallback: "Hello {{name}}!"
    * });

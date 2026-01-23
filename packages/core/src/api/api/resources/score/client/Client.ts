@@ -201,7 +201,7 @@ export class Score {
   /**
    * Delete a score (supports both trace and session scores)
    *
-   * @param {string} scoreId - The unique langfuse identifier of a score
+   * @param {string} scoreId - The unique elasticdash identifier of a score
    * @param {Score.RequestOptions} requestOptions - Request-specific configuration.
    *
    * @throws {@link LangfuseAPI.Error}

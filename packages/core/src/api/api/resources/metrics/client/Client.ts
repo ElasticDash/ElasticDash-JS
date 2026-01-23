@@ -65,7 +65,7 @@ export class Metrics {
    *
    * Consider using the [v2 metrics endpoint](/api-reference#tag/metricsv2/GET/api/public/v2/metrics) for better performance.
    *
-   * For more details, see the [Metrics API documentation](https://langfuse.com/docs/metrics/features/metrics-api).
+   * For more details, see the [Metrics API documentation](https://elasticdash.com/docs/metrics/features/metrics-api).
    *
    * @param {LangfuseAPI.GetMetricsRequest} request
    * @param {Metrics.RequestOptions} requestOptions - Request-specific configuration.

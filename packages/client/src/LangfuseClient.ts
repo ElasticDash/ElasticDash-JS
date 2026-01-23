@@ -34,7 +34,7 @@ export interface LangfuseClientParams {
    * Base URL of the Langfuse instance to connect to.
    * Can also be provided via ELASTICDASH_BASE_URL environment variable.
    *
-   * @defaultValue "https://cloud.langfuse.com"
+   * @defaultValue "https://cloud.elasticdash.com"
    */
   baseUrl?: string;
 
@@ -71,17 +71,17 @@ export interface LangfuseClientParams {
  * @example
  * ```typescript
  * // Initialize with explicit credentials
- * const langfuse = new LangfuseClient({
+ * const elasticdash = new LangfuseClient({
  *   publicKey: "pk_...",
  *   secretKey: "sk_...",
- *   baseUrl: "https://cloud.langfuse.com"
+ *   baseUrl: "https://cloud.elasticdash.com"
  * });
  *
  * // Or use environment variables
- * const langfuse = new LangfuseClient();
+ * const elasticdash = new LangfuseClient();
  *
  * // Use the client
- * const prompt = await langfuse.prompt.get("my-prompt");
+ * const prompt = await elasticdash.prompt.get("my-prompt");
  * const compiledPrompt = prompt.compile({ variable: "value" });
  * ```
  *
@@ -126,9 +126,9 @@ export class LangfuseClient {
    *
    * @example Basic experiment execution
    * ```typescript
-   * const langfuse = new LangfuseClient();
+   * const elasticdash = new LangfuseClient();
    *
-   * const result = await langfuse.experiment.run({
+   * const result = await elasticdash.experiment.run({
    *   name: "Model Evaluation",
    *   description: "Testing model performance on Q&A tasks",
    *   data: [
@@ -153,7 +153,7 @@ export class LangfuseClient {
    *
    * @example Using with datasets
    * ```typescript
-   * const dataset = await langfuse.dataset.get("my-test-dataset");
+   * const dataset = await elasticdash.dataset.get("my-test-dataset");
    * const result = await dataset.runExperiment({
    *   name: "Production Readiness Test",
    *   task: myTask,
@@ -251,7 +251,7 @@ export class LangfuseClient {
    * const client = new LangfuseClient({
    *   publicKey: "pk_...",
    *   secretKey: "sk_...",
-   *   baseUrl: "https://your-instance.langfuse.com"
+   *   baseUrl: "https://your-instance.elasticdash.com"
    * });
    *
    * // Using environment variables
@@ -271,7 +271,7 @@ export class LangfuseClient {
       params?.baseUrl ??
       getEnv("ELASTICDASH_BASE_URL" as ElasticDashEnvVar) ??
       getEnv("ELASTICDASH_BASEURL" as ElasticDashEnvVar) ?? // legacy v2
-      "https://cloud.langfuse.com";
+      "https://cloud.elasticdash.com";
 
     if (!publicKey) {
       logger.warn(
@@ -338,8 +338,8 @@ export class LangfuseClient {
    *
    * @example
    * ```typescript
-   * langfuse.score.create({ name: "quality", value: 0.8 });
-   * await langfuse.flush(); // Ensures the score is sent immediately
+   * elasticdash.score.create({ name: "quality", value: 0.8 });
+   * await elasticdash.flush(); // Ensures the score is sent immediately
    * ```
    */
   public async flush() {
@@ -357,7 +357,7 @@ export class LangfuseClient {
    * @example
    * ```typescript
    * // Before application exit
-   * await langfuse.shutdown();
+   * await elasticdash.shutdown();
    * ```
    */
   public async shutdown() {
@@ -373,7 +373,7 @@ export class LangfuseClient {
    * @example
    * ```typescript
    * const traceId = "trace-123";
-   * const url = await langfuse.getTraceUrl(traceId);
+   * const url = await elasticdash.getTraceUrl(traceId);
    * console.log(`View trace at: ${url}`);
    * ```
    */

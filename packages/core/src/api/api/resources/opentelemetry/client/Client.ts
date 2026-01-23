@@ -75,8 +75,8 @@ export class Opentelemetry {
    * - Implements `ExportTraceServiceRequest` message format
    *
    * **Documentation:**
-   * - Integration guide: https://langfuse.com/integrations/native/opentelemetry
-   * - Data model: https://langfuse.com/docs/observability/data-model
+   * - Integration guide: https://elasticdash.com/integrations/native/opentelemetry
+   * - Data model: https://elasticdash.com/docs/observability/data-model
    *
    * @param {LangfuseAPI.OtelTraceRequest} request
    * @param {Opentelemetry.RequestOptions} requestOptions - Request-specific configuration.
@@ -105,7 +105,7 @@ export class Opentelemetry {
    *                 },
    *                 scopeSpans: [{
    *                         scope: {
-   *                             name: "langfuse-sdk",
+   *                             name: "elasticdash-sdk",
    *                             version: "2.60.3"
    *                         },
    *                         spans: [{
@@ -116,7 +116,7 @@ export class Opentelemetry {
    *                                 startTimeUnixNano: "1747872000000000000",
    *                                 endTimeUnixNano: "1747872001000000000",
    *                                 attributes: [{
-   *                                         key: "langfuse.observation.type",
+   *                                         key: "elasticdash.observation.type",
    *                                         value: {
    *                                             stringValue: "generation"
    *                                         }

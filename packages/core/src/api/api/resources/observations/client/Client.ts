@@ -63,7 +63,7 @@ export class Observations {
   /**
    * Get a observation
    *
-   * @param {string} observationId - The unique langfuse identifier of an observation, can be an event, span or generation
+   * @param {string} observationId - The unique elasticdash identifier of an observation, can be an event, span or generation
    * @param {Observations.RequestOptions} requestOptions - Request-specific configuration.
    *
    * @throws {@link LangfuseAPI.Error}

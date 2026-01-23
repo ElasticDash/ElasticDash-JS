@@ -63,7 +63,7 @@ export class Trace {
   /**
    * Get a specific trace
    *
-   * @param {string} traceId - The unique langfuse identifier of a trace
+   * @param {string} traceId - The unique elasticdash identifier of a trace
    * @param {Trace.RequestOptions} requestOptions - Request-specific configuration.
    *
    * @throws {@link LangfuseAPI.Error}
@@ -184,7 +184,7 @@ export class Trace {
   /**
    * Delete a specific trace
    *
-   * @param {string} traceId - The unique langfuse identifier of the trace to delete
+   * @param {string} traceId - The unique elasticdash identifier of the trace to delete
    * @param {Trace.RequestOptions} requestOptions - Request-specific configuration.
    *
    * @throws {@link LangfuseAPI.Error}

@@ -23,7 +23,7 @@ import * as LangfuseAPI from "../../../../index.js";
  *                 },
  *                 scopeSpans: [{
  *                         scope: {
- *                             name: "langfuse-sdk",
+ *                             name: "elasticdash-sdk",
  *                             version: "2.60.3"
  *                         },
  *                         spans: [{
@@ -34,7 +34,7 @@ import * as LangfuseAPI from "../../../../index.js";
  *                                 startTimeUnixNano: "1747872000000000000",
  *                                 endTimeUnixNano: "1747872001000000000",
  *                                 attributes: [{
- *                                         key: "langfuse.observation.type",
+ *                                         key: "elasticdash.observation.type",
  *                                         value: {
  *                                             stringValue: "generation"
  *                                         }

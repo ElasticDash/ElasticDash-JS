@@ -328,7 +328,7 @@ export class ScoreConfigs {
   /**
    * Get a score config
    *
-   * @param {string} configId - The unique langfuse identifier of a score config
+   * @param {string} configId - The unique elasticdash identifier of a score config
    * @param {ScoreConfigs.RequestOptions} requestOptions - Request-specific configuration.
    *
    * @throws {@link LangfuseAPI.Error}
@@ -449,7 +449,7 @@ export class ScoreConfigs {
   /**
    * Update a score config
    *
-   * @param {string} configId - The unique langfuse identifier of a score config
+   * @param {string} configId - The unique elasticdash identifier of a score config
    * @param {LangfuseAPI.UpdateScoreConfigRequest} request
    * @param {ScoreConfigs.RequestOptions} requestOptions - Request-specific configuration.
    *

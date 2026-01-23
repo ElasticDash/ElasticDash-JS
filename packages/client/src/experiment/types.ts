@@ -297,7 +297,7 @@ export type ExperimentItemResult<
  *
  * @example Using experiment results
  * ```typescript
- * const result = await langfuse.experiment.run(config);
+ * const result = await elasticdash.experiment.run(config);
  *
  * // Access individual results
  * console.log(`Processed ${result.itemResults.length} items`);

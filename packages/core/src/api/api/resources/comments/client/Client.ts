@@ -339,7 +339,7 @@ export class Comments {
   /**
    * Get a comment by id
    *
-   * @param {string} commentId - The unique langfuse identifier of a comment
+   * @param {string} commentId - The unique elasticdash identifier of a comment
    * @param {Comments.RequestOptions} requestOptions - Request-specific configuration.
    *
    * @throws {@link LangfuseAPI.Error}
