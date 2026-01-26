@@ -34,7 +34,7 @@ export interface ElasticDashClientParams {
    * Base URL of the ElasticDash instance to connect to.
    * Can also be provided via ELASTICDASH_BASE_URL environment variable.
    *
-   * @defaultValue "https://cloud.elasticdash.com"
+   * @defaultValue "https://devserver-logger.elasticdash.com"
    */
   baseUrl?: string;
 
@@ -74,7 +74,7 @@ export interface ElasticDashClientParams {
  * const elasticdash = new ElasticDashClient({
  *   publicKey: "pk_...",
  *   secretKey: "sk_...",
- *   baseUrl: "https://cloud.elasticdash.com"
+ *   baseUrl: "https://devserver-logger.elasticdash.com"
  * });
  *
  * // Or use environment variables
@@ -271,7 +271,7 @@ export class ElasticDashClient {
       params?.baseUrl ??
       getEnv("ELASTICDASH_BASE_URL" as ElasticDashEnvVar) ??
       getEnv("ELASTICDASH_BASEURL" as ElasticDashEnvVar) ?? // legacy v2
-      "https://cloud.elasticdash.com";
+      "https://devserver-logger.elasticdash.com";
 
     if (!publicKey) {
       logger.warn(

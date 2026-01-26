@@ -550,10 +550,10 @@ export class ExperimentManager {
    *        💭 Very close match with expected output
    *
    *    Dataset Item:
-   *    https://cloud.elasticdash.com/project/123/datasets/456/items/789
+   *    https://devserver-logger.elasticdash.com/project/123/datasets/456/items/789
    *
    *    Trace:
-   *    https://cloud.elasticdash.com/project/123/traces/abc123
+   *    https://devserver-logger.elasticdash.com/project/123/traces/abc123
    *
    * ──────────────────────────────────────────────────
    * 📊 Translation Quality Test - Testing model accuracy
@@ -571,7 +571,7 @@ export class ExperimentManager {
    *     💭 Good performance with room for improvement
    *
    * 🔗 Dataset Run:
-   *    https://cloud.elasticdash.com/project/123/datasets/456/runs/def456
+   *    https://devserver-logger.elasticdash.com/project/123/datasets/456/runs/def456
    * ```
    *
    * @internal

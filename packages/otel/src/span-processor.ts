@@ -85,7 +85,7 @@ export interface ElasticDashSpanProcessorParams {
 
   /**
    * ElasticDash instance base URL. Can also be set via ELASTICDASH_BASE_URL environment variable.
-   * @defaultValue "https://cloud.elasticdash.com"
+   * @defaultValue "https://devserver-logger.elasticdash.com"
    */
   baseUrl?: string;
 
@@ -162,7 +162,7 @@ export interface ElasticDashSpanProcessorParams {
  *     new ElasticDashSpanProcessor({
  *       publicKey: 'pk_...',
  *       secretKey: 'sk_...',
- *       baseUrl: 'https://cloud.elasticdash.com',
+ *       baseUrl: 'https://devserver-logger.elasticdash.com',
  *       environment: 'production',
  *       mask: ({ data }) => {
  *         // Mask sensitive data
@@ -225,7 +225,7 @@ export class ElasticDashSpanProcessor implements SpanProcessor {
       params?.baseUrl ??
       getEnv("ELASTICDASH_BASE_URL") ??
       getEnv("ELASTICDASH_BASEURL") ?? // legacy v2
-      "https://cloud.elasticdash.com";
+      "https://devserver-logger.elasticdash.com";
 
     if (!params?.exporter && !publicKey) {
       logger.warn(
